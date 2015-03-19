@@ -24,7 +24,9 @@ public interface DAO {
    public Member getMemberWithLastName(String surname);
    public ArrayList<Member> getCoachesForTeam(String team);
    
-   public boolean insertMember(Member m) throws Exception,SQLException ;
+   public boolean insertMember(Member m) throws Exception,SQLException;
+   
+   public boolean addParentChildRelation(Member parent, Member child) throws Exception,SQLException;
    
    public void updateMember(Member m);
    
