@@ -111,6 +111,10 @@ public class Member {
 
     public void setChildren(List<Member> children) {
         this.children = children;
-    }
-         
+    }        
+
+    @Override
+    public String toString() {
+        return "Member{" + "id=" + id + ", name=" + name + ", surname=" + surname + ", email=" + email + ", gender=" + gender + ", birthdate=" + birthdate + ", joindate=" + joindate + ", active=" + active + ", roles=" + roles + ", teams=" + teams + ", children=" + children + '}';
+    }         
 }
