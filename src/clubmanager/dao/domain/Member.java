@@ -21,8 +21,96 @@ public class Member {
     private long birthdate;
     private long joindate;
     private int active;
-    private int[] roles;
+    private List<Integer> roles;
     private List<String> teams;    
     private List<Member> children;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
+
+    public long getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(long birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    public long getJoindate() {
+        return joindate;
+    }
+
+    public void setJoindate(long joindate) {
+        this.joindate = joindate;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
+
+    public List<Integer> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Integer> roles) {
+        this.roles = roles;
+    }   
     
+    public List<String> getTeams() {
+        return teams;
+    }
+
+    public void setTeams(List<String> teams) {
+        this.teams = teams;
+    }
+
+    public List<Member> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Member> children) {
+        this.children = children;
+    }
+         
 }
