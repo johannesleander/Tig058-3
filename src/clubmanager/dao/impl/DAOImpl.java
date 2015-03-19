@@ -216,17 +216,15 @@ public class DAOImpl implements DAO {
                 stmnt.setInt(3, role);
                 stmnt.executeUpdate();
             }                         
-            this.connection.commit();
-            this.connection.setAutoCommit(true);
-            
+            this.connection.commit();           
         } catch (SQLException e) {
             this.connection.rollback();
             throw e;           
-        } finally {
+        } finally {           
             this.connection.setAutoCommit(true);
         }
-        return false;
-    }
+        return true;
+    }   
 
     @Override
     public void updateMember(Member m) {
@@ -236,5 +234,24 @@ public class DAOImpl implements DAO {
     @Override
     public void deleteMember(Member m) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean addParentChildRelation(Member parent, Member child) throws Exception,SQLException {
+        try {
+            this.connection.setAutoCommit(false);
+            PreparedStatement stmnt = this.connection.prepareStatement("INSERT INTO parent_child VALUES (?,?)");
+            stmnt.setString(1, parent.getId());
+            stmnt.setString(2, child.getId());
+            
+            stmnt.executeUpdate();
+            this.connection.commit();
+        } catch (SQLException e) {
+            this.connection.rollback();
+            throw e;
+        } finally {
+            this.connection.setAutoCommit(true);
+        }
+        return true;
     }
 }
