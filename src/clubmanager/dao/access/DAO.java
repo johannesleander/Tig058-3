@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package clubmanager.access;
+package clubmanager.dao.access;
 
-import clubmanager.domain.FullPerson;
-import clubmanager.domain.Person;
-import clubmanager.domain.PersonFunction;
+import clubmanager.dao.domain.FullPerson;
+import clubmanager.dao.domain.Person;
+import clubmanager.dao.domain.PersonFunction;
 import java.util.List;
 
 /**
