@@ -185,6 +185,48 @@ public class DAOImpl implements DAO {
         Collections.sort(members, new MemberSurnameComparator());
         return members;
     }
+    
+    @Override
+    public boolean insertMember(Member m) throws Exception,SQLException {
+        try {
+            this.connection.setAutoCommit(false);
+            
+            PreparedStatement stmnt = this.connection.prepareStatement("INSERT INTO person values(?,?,?,?,?,?,?,?)");
+            stmnt.setString(1, m.getId());
+            stmnt.setString(2, m.getName());
+            stmnt.setString(3, m.getSurname());
+            stmnt.setString(4, m.getEmail());
+            stmnt.setInt(5, m.getGender());
+            stmnt.setLong(6, m.getBirthdate());
+            stmnt.setLong(7, m.getJoindate());
+            stmnt.setInt(8, m.getActive());            
+            stmnt.executeUpdate();
+            
+            for (Integer role : m.getRoles()) {
+                if (role == 2) {
+                    if (m.getTeams().get(0).equals("") || m.getTeams().get(0) == null) {
+                        Exception ex = new Exception("Coach role requires a team!", null);
+                        this.connection.rollback();
+                        throw ex;
+                    }
+                }
+                stmnt = this.connection.prepareStatement("INSERT INTO team_roles values (?,?,?)");
+                stmnt.setString(1, m.getId());
+                stmnt.setString(2, m.getTeams().get(0));
+                stmnt.setInt(3, role);
+                stmnt.executeUpdate();
+            }                         
+            this.connection.commit();
+            this.connection.setAutoCommit(true);
+            
+        } catch (SQLException e) {
+            this.connection.rollback();
+            throw e;           
+        } finally {
+            this.connection.setAutoCommit(true);
+        }
+        return false;
+    }
 
     @Override
     public void updateMember(Member m) {
