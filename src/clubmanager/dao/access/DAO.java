@@ -16,19 +16,20 @@ import java.util.ArrayList;
  * The class implementing this interface handles the persistance and retrieval of information.
  */
 public interface DAO {
-   public ArrayList<Member> getAllMembers();
-   public ArrayList<Member> getAllMembersSortedBySurname();
-   public ArrayList<Member> getMembersFromTeam(String team);
+    public ArrayList<Member> getAllMembers();
+    public ArrayList<Member> getAllMembersSortedBySurname();
+    public ArrayList<Member> getMembersFromTeam(String team);
    
-   public Member getMemberWithId(String id);
-   public Member getMemberWithLastName(String surname);
-   public ArrayList<Member> getCoachesForTeam(String team);
+    public Member getMemberWithId(String id);
+    public Member getMemberWithLastName(String surname);
+    public ArrayList<Member> getCoachesForTeam(String team);
    
-   public boolean insertMember(Member m) throws Exception,SQLException;
+    public boolean insertMember(Member m) throws Exception,SQLException;
+      
+    public boolean updateMemberActive(Member m) throws Exception, SQLException;
+    public boolean updateMemberEmail(Member m) throws Exception, SQLException;
+    public boolean updateMemberRole(Member m) throws Exception, SQLException;
+    public boolean addParentChildRelation(Member parent, Member child) throws Exception,SQLException;
    
-   public boolean addParentChildRelation(Member parent, Member child) throws Exception,SQLException;
-   
-   public boolean updateMember(Member m) throws Exception,SQLException;
-   
-   public boolean deleteMember(Member m) throws Exception,SQLException;
+    public boolean deleteMember(Member m) throws Exception,SQLException;
 }

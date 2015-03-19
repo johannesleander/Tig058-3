@@ -225,10 +225,72 @@ public class DAOImpl implements DAO {
         }
         return true;
     }   
+    
+    @Override
+    public boolean updateMemberActive(Member m) throws Exception, SQLException {
+        try {
+            this.connection.setAutoCommit(false);
+            PreparedStatement stmnt = this.connection.prepareStatement("UPDATE person SET active=? WHERE id=? ");
+            stmnt.setInt(1, m.getActive());
+            stmnt.setString(2, m.getId());
+            stmnt.executeUpdate();
+            this.connection.commit();           
+        } catch (SQLException e) {
+            this.connection.rollback();
+            throw e;
+        } finally {
+            this.connection.setAutoCommit(false);
+        }
+        return true;
+    }
 
     @Override
-    public boolean updateMember(Member m) throws Exception,SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean updateMemberEmail(Member m) throws Exception, SQLException {
+        try {
+            this.connection.setAutoCommit(false);
+            PreparedStatement stmnt = this.connection.prepareStatement("UPDATE person SET email=? WHERE id=? ");
+            stmnt.setString(1, m.getEmail());
+            stmnt.setString(2, m.getId());
+            stmnt.executeUpdate();
+            this.connection.commit();           
+        } catch (SQLException e) {
+            this.connection.rollback();
+            throw e;
+        } finally {
+            this.connection.setAutoCommit(false);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean updateMemberRole(Member m) throws Exception, SQLException {
+        try {
+            this.connection.setAutoCommit(false);
+            PreparedStatement stmnt = this.connection.prepareStatement("DELETE FROM team_roles WHERE id=?");
+            stmnt.setString(1, m.getId());
+            
+            for (Integer role : m.getRoles()) {
+                if (role == 2) {
+                    if (m.getTeams().get(0).equals("") || m.getTeams().get(0) == null) {
+                        Exception ex = new Exception("Coach role requires a team!", null);
+                        this.connection.rollback();
+                        throw ex;
+                    }
+                }
+                stmnt = this.connection.prepareStatement("INSERT INTO team_roles VALUES (?,?,?)");
+                stmnt.setString(1, m.getId());
+                stmnt.setString(2, m.getTeams().get(0));
+                stmnt.setInt(3, role);
+                stmnt.executeUpdate();
+            }            
+            this.connection.commit();           
+        } catch (SQLException e) {
+            this.connection.rollback();
+            throw e;
+        } finally {
+            this.connection.setAutoCommit(false);
+        }
+        return true;
     }
 
     @Override
@@ -266,4 +328,5 @@ public class DAOImpl implements DAO {
         }
         return true;
     }
+
 }
