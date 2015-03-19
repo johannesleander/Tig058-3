@@ -7,6 +7,7 @@ package clubmanager.dao.impl;
 
 import clubmanager.dao.access.DAO;
 import clubmanager.dao.domain.Member;
+import clubmanager.domain.comparator.MemberSurnameComparator;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,6 +19,7 @@ import java.util.List;
 /**
  *
  * @author phcr
+ * This class implements the DAO interface.
  */
 public class DAOImpl implements DAO {
 
@@ -76,32 +78,36 @@ public class DAOImpl implements DAO {
     }
     
     
+    private Member memberFromRS(ResultSet rs) throws SQLException {
+        Member m = new Member();
+        m.setId(rs.getString("id"));
+        m.setName(rs.getString("name"));
+        m.setSurname(rs.getString("surname"));
+        m.setEmail(rs.getString("email"));
+        m.setGender(rs.getInt("gender"));
+        m.setBirthdate(rs.getLong("birthdate"));
+        m.setJoindate(rs.getLong("birthdate"));
+        m.setActive(rs.getInt("active"));
+        m.setRoles(getAllRolesForMember(m.getId()));
+        m.setTeams(getAllTeamsForMember(m.getId()));   
+        m.setChildren(getAllChildrenForParent(m.getId()));
+        return m;
+}
     
     @Override
-    public List<Member> getAllMembers() {
-        List<Member> ms = new ArrayList<>();
+    public ArrayList<Member> getAllMembers() {
+        ArrayList<Member> ms = new ArrayList<>();
         try {
             PreparedStatement stmnt = this.connection.prepareStatement("SELECT * FROM person");
             ResultSet rs = stmnt.executeQuery();
             
             while(rs.next()) {
-                Member m = new Member();
-                m.setId(rs.getString("id"));
-                m.setName(rs.getString("name"));
-                m.setSurname(rs.getString("surname"));
-                m.setEmail(rs.getString("email"));
-                m.setGender(rs.getInt("gender"));
-                m.setBirthdate(rs.getLong("birthdate"));
-                m.setJoindate(rs.getLong("birthdate"));
-                m.setActive(rs.getInt("active"));
-                m.setRoles(getAllRolesForMember(m.getId()));
-                m.setTeams(getAllTeamsForMember(m.getId()));                
-                ms.add(m);
+                ms.add(memberFromRS(rs));
             }            
         } catch (SQLException e) {
             System.out.println(e);
         }
-        return Collections.unmodifiableList(ms);
+        return ms;
     }
     
     @Override
@@ -113,17 +119,7 @@ public class DAOImpl implements DAO {
             ResultSet rs = stmnt.executeQuery();
             
             while (rs.next()) {
-                m.setId(rs.getString("id"));
-                m.setName(rs.getString("name"));
-                m.setSurname(rs.getString("surname"));
-                m.setEmail(rs.getString("email"));
-                m.setGender(rs.getInt("gender"));
-                m.setBirthdate(rs.getLong("birthdate"));
-                m.setJoindate(rs.getLong("birthdate"));
-                m.setActive(rs.getInt("active"));
-                m.setRoles(getAllRolesForMember(id));
-                m.setTeams(getAllTeamsForMember(id));
-                m.setChildren(getAllChildrenForParent(id));
+                m = memberFromRS(rs);
             }            
         } catch (SQLException e) {
             System.out.println(e);
@@ -140,20 +136,56 @@ public class DAOImpl implements DAO {
             ResultSet rs = stmnt.executeQuery();
             
             while (rs.next()) {
-                m.setId(rs.getString("id"));
-                m.setName(rs.getString("name"));
-                m.setSurname(rs.getString("surname"));
-                m.setEmail(rs.getString("email"));
-                m.setGender(rs.getInt("gender"));
-                m.setBirthdate(rs.getLong("birthdate"));
-                m.setJoindate(rs.getLong("birthdate"));
-                m.setActive(rs.getInt("active"));
+                m = memberFromRS(rs);
             }            
         } catch (SQLException e) {
             System.out.println(e);
         }      
         return m;
     }
+    
+        @Override
+    public List<Member> getMembersFromTeam(String team) {
+        ArrayList<Member> ms = new ArrayList<>();
+        try {
+            PreparedStatement stmnt = this.connection.prepareStatement("SELECT * FROM person WHERE id IN (SELECT pid FROM team_roles WHERE team=?)");
+            stmnt.setString(1, team);
+            
+            ResultSet rs = stmnt.executeQuery();
+            while (rs.next()) {
+                ms.add(memberFromRS(rs));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }        
+        return ms;
+    }
+
+    @Override
+    public List<Member> getCoachesForTeam(String team) {
+        ArrayList<Member> coaches = new ArrayList<>();
+        try {
+            PreparedStatement stmnt = this.connection.prepareStatement("SELECT * FROM person WHERE id IN (SELECT pid FROM team_roles WHERE team=? and role=2");
+            stmnt.setString(1, team);
+            
+            ResultSet rs = stmnt.executeQuery();
+            while (rs.next()) {
+                coaches.add(memberFromRS(rs));                
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return coaches;
+    }
+    
+    
+    @Override
+    public List<Member> getAllMembersSortedBySurname() {
+        ArrayList<Member> members = getAllMembers();
+        Collections.sort(members, new MemberSurnameComparator());
+        return members;
+    }
+
 
     @Override
     public void updateMember(Member m) {
@@ -164,5 +196,4 @@ public class DAOImpl implements DAO {
     public void deleteMember(Member m) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
 }
