@@ -5,7 +5,7 @@
  */
 package clubmanager.dao.access;
 
-import clubmanager.dao.domain.Person;
+import clubmanager.dao.domain.Member;
 import java.util.List;
 
 /**
@@ -13,12 +13,12 @@ import java.util.List;
  * @author phcr
  */
 public interface DAO {
-   public List<Person> getAllPeople();
+   public List<Member> getAllMembers();
    
-   public Person getPersonWithId(String id);
-   public Person getPersonWithLastName(String surname);
+   public Member getMemberWithId(String id);
+   public Member getMemberWithLastName(String surname);
    
-   public void updatePerson(Person p);
+   public void updateMember(Member m);
    
-   public void deletePerson(Person p);
+   public void deleteMember(Member m);
 }
