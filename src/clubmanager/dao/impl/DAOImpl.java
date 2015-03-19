@@ -227,13 +227,25 @@ public class DAOImpl implements DAO {
     }   
 
     @Override
-    public void updateMember(Member m) {
+    public boolean updateMember(Member m) throws Exception,SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void deleteMember(Member m) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean deleteMember(Member m) throws Exception,SQLException {
+        try {
+            this.connection.setAutoCommit(false);
+            PreparedStatement stmnt = this.connection.prepareStatement("DROP FROM person WHRE id=?");
+            stmnt.setString(1, m.getId());
+            stmnt.executeUpdate();
+            this.connection.commit();
+        } catch (SQLException e) {
+            this.connection.rollback();
+            throw e;
+        } finally {
+            this.connection.setAutoCommit(true);
+        }
+        return true;
     }
 
     @Override

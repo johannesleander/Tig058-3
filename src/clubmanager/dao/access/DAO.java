@@ -28,7 +28,7 @@ public interface DAO {
    
    public boolean addParentChildRelation(Member parent, Member child) throws Exception,SQLException;
    
-   public void updateMember(Member m);
+   public boolean updateMember(Member m) throws Exception,SQLException;
    
-   public void deleteMember(Member m);
+   public boolean deleteMember(Member m) throws Exception,SQLException;
 }
