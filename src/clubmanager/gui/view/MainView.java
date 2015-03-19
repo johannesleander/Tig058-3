@@ -27,26 +27,80 @@ public class MainView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        updateView1 = new clubmanager.gui.view.UpdateView();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        registryView1 = new clubmanager.gui.view.RegistryView();
+        updateView2 = new clubmanager.gui.view.UpdateView();
+        searchView1 = new clubmanager.gui.view.SearchView();
+
+        javax.swing.GroupLayout updateView1Layout = new javax.swing.GroupLayout(updateView1);
+        updateView1.setLayout(updateView1Layout);
+        updateView1Layout.setHorizontalGroup(
+            updateView1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        updateView1Layout.setVerticalGroup(
+            updateView1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        registryView1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                registryView1FocusGained(evt);
+            }
+        });
+        jTabbedPane1.addTab("Registry", registryView1);
+
+        javax.swing.GroupLayout updateView2Layout = new javax.swing.GroupLayout(updateView2);
+        updateView2.setLayout(updateView2Layout);
+        updateView2Layout.setHorizontalGroup(
+            updateView2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 483, Short.MAX_VALUE)
+        );
+        updateView2Layout.setVerticalGroup(
+            updateView2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 325, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Update", updateView2);
+
+        javax.swing.GroupLayout searchView1Layout = new javax.swing.GroupLayout(searchView1);
+        searchView1.setLayout(searchView1Layout);
+        searchView1Layout.setHorizontalGroup(
+            searchView1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 483, Short.MAX_VALUE)
+        );
+        searchView1Layout.setVerticalGroup(
+            searchView1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 325, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Search", searchView1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void registryView1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_registryView1FocusGained
+                // TODO add your handling code here:
+    }//GEN-LAST:event_registryView1FocusGained
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void StartGUI() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -79,5 +133,10 @@ public class MainView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private clubmanager.gui.view.RegistryView registryView1;
+    private clubmanager.gui.view.SearchView searchView1;
+    private clubmanager.gui.view.UpdateView updateView1;
+    private clubmanager.gui.view.UpdateView updateView2;
     // End of variables declaration//GEN-END:variables
 }
