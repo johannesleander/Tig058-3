@@ -22,11 +22,10 @@ public class ClubManager {
     public static void main(String[] args) {
         try {
             DAOImpl db = new DAOImpl(DriverManager.getConnection("jdbc:sqlite:club.db"));
-            System.out.println(db.getAllPeople());
+            System.out.println(db.getPerson(db.getAllPeople().get(0).getId()));
         } catch (SQLException e) {
             System.out.println(e);
-        }
-        
+        }        
         // TODO code application logic here
     }
     

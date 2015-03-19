@@ -6,14 +6,11 @@
 package clubmanager.dao.impl;
 
 import clubmanager.dao.access.DAO;
-import clubmanager.dao.domain.FullPerson;
 import clubmanager.dao.domain.Person;
-import clubmanager.dao.domain.PersonFunction;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -30,6 +27,21 @@ public class DAOImpl implements DAO {
         this.connection = c;
     }
     
+        
+    public Person personFromRs(ResultSet rs) throws SQLException {
+        Person p = new Person();
+        p.setId(rs.getString("id"));
+        p.setName(rs.getString("name"));
+        p.setSurname(rs.getString("surname"));
+        p.setEmail(rs.getString("email"));
+        p.setGender(rs.getInt("gender"));
+        p.setBirthdate(rs.getLong("birthdate"));
+        p.setJoindate(rs.getLong("joindate"));
+        p.setActive(rs.getInt("active"));
+        return p;
+    }
+
+    
     @Override
     public List<Person> getAllPeople() {
         List<Person> ps = new ArrayList<>();
@@ -45,30 +57,22 @@ public class DAOImpl implements DAO {
         }
         return Collections.unmodifiableList(ps);
     }
-
-    @Override
-    public List<PersonFunction> getAllPeopleFunction() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<FullPerson> getAllPeopleRelations() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
     @Override
     public Person getPerson(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public PersonFunction getPersonFunction(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public FullPerson getFullPerson(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Person p = new Person();
+        try {
+            PreparedStatement stmnt = this.connection.prepareStatement("SELECT * FROM person where id= ?");
+            stmnt.setString(1, id);
+            ResultSet rs = stmnt.executeQuery();
+            
+            while (rs.next()) {
+                p = personFromRs(rs);
+            }            
+        } catch (SQLException e) {
+            System.out.println(e);
+        }      
+        return p;
     }
 
     @Override
@@ -77,41 +81,8 @@ public class DAOImpl implements DAO {
     }
 
     @Override
-    public void updatePersonFunction(PersonFunction p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void updateFullPerson(FullPerson p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public void deletePerson(Person p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public void deletePersonFunction(PersonFunction p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void deleteFullPerson(FullPerson p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    public Person personFromRs(ResultSet rs) throws SQLException {
-        Person p = new Person();
-        p.setId(rs.getString("id"));
-        p.setName(rs.getString("name"));
-        p.setSurname(rs.getString("surname"));
-        p.setEmail(rs.getString("email"));
-        p.setGender(rs.getInt("gender"));
-        p.setBirthdate(rs.getLong("birthdate"));
-        p.setJoindate(rs.getLong("joindate"));
-        p.setActive(rs.getInt("active"));
-        return p;
-    }
-    
 }
