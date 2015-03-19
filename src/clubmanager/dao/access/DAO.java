@@ -7,7 +7,6 @@ package clubmanager.dao.access;
 
 import clubmanager.dao.domain.Member;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -17,12 +16,12 @@ import java.util.List;
  */
 public interface DAO {
    public ArrayList<Member> getAllMembers();
-   public List<Member> getAllMembersSortedBySurname();
-   public List<Member> getMembersFromTeam(String team);
+   public ArrayList<Member> getAllMembersSortedBySurname();
+   public ArrayList<Member> getMembersFromTeam(String team);
    
    public Member getMemberWithId(String id);
    public Member getMemberWithLastName(String surname);
-   public List<Member> getCoachesForTeam(String team);
+   public ArrayList<Member> getCoachesForTeam(String team);
    
    public void updateMember(Member m);
    
