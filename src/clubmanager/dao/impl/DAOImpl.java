@@ -145,7 +145,7 @@ public class DAOImpl implements DAO {
     }
     
         @Override
-    public List<Member> getMembersFromTeam(String team) {
+    public ArrayList<Member> getMembersFromTeam(String team) {
         ArrayList<Member> ms = new ArrayList<>();
         try {
             PreparedStatement stmnt = this.connection.prepareStatement("SELECT * FROM person WHERE id IN (SELECT pid FROM team_roles WHERE team=?)");
@@ -162,7 +162,7 @@ public class DAOImpl implements DAO {
     }
 
     @Override
-    public List<Member> getCoachesForTeam(String team) {
+    public ArrayList<Member> getCoachesForTeam(String team) {
         ArrayList<Member> coaches = new ArrayList<>();
         try {
             PreparedStatement stmnt = this.connection.prepareStatement("SELECT * FROM person WHERE id IN (SELECT pid FROM team_roles WHERE team=? and role=2");
@@ -180,12 +180,11 @@ public class DAOImpl implements DAO {
     
     
     @Override
-    public List<Member> getAllMembersSortedBySurname() {
+    public ArrayList<Member> getAllMembersSortedBySurname() {
         ArrayList<Member> members = getAllMembers();
         Collections.sort(members, new MemberSurnameComparator());
         return members;
     }
-
 
     @Override
     public void updateMember(Member m) {
