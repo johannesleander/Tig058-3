@@ -9,6 +9,7 @@ import clubmanager.dao.domain.Member;
 import clubmanager.dao.impl.DAOImpl;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -23,12 +24,13 @@ public class ClubManager {
     public static void main(String[] args) {
         try {
             DAOImpl db = new DAOImpl(DriverManager.getConnection("jdbc:sqlite:club.db"));
-            Member m = db.getMemberWithId(db.getAllMembers().get(0).getId());
-            System.out.println(m.toString());
+            ArrayList<Member> members = db.getAllMembersSortedBySurname();
+            for (Member m : members) {
+                System.out.println(m.toString());
+            }
         } catch (SQLException e) {
             System.out.println(e);
         }        
-        // TODO code application logic here
     }
     
 }
