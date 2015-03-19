@@ -8,6 +8,7 @@ package clubmanager;
 import clubmanager.dao.impl.DAOImpl;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import clubmanager.gui.view.MainView;
 
 /**
  *
@@ -27,6 +28,7 @@ public class ClubManager {
             System.out.println(e);
         }
         
+        MainView.StartGUI();
         // TODO code application logic here
     }
     

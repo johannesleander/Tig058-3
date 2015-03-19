@@ -27,19 +27,227 @@ public class SearchView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        searchCoachBtn1 = new javax.swing.JButton();
+        searchMemberBtn1 = new javax.swing.JButton();
+        listMembersBtn1 = new javax.swing.JButton();
+        listTeamBtn1 = new javax.swing.JButton();
+        searchCoachBtn2 = new javax.swing.JButton();
+        searchMemberBtn2 = new javax.swing.JButton();
+        listMembersBtn2 = new javax.swing.JButton();
+        listTeamBtn2 = new javax.swing.JButton();
+        searchCoachBtn = new javax.swing.JButton();
+        searchMemberBtn = new javax.swing.JButton();
+        listMembersBtn = new javax.swing.JButton();
+        listTeamBtn = new javax.swing.JButton();
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(640, 480));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 480, Short.MAX_VALUE)
+        );
+
+        jPanel2.setPreferredSize(new java.awt.Dimension(640, 480));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 480, Short.MAX_VALUE)
+        );
+
+        jPanel3.setPreferredSize(new java.awt.Dimension(640, 480));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 480, Short.MAX_VALUE)
+        );
+
+        jPanel4.setPreferredSize(new java.awt.Dimension(640, 480));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 480, Short.MAX_VALUE)
+        );
+
+        searchCoachBtn1.setText("Search for coach");
+        searchCoachBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchCoachBtn1ActionPerformed(evt);
+            }
+        });
+
+        searchMemberBtn1.setText("Search for member");
+        searchMemberBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchMemberBtn1ActionPerformed(evt);
+            }
+        });
+
+        listMembersBtn1.setText("List members");
+
+        listTeamBtn1.setText("List information about a team");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(searchMemberBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchCoachBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                    .addComponent(listMembersBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                    .addComponent(listTeamBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE))
+                .addGap(70, 70, 70))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addComponent(searchMemberBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(searchCoachBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(listMembersBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(listTeamBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(82, 82, 82))
+        );
+
+        searchCoachBtn2.setText("Search for coach");
+        searchCoachBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchCoachBtn2ActionPerformed(evt);
+            }
+        });
+
+        searchMemberBtn2.setText("Search for member");
+        searchMemberBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchMemberBtn2ActionPerformed(evt);
+            }
+        });
+
+        listMembersBtn2.setText("List members");
+
+        listTeamBtn2.setText("List information about a team");
+
+        searchCoachBtn.setText("Search for coach");
+        searchCoachBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchCoachBtnActionPerformed(evt);
+            }
+        });
+
+        searchMemberBtn.setText("Search for member");
+        searchMemberBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchMemberBtnActionPerformed(evt);
+            }
+        });
+
+        listMembersBtn.setText("List members");
+
+        listTeamBtn.setText("List information about a team");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(searchMemberBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchCoachBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                    .addComponent(listMembersBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                    .addComponent(listTeamBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE))
+                .addGap(70, 70, 70))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addComponent(searchMemberBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(searchCoachBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(listMembersBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(listTeamBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(82, 82, 82))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void searchCoachBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchCoachBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchCoachBtnActionPerformed
+
+    private void searchMemberBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchMemberBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchMemberBtnActionPerformed
+
+    private void searchCoachBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchCoachBtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchCoachBtn1ActionPerformed
+
+    private void searchMemberBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchMemberBtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchMemberBtn1ActionPerformed
+
+    private void searchCoachBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchCoachBtn2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchCoachBtn2ActionPerformed
+
+    private void searchMemberBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchMemberBtn2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchMemberBtn2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JButton listMembersBtn;
+    private javax.swing.JButton listMembersBtn1;
+    private javax.swing.JButton listMembersBtn2;
+    private javax.swing.JButton listTeamBtn;
+    private javax.swing.JButton listTeamBtn1;
+    private javax.swing.JButton listTeamBtn2;
+    private javax.swing.JButton searchCoachBtn;
+    private javax.swing.JButton searchCoachBtn1;
+    private javax.swing.JButton searchCoachBtn2;
+    private javax.swing.JButton searchMemberBtn;
+    private javax.swing.JButton searchMemberBtn1;
+    private javax.swing.JButton searchMemberBtn2;
     // End of variables declaration//GEN-END:variables
 }

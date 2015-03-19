@@ -29,9 +29,10 @@ public class MainView extends javax.swing.JFrame {
 
         updateView1 = new clubmanager.gui.view.UpdateView();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        registryView1 = new clubmanager.gui.view.RegistryView();
-        updateView2 = new clubmanager.gui.view.UpdateView();
         searchView1 = new clubmanager.gui.view.SearchView();
+        updateView2 = new clubmanager.gui.view.UpdateView();
+        searchView2 = new clubmanager.gui.view.SearchView();
+        registryView1 = new clubmanager.gui.view.RegistryView();
 
         javax.swing.GroupLayout updateView1Layout = new javax.swing.GroupLayout(updateView1);
         updateView1.setLayout(updateView1Layout);
@@ -45,6 +46,21 @@ public class MainView extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(640, 480));
+
+        javax.swing.GroupLayout searchView1Layout = new javax.swing.GroupLayout(searchView1);
+        searchView1.setLayout(searchView1Layout);
+        searchView1Layout.setHorizontalGroup(
+            searchView1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(updateView2, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+        );
+        searchView1Layout.setVerticalGroup(
+            searchView1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(updateView2, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Update", searchView1);
+        jTabbedPane1.addTab("tab3", searchView2);
 
         registryView1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -52,32 +68,6 @@ public class MainView extends javax.swing.JFrame {
             }
         });
         jTabbedPane1.addTab("Registry", registryView1);
-
-        javax.swing.GroupLayout updateView2Layout = new javax.swing.GroupLayout(updateView2);
-        updateView2.setLayout(updateView2Layout);
-        updateView2Layout.setHorizontalGroup(
-            updateView2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 483, Short.MAX_VALUE)
-        );
-        updateView2Layout.setVerticalGroup(
-            updateView2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 325, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Update", updateView2);
-
-        javax.swing.GroupLayout searchView1Layout = new javax.swing.GroupLayout(searchView1);
-        searchView1.setLayout(searchView1Layout);
-        searchView1Layout.setHorizontalGroup(
-            searchView1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 483, Short.MAX_VALUE)
-        );
-        searchView1Layout.setVerticalGroup(
-            searchView1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 325, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Search", searchView1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -136,6 +126,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private clubmanager.gui.view.RegistryView registryView1;
     private clubmanager.gui.view.SearchView searchView1;
+    private clubmanager.gui.view.SearchView searchView2;
     private clubmanager.gui.view.UpdateView updateView1;
     private clubmanager.gui.view.UpdateView updateView2;
     // End of variables declaration//GEN-END:variables
