@@ -6,17 +6,23 @@
 package clubmanager.dao.access;
 
 import clubmanager.dao.domain.Member;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author phcr
+ * This interface serves for the request performed towards the persistent storage of some sort.
+ * The class implementing this interface handles the persistance and retrieval of information.
  */
 public interface DAO {
-   public List<Member> getAllMembers();
+   public ArrayList<Member> getAllMembers();
+   public List<Member> getAllMembersSortedBySurname();
+   public List<Member> getMembersFromTeam(String team);
    
    public Member getMemberWithId(String id);
    public Member getMemberWithLastName(String surname);
+   public List<Member> getCoachesForTeam(String team);
    
    public void updateMember(Member m);
    
