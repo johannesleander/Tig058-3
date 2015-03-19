@@ -8,6 +8,7 @@ package clubmanager;
 /**
  *
  * @author johannes
+ * @author phcr
  */
 public class ClubManager {
 
