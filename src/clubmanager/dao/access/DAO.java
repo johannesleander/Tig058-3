@@ -6,6 +6,7 @@
 package clubmanager.dao.access;
 
 import clubmanager.dao.domain.Member;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -22,6 +23,8 @@ public interface DAO {
    public Member getMemberWithId(String id);
    public Member getMemberWithLastName(String surname);
    public ArrayList<Member> getCoachesForTeam(String team);
+   
+   public boolean insertMember(Member m) throws Exception,SQLException ;
    
    public void updateMember(Member m);
    
