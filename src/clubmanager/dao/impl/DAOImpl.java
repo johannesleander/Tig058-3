@@ -6,7 +6,7 @@
 package clubmanager.dao.impl;
 
 import clubmanager.dao.access.DAO;
-import clubmanager.dao.domain.Person;
+import clubmanager.dao.domain.Member;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,61 +27,141 @@ public class DAOImpl implements DAO {
         this.connection = c;
     }
     
-        
-    public Person personFromRs(ResultSet rs) throws SQLException {
-        Person p = new Person();
-        p.setId(rs.getString("id"));
-        p.setName(rs.getString("name"));
-        p.setSurname(rs.getString("surname"));
-        p.setEmail(rs.getString("email"));
-        p.setGender(rs.getInt("gender"));
-        p.setBirthdate(rs.getLong("birthdate"));
-        p.setJoindate(rs.getLong("joindate"));
-        p.setActive(rs.getInt("active"));
-        return p;
+    private List<Integer> getAllRolesForMember(String id) {
+        ArrayList<Integer> roles = new ArrayList<>();
+        try {
+            PreparedStatement stmnt = this.connection.prepareStatement("SELECT role FROM team_roles where pid=?");
+            stmnt.setString(1, id);
+            
+            ResultSet rs = stmnt.executeQuery();
+            while (rs.next()) {
+                roles.add(rs.getInt("role"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return roles;
     }
-
+    
+    private List<String> getAllTeamsForMember(String id) {
+        ArrayList<String> teams = new ArrayList<>();
+        try {
+            PreparedStatement stmnt = this.connection.prepareStatement("SELECT team FROM team_roles WHERE team not null and pid=?");
+            stmnt.setString(1, id);
+            
+            ResultSet rs = stmnt.executeQuery();
+            while (rs.next()) {
+                teams.add(rs.getString("team"));
+            }
+        } catch (SQLException e ) {
+            System.out.println(e);
+        }        
+        return teams;
+    }
+    
+    private List<Member> getAllChildrenForParent(String id) {
+        ArrayList<Member> children = new ArrayList<>();
+        try {
+            PreparedStatement stmnt = this.connection.prepareStatement("SELECT cid FROM parent_child WHERE pid=?");
+            stmnt.setString(1, id);
+            
+            ResultSet rs = stmnt.executeQuery();
+            while (rs.next()) {
+                children.add(getMemberWithId(rs.getString("cid")));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return children;
+    }
+    
+    
     
     @Override
-    public List<Person> getAllPeople() {
-        List<Person> ps = new ArrayList<>();
+    public List<Member> getAllMembers() {
+        List<Member> ms = new ArrayList<>();
         try {
             PreparedStatement stmnt = this.connection.prepareStatement("SELECT * FROM person");
             ResultSet rs = stmnt.executeQuery();
             
             while(rs.next()) {
-                ps.add(personFromRs(rs));
+                Member m = new Member();
+                m.setId(rs.getString("id"));
+                m.setName(rs.getString("name"));
+                m.setSurname(rs.getString("surname"));
+                m.setEmail(rs.getString("email"));
+                m.setGender(rs.getInt("gender"));
+                m.setBirthdate(rs.getLong("birthdate"));
+                m.setJoindate(rs.getLong("birthdate"));
+                m.setActive(rs.getInt("active"));
+                m.setRoles(getAllRolesForMember(m.getId()));
+                m.setTeams(getAllTeamsForMember(m.getId()));                
+                ms.add(m);
             }            
         } catch (SQLException e) {
             System.out.println(e);
         }
-        return Collections.unmodifiableList(ps);
+        return Collections.unmodifiableList(ms);
     }
     
     @Override
-    public Person getPerson(String id) {
-        Person p = new Person();
+    public Member getMemberWithId(String id) {
+        Member m = new Member();
         try {
             PreparedStatement stmnt = this.connection.prepareStatement("SELECT * FROM person where id= ?");
             stmnt.setString(1, id);
             ResultSet rs = stmnt.executeQuery();
             
             while (rs.next()) {
-                p = personFromRs(rs);
+                m.setId(rs.getString("id"));
+                m.setName(rs.getString("name"));
+                m.setSurname(rs.getString("surname"));
+                m.setEmail(rs.getString("email"));
+                m.setGender(rs.getInt("gender"));
+                m.setBirthdate(rs.getLong("birthdate"));
+                m.setJoindate(rs.getLong("birthdate"));
+                m.setActive(rs.getInt("active"));
+                m.setRoles(getAllRolesForMember(id));
+                m.setTeams(getAllTeamsForMember(id));
+                m.setChildren(getAllChildrenForParent(id));
             }            
         } catch (SQLException e) {
             System.out.println(e);
         }      
-        return p;
+        return m;
     }
 
     @Override
-    public void updatePerson(Person p) {
+    public Member getMemberWithLastName(String surname) {
+        Member m = new Member();
+        try {
+            PreparedStatement stmnt = this.connection.prepareStatement("SELECT * FROM person where surname=?");
+            stmnt.setString(1, surname);
+            ResultSet rs = stmnt.executeQuery();
+            
+            while (rs.next()) {
+                m.setId(rs.getString("id"));
+                m.setName(rs.getString("name"));
+                m.setSurname(rs.getString("surname"));
+                m.setEmail(rs.getString("email"));
+                m.setGender(rs.getInt("gender"));
+                m.setBirthdate(rs.getLong("birthdate"));
+                m.setJoindate(rs.getLong("birthdate"));
+                m.setActive(rs.getInt("active"));
+            }            
+        } catch (SQLException e) {
+            System.out.println(e);
+        }      
+        return m;
+    }
+
+    @Override
+    public void updateMember(Member m) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void deletePerson(Person p) {
+    public void deleteMember(Member m) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
