@@ -5,18 +5,12 @@
  */
 package clubmanager.gui.controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  *
+ * @author phcr
  * @author johannes
  */
-public class Controller implements ActionListener {
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+public class MainController {
     
 }
