@@ -19,6 +19,7 @@ public interface DAO {
     public ArrayList<Member> getAllMembers();
     public ArrayList<Member> getAllMembersSortedBySurname();
     public ArrayList<Member> getMembersFromTeam(String team);
+    public ArrayList<String> getAllTeams();
    
     public Member getMemberWithId(String id);
     public Member getMemberWithLastName(String surname);

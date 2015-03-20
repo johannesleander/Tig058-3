@@ -160,6 +160,21 @@ public class DAOImpl implements DAO {
         }        
         return ms;
     }
+    
+    @Override
+    public ArrayList<String> getAllTeams() {
+        ArrayList<String> teams = new ArrayList<>();
+        try {
+            PreparedStatement stmnt = this.connection.prepareStatement("SELECT name FROM team");
+            ResultSet rs = stmnt.executeQuery();
+            while (rs.next()) {
+                teams.add(rs.getString("name"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return teams;
+    }
 
     @Override
     public ArrayList<Member> getCoachesForTeam(String team) {
