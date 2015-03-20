@@ -5,8 +5,6 @@
  */
 package clubmanager.gui.view;
 
-import clubmanager.dao.access.DAO;
-import clubmanager.dao.impl.DAOImpl;
 import clubmanager.gui.controller.SearchController;
 import java.awt.CardLayout;
 import java.util.ArrayList;
