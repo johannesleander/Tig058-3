@@ -5,7 +5,12 @@
  */
 package clubmanager.gui.view;
 
+import clubmanager.dao.access.DAO;
+import clubmanager.dao.impl.DAOImpl;
+import clubmanager.gui.controller.SearchController;
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,14 +18,34 @@ import java.awt.CardLayout;
  */
 public class SearchView extends javax.swing.JPanel {
  
+    private SearchController controller;
     /**
      * Creates new form SearchView
      */
     public SearchView() {
         initComponents();
-       
+    
+        
     }
-
+    
+    private void setController(SearchController controller) {
+        this.controller = controller;
+    }
+    
+     public void displayError(String text) {
+        JOptionPane.showMessageDialog(this, text, "Error", JOptionPane.ERROR_MESSAGE);        
+    }
+     
+     public void updateTeamSelect(ArrayList<String> ts) {
+        teamCombo.removeAllItems();
+        listTeamCombo.removeAllItems();
+        teamCombo.addItem("");
+        listTeamCombo.addItem("");
+        for (String t : ts) {
+            teamCombo.addItem(t);
+            listTeamCombo.addItem(t);
+        }
+    }
      
     /**
      * This method is called from within the constructor to initialize the form.
@@ -210,6 +235,11 @@ public class SearchView extends javax.swing.JPanel {
         teamCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         searchBtn1.setText("Search");
+        searchBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtn1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout searchCoachCardLayout = new javax.swing.GroupLayout(searchCoachCard);
         searchCoachCard.setLayout(searchCoachCardLayout);
@@ -366,7 +396,15 @@ public class SearchView extends javax.swing.JPanel {
     }//GEN-LAST:event_idTextActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        // TODO add your handling code here:
+        if ((idText.getText().equals("Enter a person Number...")) && ((surnameText.getText().equals("Enter a surname...")))) {
+            displayError("No arguments in textfields.");
+            return;
+        } else if(!(idText.getText().equals("")) && (!(surnameText.getText().equals("")))) {
+            displayError("Search either by typing an ID or a surname, not both.");
+            return;
+        }
+        
+        //this.controller.setModelId(idField.getText());        // TODO add your handling code here:
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void idTextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idTextFocusGained
@@ -378,12 +416,16 @@ public class SearchView extends javax.swing.JPanel {
     }//GEN-LAST:event_surnameTextFocusGained
 
     private void idTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idTextFocusLost
-        idText.setText("Enter a person number...");        // TODO add your handling code here:
+               // TODO add your handling code here:
     }//GEN-LAST:event_idTextFocusLost
 
     private void surnameTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_surnameTextFocusLost
-        surnameText.setText("Enter a surname...");        // TODO add your handling code here:
+              // TODO add your handling code here:
     }//GEN-LAST:event_surnameTextFocusLost
+
+    private void searchBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchBtn1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

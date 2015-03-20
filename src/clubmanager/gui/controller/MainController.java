@@ -22,9 +22,11 @@ public class MainController {
     private DAOImpl db;
     
     public RegisterController rc;
+    public SearchController sc;
     
     public void runApp(DAOImpl db) {
         this.rc = new RegisterController(this);
+        this.sc = new SearchController(this);
         this.view = new MainView(this);
         this.db = db;
         
@@ -32,6 +34,8 @@ public class MainController {
         this.rc.setModel(new Member());
         this.rc.setView(this.view.registryView1);
         this.rc.updateTeamSelectDisplay(db.getAllTeams());
+        //this.sc.setView(this.view.registryView1);
+        this.sc.updateTeamSelectDisplay(db.getAllTeams());
     }
     
     public void submitTeam(String s) throws SQLException {
