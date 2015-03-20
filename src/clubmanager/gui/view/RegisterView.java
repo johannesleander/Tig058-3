@@ -429,6 +429,8 @@ public class RegisterView extends javax.swing.JPanel {
             } catch (Exception e) {
                 displayError(e.getMessage());
             }
+        } else {
+            displayError("All fields must have values!");
         }
     }//GEN-LAST:event_submitBtnActionPerformed
 
