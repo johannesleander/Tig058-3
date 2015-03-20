@@ -17,13 +17,13 @@ public class Member {
     private String name;
     private String surname;
     private String email;
-    private int gender;
+    private int gender = 0;
     private long birthdate;
     private long joindate;
     private int active;
     private List<Integer> roles;
     private List<String> teams;    
-    private List<Member> children;
+    private List<Member> children;        
 
     public String getId() {
         return id;
