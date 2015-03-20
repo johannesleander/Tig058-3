@@ -110,7 +110,9 @@ public class RegisterController {
     }
     
     public void updateTeamSelectDisplay(ArrayList<String> lst) {
+        this.view.updating = true;        
         this.view.updateTeamSelect(lst);
+        this.view.updating = false;
     }
     
     public void displayView(boolean b) {

@@ -9,7 +9,6 @@ import clubmanager.gui.controller.RegisterController;
 import java.text.ParseException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import java.text.SimpleDateFormat;
 
 /**
  *
@@ -18,12 +17,18 @@ import java.text.SimpleDateFormat;
 public class RegisterView extends javax.swing.JPanel {
 
     private RegisterController controller;
+    public boolean updating;
     
     /**
      * Creates new form RegistryView
      */
     public RegisterView() {
-        initComponents();        
+        initComponents();   
+        this.updating = true;
+    }
+    
+    public void setUpdateEvent(boolean t) {    
+        this.updating = t;
     }
     
     public void setController(RegisterController c) {
@@ -200,6 +205,12 @@ public class RegisterView extends javax.swing.JPanel {
         orLabel.setText("or");
 
         updateExistingBtn.setText("Update exisiting member");
+
+        teamSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                teamSelectActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -434,6 +445,11 @@ public class RegisterView extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_submitBtnActionPerformed
 
+    private void teamSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamSelectActionPerformed
+        if (!this.updating) {
+            this.controller.addModelTeam( (String) teamSelect.getSelectedItem());
+        }
+    }//GEN-LAST:event_teamSelectActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox activeCheck;
