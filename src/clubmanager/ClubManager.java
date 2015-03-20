@@ -7,10 +7,8 @@ package clubmanager;
 
 import clubmanager.dao.impl.DAOImpl;
 import clubmanager.gui.controller.MainController;
-import clubmanager.gui.view.TestTable;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import clubmanager.gui.view.MainView;
 
 /**
  *
