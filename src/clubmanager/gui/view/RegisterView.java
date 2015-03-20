@@ -5,17 +5,22 @@
  */
 package clubmanager.gui.view;
 
+import clubmanager.gui.controller.RegisterController;
+
 /**
  *
  * @author johannes
  */
-public class RegistryView extends javax.swing.JPanel {
+public class RegisterView extends javax.swing.JPanel {
 
+    private final RegisterController controller;
+    
     /**
      * Creates new form RegistryView
      */
-    public RegistryView() {
-        initComponents();
+    public RegisterView(RegisterController controller) {
+        this.controller = controller;
+        initComponents();        
     }
 
     /**
@@ -266,9 +271,10 @@ public class RegistryView extends javax.swing.JPanel {
                         .addGap(13, 13, 13)
                         .addComponent(orLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(submitBtn)
-                    .addComponent(updateExistingBtn))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(updateExistingBtn)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(submitBtn)))
                 .addGap(8, 8, 8))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -290,7 +296,7 @@ public class RegistryView extends javax.swing.JPanel {
     }//GEN-LAST:event_newTeamTextFocusGained
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
-        // TODO add your handling code here:
+        this.controller.submit();        
     }//GEN-LAST:event_submitBtnActionPerformed
 
     private void newTeamTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newTeamTextFocusLost

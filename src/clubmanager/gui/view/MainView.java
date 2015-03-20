@@ -5,16 +5,21 @@
  */
 package clubmanager.gui.view;
 
+import clubmanager.gui.controller.MainController;
+
 /**
  *
  * @author johannes
  */
 public class MainView extends javax.swing.JFrame {
 
+    private MainController controller;
+    
     /**
      * Creates new form MainView
      */
-    public MainView() {
+    public MainView(MainController controller) {
+        this.controller = controller;
         initComponents();
     }
 
@@ -29,7 +34,7 @@ public class MainView extends javax.swing.JFrame {
 
         updateView1 = new clubmanager.gui.view.UpdateView();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        registryView1 = new clubmanager.gui.view.RegistryView();
+        registryView1 = new clubmanager.gui.view.RegisterView(this.controller.rc);
         searchView2 = new clubmanager.gui.view.SearchView();
 
         javax.swing.GroupLayout updateView1Layout = new javax.swing.GroupLayout(updateView1);
@@ -72,44 +77,9 @@ public class MainView extends javax.swing.JFrame {
                 // TODO add your handling code here:
     }//GEN-LAST:event_registryView1FocusGained
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void StartGUI() {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainView().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane jTabbedPane1;
-    private clubmanager.gui.view.RegistryView registryView1;
+    private clubmanager.gui.view.RegisterView registryView1;
     private clubmanager.gui.view.SearchView searchView2;
     private clubmanager.gui.view.UpdateView updateView1;
     // End of variables declaration//GEN-END:variables
