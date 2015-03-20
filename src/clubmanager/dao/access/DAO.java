@@ -25,6 +25,7 @@ public interface DAO {
     public ArrayList<Member> getCoachesForTeam(String team);
    
     public boolean insertMember(Member m) throws Exception,SQLException;
+    public boolean insertTeam(String s) throws SQLException;
       
     public boolean updateMemberActive(Member m) throws Exception, SQLException;
     public boolean updateMemberEmail(Member m) throws Exception, SQLException;

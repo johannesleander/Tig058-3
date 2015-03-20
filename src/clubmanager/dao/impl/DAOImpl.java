@@ -225,6 +225,21 @@ public class DAOImpl implements DAO {
         }
         return true;
     }   
+        
+    @Override
+    public boolean insertTeam(String s) throws SQLException {
+        try {
+            this.connection.setAutoCommit(false);
+            PreparedStatement stmnt = this.connection.prepareStatement("INSERT INTO team values(?)");
+            stmnt.setString(1, s);
+            
+            stmnt.executeUpdate();            
+            this.connection.commit();
+        } finally {
+            this.connection.setAutoCommit(true);
+        }
+        return true;
+    }
     
     @Override
     public boolean updateMemberActive(Member m) throws Exception, SQLException {
@@ -328,5 +343,6 @@ public class DAOImpl implements DAO {
         }
         return true;
     }
+
 
 }
