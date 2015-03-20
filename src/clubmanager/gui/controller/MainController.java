@@ -29,6 +29,7 @@ public class MainController {
         this.db = db;
         
         this.view.setVisible(true);
+        this.rc.setModel(new Member());
         this.rc.setView(this.view.registryView1);
         this.rc.updateTeamSelectDisplay(db.getAllTeams());
     }
