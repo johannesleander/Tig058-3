@@ -29,10 +29,13 @@ public class MainController {
         this.db = db;
         
         this.view.setVisible(true);
+        this.rc.setView(this.view.registryView1);
+        this.rc.updateTeamSelectDisplay(db.getAllTeams());
     }
     
     public void submitTeam(String s) throws SQLException {
         db.insertTeam(s);
+        this.rc.updateTeamSelectDisplay(db.getAllTeams());
     }
     
     public void submitMember(Member m) throws Exception {

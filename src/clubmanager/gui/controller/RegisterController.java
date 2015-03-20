@@ -3,6 +3,7 @@ package clubmanager.gui.controller;
 import clubmanager.dao.domain.Member;
 import clubmanager.gui.view.RegisterView;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -10,16 +11,22 @@ import java.util.Date;
  * @author phcr
  */
 public class RegisterController {
-    private final Member model;
-    private final RegisterView view;
+    private Member model;
+    private RegisterView view;
     private final MainController controller;
 
 
     public RegisterController(MainController controller) {
-        this.model = new Member();
-        this.view = new RegisterView();
-        this.view.setController(this);
         this.controller = controller;
+    }
+    
+    public void setView(RegisterView v) {
+        this.view = v;
+        this.view.setController(this);
+    }
+    
+    public void setModel(Member m) {
+        this.model = m;
     }
     
     public void setModelId(String id) {
@@ -87,6 +94,10 @@ public class RegisterController {
         } catch (Exception e) {
             System.out.println(e);
         }*/
+    }
+    
+    public void updateTeamSelectDisplay(ArrayList<String> lst) {
+        this.view.updateTeamSelect(lst);
     }
     
     public void displayView(boolean b) {
