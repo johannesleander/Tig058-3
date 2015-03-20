@@ -5,6 +5,10 @@
  */
 package clubmanager.gui.controller;
 
+import clubmanager.dao.domain.Member;
+import clubmanager.dao.impl.DAOImpl;
+import clubmanager.gui.view.MainView;
+
 
 /**
  *
@@ -12,5 +16,22 @@ package clubmanager.gui.controller;
  * @author johannes
  */
 public class MainController {
+    
+    private MainView view;    
+    private DAOImpl db;
+    
+    public RegisterController rc;
+    
+    public void runApp(DAOImpl db) {
+        this.rc = new RegisterController(this);      
+        this.view = new MainView(this);
+        this.db = db;
+        
+        this.view.setVisible(true);
+    }
+    
+    public void submitMember(Member m) throws Exception {
+        db.insertMember(m);
+    }
     
 }
