@@ -227,7 +227,11 @@ public class DAOImpl implements DAO {
                 }
                 stmnt = this.connection.prepareStatement("INSERT INTO team_roles values (?,?,?)");
                 stmnt.setString(1, m.getId());
-                stmnt.setString(2, m.getTeams().get(0));
+                if (!m.getTeams().isEmpty()) {
+                    stmnt.setString(2, m.getTeams().get(0));
+                } else {
+                    stmnt.setNull(2, java.sql.Types.NULL);
+                }
                 stmnt.setInt(3, role);
                 stmnt.executeUpdate();
             }                         
