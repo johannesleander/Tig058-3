@@ -1,6 +1,7 @@
-package clubmanager.gui.controller;
+package clubmanager.gui.view;
 
 import clubmanager.dao.impl.DAOImpl;
+import clubmanager.gui.model.MemberTableModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -9,12 +10,12 @@ import javax.swing.event.ListSelectionListener;
  *
  * @author phcr
  */
-public class MemberTable extends javax.swing.JTable {
+public class MemberTableView extends javax.swing.JTable {
     
     private final MemberTableModel tblmodel;
     private final DAOImpl db;
     
-    public MemberTable(DAOImpl daodb) {
+    public MemberTableView(DAOImpl daodb) {
         this.db = daodb;
         this.tblmodel = new MemberTableModel();
         this.tblmodel.data = db.getAllMembers();
@@ -23,7 +24,7 @@ public class MemberTable extends javax.swing.JTable {
         csm.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         // There be dragons here.
-        final MemberTable that = this;        
+        final MemberTableView that = this;        
         
         csm.addListSelectionListener(new ListSelectionListener() {
             @Override

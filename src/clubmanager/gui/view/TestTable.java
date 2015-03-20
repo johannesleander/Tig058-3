@@ -1,8 +1,7 @@
 package clubmanager.gui.view;
 
 import clubmanager.dao.impl.DAOImpl;
-import clubmanager.gui.controller.MemberTable;
-import clubmanager.gui.controller.MemberTableModel;
+import clubmanager.gui.model.MemberTableModel;
 
 /**
  *
@@ -31,7 +30,7 @@ public class TestTable extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new MemberTable(this.db);
+        jTable1 = new MemberTableView(this.db);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

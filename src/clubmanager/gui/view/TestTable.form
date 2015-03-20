@@ -42,7 +42,7 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="jTable1">
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new MemberTable(this.db)"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new clubmanager.gui.controller.MemberTableView(this.db)"/>
           </AuxValues>
         </Component>
       </SubComponents>
