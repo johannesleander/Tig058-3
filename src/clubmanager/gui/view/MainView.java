@@ -80,7 +80,7 @@ public class MainView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane jTabbedPane1;
-    private clubmanager.gui.view.RegisterView registryView1;
+    public clubmanager.gui.view.RegisterView registryView1;
     private clubmanager.gui.view.SearchView searchView2;
     private clubmanager.gui.view.UpdateView updateView1;
     // End of variables declaration//GEN-END:variables
