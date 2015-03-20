@@ -23,65 +23,44 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="2" attributes="0">
-                      <Component id="idLabel" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="nameLabel" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="surnameLabel" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="emailLabel" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="genderLabel" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="birthdayLabel" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="memberSinceLabel" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="teamLabel" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="roleLabel" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="activeLabel" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="femaleRadio" min="-2" pref="80" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="maleRadio" min="-2" pref="63" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="childCheck" min="-2" pref="62" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="parentCheck" min="-2" pref="74" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="coachCheck" min="-2" pref="69" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="2" attributes="0">
+                              <Component id="idLabel" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
+                              <Component id="nameLabel" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
+                              <Component id="surnameLabel" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
+                              <Component id="emailLabel" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
+                              <Component id="genderLabel" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
+                              <Component id="birthdayLabel" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
+                              <Component id="memberSinceLabel" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
+                              <Component id="teamLabel" linkSize="1" alignment="2" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="roleLabel" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="activeLabel" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="activeCheck" max="32767" attributes="0"/>
-                              <EmptySpace min="285" pref="285" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="352" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="memberSinceText" max="32767" attributes="0"/>
-                              <EmptySpace min="143" pref="143" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="birthdayText" max="32767" attributes="0"/>
-                              <EmptySpace min="143" pref="143" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="emailText" max="32767" attributes="0"/>
-                              <EmptySpace min="143" pref="143" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="surnameText" max="32767" attributes="0"/>
-                              <EmptySpace min="143" pref="143" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="nameText" max="32767" attributes="0"/>
-                              <EmptySpace min="143" pref="143" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="idText" max="32767" attributes="0"/>
-                              <EmptySpace min="143" pref="143" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
                               <Component id="teamCombo" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="orLabel" min="-2" pref="16" max="-2" attributes="0"/>
@@ -89,16 +68,41 @@
                               <Component id="newTeamText" min="-2" pref="80" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                               <Component id="addTeamBtn" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="femaleRadio" min="-2" pref="80" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Component id="maleRadio" min="-2" pref="63" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="childCheck" min="-2" pref="62" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Component id="parentCheck" min="-2" pref="74" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Component id="coachCheck" min="-2" pref="69" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="nameText" max="32767" attributes="0"/>
+                                  <Component id="idText" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="updateExistingBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="submitBtn" min="-2" pref="95" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-              <Component id="submitBtn" min="-2" pref="95" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -176,7 +180,10 @@
                   </Group>
               </Group>
               <EmptySpace pref="18" max="32767" attributes="0"/>
-              <Component id="submitBtn" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="submitBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="updateExistingBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -247,7 +254,7 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="New Team"/>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[80, 19]"/>
+          <Dimension value="[80, 24]"/>
         </Property>
       </Properties>
       <Events>
@@ -326,6 +333,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="or"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="updateExistingBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Update exisiting member"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateExistingBtnActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

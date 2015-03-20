@@ -5,29 +5,31 @@
  */
 package clubmanager.dao.access;
 
-import clubmanager.dao.domain.FullPerson;
-import clubmanager.dao.domain.Person;
-import clubmanager.dao.domain.PersonFunction;
-import java.util.List;
+import clubmanager.dao.domain.Member;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
  * @author phcr
+ * This interface serves for the request performed towards the persistent storage of some sort.
+ * The class implementing this interface handles the persistance and retrieval of information.
  */
 public interface DAO {
-   public List<Person> getAllPeople();
-   public List<PersonFunction> getAllPeopleFunction();
-   public List<FullPerson> getAllPeopleRelations();     
+    public ArrayList<Member> getAllMembers();
+    public ArrayList<Member> getAllMembersSortedBySurname();
+    public ArrayList<Member> getMembersFromTeam(String team);
    
-   public Person getPerson(String id);
-   public PersonFunction getPersonFunction(String id);
-   public FullPerson getFullPerson(String id);
+    public Member getMemberWithId(String id);
+    public Member getMemberWithLastName(String surname);
+    public ArrayList<Member> getCoachesForTeam(String team);
    
-   public void updatePerson(Person p);
-   public void updatePersonFunction(PersonFunction p);
-   public void updateFullPerson(FullPerson p);
+    public boolean insertMember(Member m) throws Exception,SQLException;
+      
+    public boolean updateMemberActive(Member m) throws Exception, SQLException;
+    public boolean updateMemberEmail(Member m) throws Exception, SQLException;
+    public boolean updateMemberRole(Member m) throws Exception, SQLException;
+    public boolean addParentChildRelation(Member parent, Member child) throws Exception,SQLException;
    
-   public void deletePerson(Person p);
-   public void deletePersonFunction(PersonFunction p);
-   public void deleteFullPerson(FullPerson p);
+    public boolean deleteMember(Member m) throws Exception,SQLException;
 }

@@ -55,6 +55,7 @@ public class RegistryView extends javax.swing.JPanel {
         addTeamBtn = new javax.swing.JButton();
         submitBtn = new javax.swing.JButton();
         orLabel = new javax.swing.JLabel();
+        updateExistingBtn = new javax.swing.JButton();
 
         buttonGroup1.add(femaleRadio);
         femaleRadio.setText("Female");
@@ -76,7 +77,7 @@ public class RegistryView extends javax.swing.JPanel {
         teamCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         newTeamText.setText("New Team");
-        newTeamText.setMinimumSize(new java.awt.Dimension(80, 19));
+        newTeamText.setMinimumSize(new java.awt.Dimension(80, 24));
         newTeamText.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 newTeamTextFocusGained(evt);
@@ -127,6 +128,13 @@ public class RegistryView extends javax.swing.JPanel {
 
         orLabel.setText("or");
 
+        updateExistingBtn.setText("Update exisiting member");
+        updateExistingBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateExistingBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -134,66 +142,68 @@ public class RegistryView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                        .addComponent(idLabel)
-                        .addComponent(nameLabel)
-                        .addComponent(surnameLabel)
-                        .addComponent(emailLabel)
-                        .addComponent(genderLabel)
-                        .addComponent(birthdayLabel)
-                        .addComponent(memberSinceLabel)
-                        .addComponent(teamLabel))
-                    .addComponent(roleLabel)
-                    .addComponent(activeLabel, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(femaleRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(maleRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(childCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(parentCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(coachCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                .addComponent(idLabel)
+                                .addComponent(nameLabel)
+                                .addComponent(surnameLabel)
+                                .addComponent(emailLabel)
+                                .addComponent(genderLabel)
+                                .addComponent(birthdayLabel)
+                                .addComponent(memberSinceLabel)
+                                .addComponent(teamLabel))
+                            .addComponent(roleLabel)
+                            .addComponent(activeLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(activeCheck, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(285, 285, 285))
+                                .addGap(352, 352, 352))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(memberSinceText)
-                                .addGap(143, 143, 143))
+                                .addGap(210, 210, 210))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(birthdayText)
-                                .addGap(143, 143, 143))
+                                .addGap(210, 210, 210))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(emailText)
-                                .addGap(143, 143, 143))
+                                .addGap(210, 210, 210))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(surnameText)
-                                .addGap(143, 143, 143))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(nameText)
-                                .addGap(143, 143, 143))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(idText)
-                                .addGap(143, 143, 143))
-                            .addGroup(layout.createSequentialGroup()
+                                .addGap(210, 210, 210))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(teamCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(orLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(newTeamText, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(addTeamBtn)))
-                        .addGap(67, 67, 67))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(addTeamBtn)
+                                .addGap(135, 135, 135))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(femaleRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(maleRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(childCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(parentCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(coachCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(nameText)
+                                    .addComponent(idText))
+                                .addGap(210, 210, 210))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(updateExistingBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {activeLabel, birthdayLabel, emailLabel, genderLabel, idLabel, memberSinceLabel, nameLabel, roleLabel, surnameLabel, teamLabel});
@@ -256,7 +266,9 @@ public class RegistryView extends javax.swing.JPanel {
                         .addGap(13, 13, 13)
                         .addComponent(orLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(submitBtn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(submitBtn)
+                    .addComponent(updateExistingBtn))
                 .addGap(8, 8, 8))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -284,6 +296,10 @@ public class RegistryView extends javax.swing.JPanel {
     private void newTeamTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newTeamTextFocusLost
         newTeamText.setText("New team...");    // TODO add your handling code here:
     }//GEN-LAST:event_newTeamTextFocusLost
+
+    private void updateExistingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateExistingBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateExistingBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -315,5 +331,6 @@ public class RegistryView extends javax.swing.JPanel {
     private javax.swing.JTextField surnameText;
     private javax.swing.JComboBox teamCombo;
     private javax.swing.JLabel teamLabel;
+    private javax.swing.JButton updateExistingBtn;
     // End of variables declaration//GEN-END:variables
 }

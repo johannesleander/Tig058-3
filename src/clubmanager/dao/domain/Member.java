@@ -11,8 +11,8 @@ import java.util.List;
  *
  * @author phcr
  */
-public class Person {
- 
+public class Member {
+    
     private String id;
     private String name;
     private String surname;
@@ -21,6 +21,9 @@ public class Person {
     private long birthdate;
     private long joindate;
     private int active;
+    private List<Integer> roles;
+    private List<String> teams;    
+    private List<Member> children;
 
     public String getId() {
         return id;
@@ -85,7 +88,33 @@ public class Person {
     public void setActive(int active) {
         this.active = active;
     }
+
+    public List<Integer> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Integer> roles) {
+        this.roles = roles;
+    }   
     
-    
-    
+    public List<String> getTeams() {
+        return teams;
+    }
+
+    public void setTeams(List<String> teams) {
+        this.teams = teams;
+    }
+
+    public List<Member> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Member> children) {
+        this.children = children;
+    }        
+
+    @Override
+    public String toString() {
+        return "Member{" + "id=" + id + ", name=" + name + ", surname=" + surname + ", email=" + email + ", gender=" + gender + ", birthdate=" + birthdate + ", joindate=" + joindate + ", active=" + active + ", roles=" + roles + ", teams=" + teams + ", children=" + children + '}';
+    }         
 }

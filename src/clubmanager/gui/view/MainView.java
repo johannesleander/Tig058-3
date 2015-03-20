@@ -31,8 +31,6 @@ public class MainView extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         registryView1 = new clubmanager.gui.view.RegistryView();
         searchView2 = new clubmanager.gui.view.SearchView();
-        searchView1 = new clubmanager.gui.view.SearchView();
-        updateView2 = new clubmanager.gui.view.UpdateView();
 
         javax.swing.GroupLayout updateView1Layout = new javax.swing.GroupLayout(updateView1);
         updateView1.setLayout(updateView1Layout);
@@ -55,19 +53,6 @@ public class MainView extends javax.swing.JFrame {
         });
         jTabbedPane1.addTab("Registry", registryView1);
         jTabbedPane1.addTab("Search", searchView2);
-
-        javax.swing.GroupLayout searchView1Layout = new javax.swing.GroupLayout(searchView1);
-        searchView1.setLayout(searchView1Layout);
-        searchView1Layout.setHorizontalGroup(
-            searchView1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(updateView2, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
-        );
-        searchView1Layout.setVerticalGroup(
-            searchView1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(updateView2, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Update", searchView1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,9 +110,7 @@ public class MainView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane jTabbedPane1;
     private clubmanager.gui.view.RegistryView registryView1;
-    private clubmanager.gui.view.SearchView searchView1;
     private clubmanager.gui.view.SearchView searchView2;
     private clubmanager.gui.view.UpdateView updateView1;
-    private clubmanager.gui.view.UpdateView updateView2;
     // End of variables declaration//GEN-END:variables
 }
