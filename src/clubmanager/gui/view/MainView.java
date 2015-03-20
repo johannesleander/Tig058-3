@@ -29,10 +29,10 @@ public class MainView extends javax.swing.JFrame {
 
         updateView1 = new clubmanager.gui.view.UpdateView();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        registryView1 = new clubmanager.gui.view.RegistryView();
+        searchView2 = new clubmanager.gui.view.SearchView();
         searchView1 = new clubmanager.gui.view.SearchView();
         updateView2 = new clubmanager.gui.view.UpdateView();
-        searchView2 = new clubmanager.gui.view.SearchView();
-        registryView1 = new clubmanager.gui.view.RegistryView();
 
         javax.swing.GroupLayout updateView1Layout = new javax.swing.GroupLayout(updateView1);
         updateView1.setLayout(updateView1Layout);
@@ -48,6 +48,14 @@ public class MainView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(640, 480));
 
+        registryView1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                registryView1FocusGained(evt);
+            }
+        });
+        jTabbedPane1.addTab("Registry", registryView1);
+        jTabbedPane1.addTab("Search", searchView2);
+
         javax.swing.GroupLayout searchView1Layout = new javax.swing.GroupLayout(searchView1);
         searchView1.setLayout(searchView1Layout);
         searchView1Layout.setHorizontalGroup(
@@ -60,14 +68,6 @@ public class MainView extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Update", searchView1);
-        jTabbedPane1.addTab("tab3", searchView2);
-
-        registryView1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                registryView1FocusGained(evt);
-            }
-        });
-        jTabbedPane1.addTab("Registry", registryView1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
