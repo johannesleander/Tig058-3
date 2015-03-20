@@ -1,4 +1,4 @@
-package clubmanager.gui.controller;
+package clubmanager.gui.model;
 
 import clubmanager.dao.domain.Member;
 import java.util.ArrayList;
