@@ -8,6 +8,7 @@ package clubmanager.gui.controller;
 import clubmanager.dao.domain.Member;
 import clubmanager.dao.impl.DAOImpl;
 import clubmanager.gui.view.MainView;
+import java.sql.SQLException;
 
 
 /**
@@ -23,11 +24,15 @@ public class MainController {
     public RegisterController rc;
     
     public void runApp(DAOImpl db) {
-        this.rc = new RegisterController(this);      
+        this.rc = new RegisterController(this);
         this.view = new MainView(this);
         this.db = db;
         
         this.view.setVisible(true);
+    }
+    
+    public void submitTeam(String s) throws SQLException {
+        db.insertTeam(s);
     }
     
     public void submitMember(Member m) throws Exception {
