@@ -34,7 +34,7 @@ public class MainView extends javax.swing.JFrame {
 
         updateView1 = new clubmanager.gui.view.UpdateView();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        registryView1 = new clubmanager.gui.view.RegisterView(this.controller.rc);
+        registryView1 = new clubmanager.gui.view.RegisterView();
         searchView2 = new clubmanager.gui.view.SearchView();
 
         javax.swing.GroupLayout updateView1Layout = new javax.swing.GroupLayout(updateView1);
@@ -51,6 +51,7 @@ public class MainView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(640, 480));
 
+        registryView1.setController(this.controller.rc);
         registryView1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 registryView1FocusGained(evt);
