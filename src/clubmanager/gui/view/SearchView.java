@@ -5,7 +5,11 @@
  */
 package clubmanager.gui.view;
 
+import clubmanager.dao.access.DAO;
+import clubmanager.gui.controller.SearchController;
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,14 +17,34 @@ import java.awt.CardLayout;
  */
 public class SearchView extends javax.swing.JPanel {
  
+    private SearchController controller;
     /**
      * Creates new form SearchView
      */
     public SearchView() {
         initComponents();
-       
+        
+        
     }
-
+    
+    private void setController(SearchController controller) {
+        this.controller = controller;
+    }
+    
+     public void displayError(String text) {
+        JOptionPane.showMessageDialog(this, text, "Error", JOptionPane.ERROR_MESSAGE);        
+    }
+     
+     public void updateTeamSelect(ArrayList<String> ts) {
+        teamCombo.removeAllItems();
+        listTeamCombo.removeAllItems();
+        teamCombo.addItem("");
+        listTeamCombo.addItem("");
+        for (String t : ts) {
+            teamCombo.addItem(t);
+            listTeamCombo.addItem(t);
+        }
+    }
      
     /**
      * This method is called from within the constructor to initialize the form.
