@@ -35,7 +35,7 @@ public class MemberTableModel extends AbstractTableModel implements TableModelLi
    
     @Override
     public String getColumnName(int col) {
-        return columnNames[col].toString();
+        return columnNames[col];
     }
     
     @Override
@@ -102,7 +102,7 @@ public class MemberTableModel extends AbstractTableModel implements TableModelLi
 
     @Override
     public void tableChanged(TableModelEvent tme) {
-        System.out.println("Data change");
+        this.fireTableDataChanged();
     }
     
 }
