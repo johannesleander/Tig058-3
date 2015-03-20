@@ -6,8 +6,10 @@
 package clubmanager.gui.view;
 
 import clubmanager.gui.controller.RegisterController;
+import java.text.ParseException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -112,6 +114,7 @@ public class RegisterView extends javax.swing.JPanel {
         });
 
         buttonGroup1.add(maleRadio);
+        maleRadio.setSelected(true);
         maleRadio.setText("Male");
         maleRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -340,18 +343,34 @@ public class RegisterView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void idFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idFieldFocusLost
-        this.controller.setModelId(idField.getText());
+        if (idField.getText().equals("")) {
+            displayError("ID field cannot be empty");
+            return;
+        }
+        this.controller.setModelId(idField.getText());        
     }//GEN-LAST:event_idFieldFocusLost
 
     private void nameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nameFieldFocusLost
+        if (nameField.getText().equals("")) {
+            displayError("Name field cannot be empty");
+            return;
+        }
         this.controller.setModelName(nameField.getText());
     }//GEN-LAST:event_nameFieldFocusLost
 
     private void surnameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_surnameFieldFocusLost
+        if (surnameField.getText().equals("")) {
+            displayError("Surname field cannot be empty");
+            return;
+        }
         this.controller.setModelSurname(surnameField.getText());
     }//GEN-LAST:event_surnameFieldFocusLost
 
     private void emailFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFieldFocusLost
+        if (emailField.getText().equals("")) {
+            displayError("Email field cannot be empty");
+            return;
+        }
         this.controller.setModelEmail(emailField.getText());
     }//GEN-LAST:event_emailFieldFocusLost
 
@@ -364,11 +383,19 @@ public class RegisterView extends javax.swing.JPanel {
     }//GEN-LAST:event_maleRadioActionPerformed
 
     private void birthdayFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_birthdayFieldFocusLost
-        this.controller.setModelBirthdate(birthdayField.getText());
+        try {
+            this.controller.setModelBirthdate(birthdayField.getText());
+        } catch (ParseException e) {
+            displayError("Invalid date format, format is: yyyy-mm-dd");
+        }
     }//GEN-LAST:event_birthdayFieldFocusLost
 
     private void memberSinceFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_memberSinceFieldFocusLost
-        this.controller.setModelJoindate(memberSinceField.getText());
+        try {
+            this.controller.setModelJoindate(memberSinceField.getText());
+        } catch (ParseException e) {
+            displayError("Invalid date format, format is: yyyy-mm-dd");
+        }
     }//GEN-LAST:event_memberSinceFieldFocusLost
 
     private void activeCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activeCheckActionPerformed
@@ -396,7 +423,15 @@ public class RegisterView extends javax.swing.JPanel {
     }//GEN-LAST:event_addTeamBtnActionPerformed
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
-        // TODO add your handling code here:
+        if (this.controller.validateModel()) {
+            try {
+                this.controller.submit();
+            } catch (Exception e) {
+                displayError(e.getMessage());
+            }
+        } else {
+            displayError("All fields must have values!");
+        }
     }//GEN-LAST:event_submitBtnActionPerformed
 
 

@@ -5,6 +5,7 @@
  */
 package clubmanager.dao.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,13 +18,27 @@ public class Member {
     private String name;
     private String surname;
     private String email;
-    private int gender;
+    private int gender = 0;
     private long birthdate;
     private long joindate;
     private int active;
     private List<Integer> roles;
     private List<String> teams;    
-    private List<Member> children;
+    private List<Member> children;     
+    
+    public Member() {
+        this.id = "";
+        this.name = "";
+        this.surname = "";
+        this.email = "";
+        this.gender = 0;
+        this.birthdate = 0;
+        this.joindate = 0;
+        this.active = 0;
+        this.roles = new ArrayList<>();
+        this.teams = new ArrayList<>();
+        this.children = new ArrayList<>();
+    }
 
     public String getId() {
         return id;

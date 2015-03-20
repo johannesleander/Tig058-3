@@ -3,6 +3,8 @@ package clubmanager.gui.controller;
 import clubmanager.dao.domain.Member;
 import clubmanager.gui.view.RegisterView;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -11,6 +13,9 @@ import java.util.Date;
  * @author phcr
  */
 public class RegisterController {
+    
+    private final SimpleDateFormat sdf;
+    
     private Member model;
     private RegisterView view;
     private final MainController controller;
@@ -18,6 +23,7 @@ public class RegisterController {
 
     public RegisterController(MainController controller) {
         this.controller = controller;
+        this.sdf = new SimpleDateFormat("yyyy-mm-dd");
     }
     
     public void setView(RegisterView v) {
@@ -49,13 +55,13 @@ public class RegisterController {
         this.model.setGender(gender);
     }
     
-    public void setModelBirthdate(String s) {
-        Date d = new Date(0);
+    public void setModelBirthdate(String s) throws ParseException {        
+        Date d = sdf.parse(s);
         this.model.setBirthdate(d.getTime());
     }
     
-    public void setModelJoindate(String s) {
-        Date d = new Date(0);
+    public void setModelJoindate(String s) throws ParseException {
+        Date d = sdf.parse(s);
         this.model.setJoindate(d.getTime());
     }
     
@@ -87,13 +93,20 @@ public class RegisterController {
         this.controller.submitTeam(s);        
     }
     
-    public void submit() {
-        System.out.println("Submit");
-        /*try {
-            this.controller.submitMember(this.model);     
-        } catch (Exception e) {
-            System.out.println(e);
-        }*/
+    public boolean validateModel() {
+        return (
+                (!this.model.getId().equals("") || this.model.getId() != null) &&
+                (!this.model.getName().equals("") || this.model.getName() != null) &&
+                (!this.model.getSurname().equals("") || this.model.getSurname() != null) &&
+                (!this.model.getEmail().equals("") || this.model.getEmail() != null) &&
+                (this.model.getGender() == 1 || this.model.getGender() == 0) &&
+                (this.model.getBirthdate() > 0) &&
+                (this.model.getJoindate() > 0)                
+            );
+    }
+    
+    public void submit() throws Exception {
+        this.controller.submitMember(this.model);             
     }
     
     public void updateTeamSelectDisplay(ArrayList<String> lst) {
