@@ -20,6 +20,7 @@ public class MemberTableView extends javax.swing.JTable {
     public void setController(MemberTableController c) {
         this.controller = c;
         this.setModel(this.controller.model);
+        addSelectionListener();
     }
     
     public void addSelectionListener() {
