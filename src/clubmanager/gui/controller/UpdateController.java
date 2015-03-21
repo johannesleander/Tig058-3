@@ -3,6 +3,7 @@ package clubmanager.gui.controller;
 import clubmanager.dao.domain.Member;
 import clubmanager.gui.model.MemberTableModel;
 import clubmanager.gui.view.UpdateView;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,9 +19,9 @@ public class UpdateController {
     public UpdateController(MainController controller) {
         this.controller = controller;
         
-        this.mtc = new MemberTableController(this);
+        this.mtc = new MemberTableController();
+        this.mtc.setUpdateController(this);
         this.mtc.setModel(new MemberTableModel());
-        this.mtc.setView(this.view.memberTable);
     }
 
     public void setModel(Member model) {
@@ -29,7 +30,12 @@ public class UpdateController {
 
     public void setView(UpdateView view) {
         this.view = view;
+        this.mtc.setView(this.view.memberTable);       
     }        
+            
+    public void setTableData(ArrayList<Member> lst) {
+        this.mtc.setModelData(lst);
+    }
     
     public void memberSelected(Member m) {
         this.view.fillViewWithMember(m);

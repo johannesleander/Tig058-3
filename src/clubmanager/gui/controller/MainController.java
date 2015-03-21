@@ -33,20 +33,32 @@ public class MainController {
         this.view = new MainView(this);
         this.db = db;
         
-        this.view.setVisible(true);
         this.rc.setModel(new Member());
-
-        this.sc.setModel(new MemberTableModel());
-        this.rc.setView(this.view.registryView1);      
-        this.sc.setView(this.view.searchView2);
-        this.uc.setModel(new Member());        
-
-        this.rc.setView(this.view.registryView1);        
+        this.sc.setModel(new Member());       
         this.uc.setModel(new Member());
-        this.uc.setView(this.view.updateView2);
 
+        this.sc.setView(this.view.searchView2);
+        this.rc.setView(this.view.registryView1);
+        this.uc.setView(this.view.updateView2);
+        
         this.rc.updateTeamSelectDisplay(db.getAllTeams());
         this.sc.updateTeamSelectDisplay(db.getAllTeams());
+        
+        this.uc.setTableData(db.getAllMembersSortedBySurname());
+        this.sc.setTableData(db.getAllMembersSortedBySurname());
+        
+        this.view.setVisible(true);
+    }
+    
+    public void setSearchTableDataBySurname() {
+        this.sc.setTableData(db.getAllMembersSortedBySurname());
+    }
+    
+    public void setSearchTableDataById() {
+        this.sc.setTableData(db.getAllMembersSortedById());
+    }
+    public void setUpdateTableData() {
+        this.uc.setTableData(db.getAllMembersSortedBySurname());
     }
     
     public void submitTeam(String s) throws SQLException {

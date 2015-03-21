@@ -11,12 +11,21 @@ import java.util.ArrayList;
  */
 public class MemberTableController {
     
-    private final UpdateController controller;
+    private UpdateController updateController;
+    private SearchController searchController;
     public MemberTableModel model;
     public MemberTableView view;
     
-    public MemberTableController(UpdateController c) {
-        this.controller = c;
+    public MemberTableController() {
+        
+    }
+    
+    public void setUpdateController(UpdateController c) {
+        this.updateController = c;
+        
+    }
+    public void setSearchController(SearchController c) {
+        this.searchController = c;
     }
     
     public void setModel(MemberTableModel m) {
@@ -25,6 +34,7 @@ public class MemberTableController {
     
     public void setView(MemberTableView v) {
         this.view = v;
+        this.view.setController(this);
     }
     
     public void setModelData(ArrayList<Member> lst) {
@@ -32,6 +42,6 @@ public class MemberTableController {
     }
         
     public void selectedRow(int row) {
-        this.controller.memberSelected(this.model.getMemberAtRow(row));
+        this.updateController.memberSelected(this.model.getMemberAtRow(row));
     }    
 }
