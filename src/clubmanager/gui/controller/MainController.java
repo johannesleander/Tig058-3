@@ -35,7 +35,8 @@ public class MainController {
         this.view.setVisible(true);
         this.rc.setModel(new Member());
         this.rc.setView(this.view.registryView1);        
-        this.uc.setModel(new Member());        
+        this.uc.setModel(new Member());
+        this.uc.setView(this.view.updateView2);
         this.rc.updateTeamSelectDisplay(db.getAllTeams());
         this.sc.updateTeamSelectDisplay(db.getAllTeams());
     }
