@@ -26,15 +26,15 @@ public class UpdateController {
     public void setModel(Member model) {
         this.model = model;
     }
-    
-    public void seTableData(ArrayList<Member> lst) {
-        this.mtc.setModelData(lst);
-    }
 
     public void setView(UpdateView view) {
         this.view = view;
         this.mtc.setView(this.view.memberTable);       
     }        
+            
+    public void seTableData(ArrayList<Member> lst) {
+        this.mtc.setModelData(lst);
+    }
     
     public void memberSelected(Member m) {
         this.view.fillViewWithMember(m);

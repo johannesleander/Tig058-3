@@ -25,7 +25,7 @@ public class MemberTableController {
     
     public void setView(MemberTableView v) {
         this.view = v;
-        this.view.setModel(this.model);
+        this.view.setController(this);
     }
     
     public void setModelData(ArrayList<Member> lst) {
