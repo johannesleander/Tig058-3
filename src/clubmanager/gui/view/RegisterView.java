@@ -31,7 +31,7 @@ public class RegisterView extends javax.swing.JPanel {
         this.updating = t;
     }
     
-    public void setController(RegisterController c) {
+   public void setController(RegisterController c) {
         this.controller = c;
     }
     

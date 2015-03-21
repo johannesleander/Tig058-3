@@ -415,7 +415,7 @@ public class SearchView extends javax.swing.JPanel {
             return;
         }
         
-        this.controller.setModelId(idField.getText());        
+       // this.controller.setModelId(idField.getText());        
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void idTextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idTextFocusGained
