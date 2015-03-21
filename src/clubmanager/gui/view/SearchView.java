@@ -45,6 +45,8 @@ public class SearchView extends javax.swing.JPanel {
         }
     }
      
+    
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -222,7 +224,7 @@ public class SearchView extends javax.swing.JPanel {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchBtn)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         cardPanel.add(searchMembersCard, "card1");
@@ -231,6 +233,11 @@ public class SearchView extends javax.swing.JPanel {
         searchCoachLabel.setText("Search for a coach");
 
         teamCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        teamCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                teamComboActionPerformed(evt);
+            }
+        });
 
         searchBtn1.setText("Search");
         searchBtn1.addActionListener(new java.awt.event.ActionListener() {
@@ -264,7 +271,7 @@ public class SearchView extends javax.swing.JPanel {
                 .addGroup(searchCoachCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(teamCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchBtn1))
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
 
         cardPanel.add(searchCoachCard, "card2");
@@ -301,7 +308,7 @@ public class SearchView extends javax.swing.JPanel {
                 .addGroup(listTeamsCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(listTeamCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchBtn2))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         cardPanel.add(listTeamsCard, "card3");
@@ -341,7 +348,7 @@ public class SearchView extends javax.swing.JPanel {
                 .addComponent(sortId)
                 .addGap(18, 18, 18)
                 .addComponent(sortSurname)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         cardPanel.add(listMembersCard, "card4");
@@ -355,38 +362,42 @@ public class SearchView extends javax.swing.JPanel {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(cardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(27, 27, 27)
-                    .addComponent(cardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(27, 27, 27)))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(44, Short.MAX_VALUE)
+                    .addComponent(cardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchMebersBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchMebersBtnActionPerformed
         CardLayout cl = (CardLayout)cardPanel.getLayout();       
         cl.show(cardPanel, "card1");
+        cardPanel.repaint(); 
     }//GEN-LAST:event_searchMebersBtnActionPerformed
 
     private void searchCoachBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchCoachBtnActionPerformed
         CardLayout cl = (CardLayout)(cardPanel.getLayout());
-        cl.show(cardPanel, "card2");// TODO add your handling code here:
+        cl.show(cardPanel, "card2");
+        cardPanel.repaint(); 
     }//GEN-LAST:event_searchCoachBtnActionPerformed
 
     private void listTeamsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listTeamsBtnActionPerformed
         CardLayout cl = (CardLayout)(cardPanel.getLayout());
         cl.show(cardPanel, "card3");
+        cardPanel.repaint(); 
     }//GEN-LAST:event_listTeamsBtnActionPerformed
 
     private void listMembersBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listMembersBtnActionPerformed
         CardLayout cl = (CardLayout)(cardPanel.getLayout());
         cl.show(cardPanel, "card4");
+        cardPanel.repaint(); 
     }//GEN-LAST:event_listMembersBtnActionPerformed
 
     private void idTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTextActionPerformed
@@ -394,36 +405,50 @@ public class SearchView extends javax.swing.JPanel {
     }//GEN-LAST:event_idTextActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        if ((idText.getText().equals("Enter a person Number...")) && ((surnameText.getText().equals("Enter a surname...")))) {
+        if ((idText.getText().equals("Enter a person Number...")) || ((idText.getText().equals(""))) && 
+           ((surnameText.getText().equals("Enter a surname...")) || ((surnameText.getText().equals(""))))) {
+            
             displayError("No arguments in textfields.");
             return;
-        } else if(!(idText.getText().equals("")) && (!(surnameText.getText().equals("")))) {
+        } else if(!(idText.getText().equals("Enter a person Number...")) && (!(surnameText.getText().equals("Enter a surname...")))) {
             displayError("Search either by typing an ID or a surname, not both.");
             return;
         }
         
-        //this.controller.setModelId(idField.getText());        // TODO add your handling code here:
+        //this.controller.setModelId(idField.getText());        
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void idTextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idTextFocusGained
-        idText.setText("");        // TODO add your handling code here:
+        if (idText.getText().equals("Enter a person Number...")) {
+            idText.setText("");       
+        }
     }//GEN-LAST:event_idTextFocusGained
 
     private void surnameTextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_surnameTextFocusGained
-        surnameText.setText("");        // TODO add your handling code here:
+        if (surnameText.getText().equals("Enter a surname...")) {
+            surnameText.setText("");       
+        }        
     }//GEN-LAST:event_surnameTextFocusGained
 
     private void idTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idTextFocusLost
-               // TODO add your handling code here:
+        if (idText.getText().equals("")) {
+            idText.setText("Enter a person Number...");
+        }
     }//GEN-LAST:event_idTextFocusLost
 
     private void surnameTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_surnameTextFocusLost
-              // TODO add your handling code here:
+        if (surnameText.getText().equals("")) {
+            surnameText.setText("Enter a surname...");
+        }     
     }//GEN-LAST:event_surnameTextFocusLost
 
     private void searchBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchBtn1ActionPerformed
+
+    private void teamComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_teamComboActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
