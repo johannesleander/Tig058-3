@@ -311,22 +311,22 @@ public class SearchView extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(searchCoachLabel))
                     .addGroup(searchCoachCardLayout.createSequentialGroup()
-                        .addGap(97, 97, 97)
+                        .addGap(83, 83, 83)
                         .addComponent(teamCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(searchBtn1)))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         searchCoachCardLayout.setVerticalGroup(
             searchCoachCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(searchCoachCardLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(searchCoachLabel)
-                .addGap(18, 18, 18)
+                .addGap(148, 148, 148)
                 .addGroup(searchCoachCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(teamCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchBtn1))
-                .addContainerGap(329, Short.MAX_VALUE))
+                .addContainerGap(199, Short.MAX_VALUE))
         );
 
         cardPanel.add(searchCoachCard, "card2");
@@ -343,27 +343,26 @@ public class SearchView extends javax.swing.JPanel {
         listTeamsCardLayout.setHorizontalGroup(
             listTeamsCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(listTeamsCardLayout.createSequentialGroup()
-                .addGroup(listTeamsCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(listTeamsCardLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(listTeamLabel))
-                    .addGroup(listTeamsCardLayout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(listTeamCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(searchBtn2)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(listTeamLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listTeamsCardLayout.createSequentialGroup()
+                .addContainerGap(82, Short.MAX_VALUE)
+                .addComponent(listTeamCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(searchBtn2)
+                .addGap(77, 77, 77))
         );
         listTeamsCardLayout.setVerticalGroup(
             listTeamsCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(listTeamsCardLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(listTeamLabel)
-                .addGap(88, 88, 88)
+                .addGap(144, 144, 144)
                 .addGroup(listTeamsCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(listTeamCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchBtn2))
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
 
         cardPanel.add(listTeamsCard, "card3");
@@ -380,16 +379,13 @@ public class SearchView extends javax.swing.JPanel {
         listMembersCardLayout.setHorizontalGroup(
             listMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(listMembersCardLayout.createSequentialGroup()
-                .addGroup(listMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(listMembersCardLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(listMembersLabel))
-                    .addGroup(listMembersCardLayout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addGroup(listMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(sortSurname)
-                            .addComponent(sortId))))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(listMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(listMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(sortSurname)
+                        .addComponent(sortId))
+                    .addComponent(listMembersLabel))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         listMembersCardLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {sortId, sortSurname});
@@ -399,11 +395,11 @@ public class SearchView extends javax.swing.JPanel {
             .addGroup(listMembersCardLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(listMembersLabel)
-                .addGap(69, 69, 69)
+                .addGap(125, 125, 125)
                 .addComponent(sortId)
                 .addGap(18, 18, 18)
                 .addComponent(sortSurname)
-                .addContainerGap(235, Short.MAX_VALUE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
 
         cardPanel.add(listMembersCard, "card4");
