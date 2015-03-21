@@ -1,6 +1,7 @@
 package clubmanager.gui.view;
 
 import clubmanager.dao.impl.DAOImpl;
+import clubmanager.gui.controller.MemberTableController;
 import clubmanager.gui.model.MemberTableModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
@@ -12,14 +13,18 @@ import javax.swing.event.ListSelectionListener;
  */
 public class MemberTableView extends javax.swing.JTable {
     
-    private final MemberTableModel tblmodel;
-    private final DAOImpl db;
+    private MemberTableController controller;
     
-    public MemberTableView(DAOImpl daodb) {
-        this.db = daodb;
-        this.tblmodel = new MemberTableModel();
-        this.tblmodel.data = db.getAllMembers();
-        this.setModel(this.tblmodel);
+    public MemberTableView() {
+        
+    }
+    
+    public void setController(MemberTableController c) {
+        this.controller = c;
+        this.setModel(this.controller.model);
+    }
+    
+    public void addSelectionListener() {
         ListSelectionModel csm = this.getSelectionModel();
         csm.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
@@ -31,12 +36,12 @@ public class MemberTableView extends javax.swing.JTable {
             public void valueChanged(ListSelectionEvent lse) {
                 if (!lse.getValueIsAdjusting()) {
                     System.out.println("Selected");
-                    System.out.println(that.tblmodel.getMemberAtRow(that.getSelectedRow()));
+                    that.controller.selectedRow(that.getSelectedRow());                    
                 }
             }            
         });
     }
-    
+              
     
     
 }
