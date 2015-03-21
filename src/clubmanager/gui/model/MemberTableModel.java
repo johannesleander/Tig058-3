@@ -32,10 +32,14 @@ public class MemberTableModel extends AbstractTableModel implements TableModelLi
     public MemberTableModel() {
         
     }
+    
+    public void setData(ArrayList<Member> lst) {
+        this.data = lst;
+    }
    
     @Override
     public String getColumnName(int col) {
-        return columnNames[col].toString();
+        return columnNames[col];
     }
     
     @Override
