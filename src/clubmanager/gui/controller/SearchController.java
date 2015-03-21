@@ -19,8 +19,21 @@ public class SearchController {
        
     }
     
+    public void setView(SearchView v) {
+        this.view = v;
+        this.view.setController(this);
+    }
+    
+    public void setModel(MemberTableModel mtm) {
+        this.model = mtm;
+    }
+    
      public void updateTeamSelectDisplay(ArrayList<String> lst) {
         this.view.updateTeamSelect(lst);
     }
+     
+     public void searchMember(String s) {
+         
+     }
    
 }

@@ -7,6 +7,7 @@ package clubmanager.gui.controller;
 
 import clubmanager.dao.domain.Member;
 import clubmanager.dao.impl.DAOImpl;
+import clubmanager.gui.model.MemberTableModel;
 import clubmanager.gui.view.MainView;
 import java.sql.SQLException;
 
@@ -34,7 +35,9 @@ public class MainController {
         
         this.view.setVisible(true);
         this.rc.setModel(new Member());
-        this.rc.setView(this.view.registryView1);        
+        this.sc.setModel(new MemberTableModel());
+        this.rc.setView(this.view.registryView1);      
+        this.sc.setView(this.view.searchView2);
         this.uc.setModel(new Member());        
         this.rc.updateTeamSelectDisplay(db.getAllTeams());
         this.sc.updateTeamSelectDisplay(db.getAllTeams());

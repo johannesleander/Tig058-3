@@ -17,17 +17,17 @@ import javax.swing.JOptionPane;
 public class SearchView extends javax.swing.JPanel {
  
     private SearchController controller;
+    
     /**
      * Creates new form SearchView
      */
     public SearchView() {
         initComponents();
-    
-        
+         
     }
     
-    private void setController(SearchController controller) {
-        this.controller = controller;
+    public void setController(SearchController c) {
+        this.controller = c;
     }
     
      public void displayError(String text) {
@@ -415,7 +415,7 @@ public class SearchView extends javax.swing.JPanel {
             return;
         }
         
-        //this.controller.setModelId(idField.getText());        
+        this.controller.setModelId(idField.getText());        
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void idTextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idTextFocusGained
