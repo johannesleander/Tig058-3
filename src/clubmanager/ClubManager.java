@@ -9,6 +9,8 @@ import clubmanager.dao.impl.DAOImpl;
 import clubmanager.gui.controller.MainController;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
+import org.sqlite.SQLiteConfig;
 
 /**
  *
@@ -22,7 +24,9 @@ public class ClubManager {
      */
     public static void main(String[] args) {
         try {
-            DAOImpl db = new DAOImpl(DriverManager.getConnection("jdbc:sqlite:club.db"));            
+            SQLiteConfig config = new SQLiteConfig();  
+            config.enforceForeignKeys(true);  
+            DAOImpl db = new DAOImpl(DriverManager.getConnection("jdbc:sqlite:club.db", config.toProperties()));            
             MainController mc = new MainController();
             mc.runApp(db);
         } catch (SQLException e) {
