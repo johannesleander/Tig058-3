@@ -341,7 +341,7 @@ public class DAOImpl implements DAO {
     public boolean deleteMember(Member m) throws Exception,SQLException {
         try {
             this.connection.setAutoCommit(false);
-            PreparedStatement stmnt = this.connection.prepareStatement("DROP FROM person WHRE id=?");
+            PreparedStatement stmnt = this.connection.prepareStatement("DELETE FROM person WHERE id=?");
             stmnt.setString(1, m.getId());
             stmnt.executeUpdate();
             this.connection.commit();
