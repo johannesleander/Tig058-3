@@ -371,6 +371,11 @@ public class SearchView extends javax.swing.JPanel {
         listMembersLabel.setText("List information on all members");
 
         sortId.setText("Sort by ID");
+        sortId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sortIdActionPerformed(evt);
+            }
+        });
 
         sortSurname.setText("Sort by Surname");
 
@@ -456,7 +461,7 @@ public class SearchView extends javax.swing.JPanel {
     }//GEN-LAST:event_listMembersBtnActionPerformed
 
     private void idTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTextActionPerformed
-        // TODO add your handling code here:
+        this.controller.setSearchTableDataById();
     }//GEN-LAST:event_idTextActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
@@ -505,6 +510,10 @@ public class SearchView extends javax.swing.JPanel {
     private void teamComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamComboActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_teamComboActionPerformed
+
+    private void sortIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortIdActionPerformed
+                // TODO add your handling code here:
+    }//GEN-LAST:event_sortIdActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

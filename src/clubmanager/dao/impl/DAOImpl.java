@@ -211,8 +211,8 @@ public class DAOImpl implements DAO {
     
     public ArrayList<Member> getAllMembersSortedById() {
        ArrayList<Member> members = getAllMembers();
-       Collections.sort(members, new MemberIdComparator());
-        return null;
+        Collections.sort(members, new MemberIdComparator());
+        return members;
         
     }
     

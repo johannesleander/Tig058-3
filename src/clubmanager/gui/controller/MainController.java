@@ -47,6 +47,7 @@ public class MainController {
         this.uc.setTableData(db.getAllMembersSortedBySurname());
         this.sc.setTableData(db.getAllMembersSortedBySurname());
         
+        
         this.view.setVisible(true);
     }
     

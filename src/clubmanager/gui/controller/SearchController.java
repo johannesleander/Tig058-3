@@ -45,5 +45,13 @@ public class SearchController {
      public void searchMember(String s) {
          
      }
+     
+     public void setSearchTableDataBySurname() {
+        this.controller.setSearchTableDataBySurname();
+     }
+     
+     public void setSearchTableDataById() {
+        this.controller.setSearchTableDataById();
+     }
    
 }
