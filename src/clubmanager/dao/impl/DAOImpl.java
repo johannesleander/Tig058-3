@@ -31,7 +31,7 @@ public class DAOImpl implements DAO {
     
     /**
      * 
-     * @param id - A member id
+     * @param id A member id
      * @return 
      */
     private List<Integer> getAllRolesForMember(String id) {
@@ -52,7 +52,7 @@ public class DAOImpl implements DAO {
         
     /**
      * 
-     * @param id - A member id
+     * @param id A member id
      * @return List<String>Teams are represented as Strings
      */
     private List<String> getAllTeamsForMember(String id) {
@@ -73,7 +73,7 @@ public class DAOImpl implements DAO {
     
     /**
      * 
-     * @param id - Member id
+     * @param id Member id
      * @return 
      */
     private List<Member> getAllChildrenForParent(String id) {
@@ -94,7 +94,7 @@ public class DAOImpl implements DAO {
     
     /**
      * 
-     * @param rs - A result set to get all fields form.
+     * @param rs A {@link ResultSet} to get all fields form.
      * @return A complete member object with all it's relations. 
      * @throws SQLException 
      */
@@ -136,7 +136,7 @@ public class DAOImpl implements DAO {
     
     /**
      * 
-     * @param id - Id to look for
+     * @param id Id to look for
      * @return A complete member object
      */
     @Override
@@ -158,7 +158,7 @@ public class DAOImpl implements DAO {
 
     /**
      * 
-     * @param surname - Search with surname
+     * @param surname Search with surname
      * @return A complete member object
      */
     @Override
@@ -180,7 +180,7 @@ public class DAOImpl implements DAO {
     
     /**
      * 
-     * @param team - Team to search with
+     * @param team Team to search with
      * @return All the members in the team in database.
      */
     @Override
@@ -221,7 +221,7 @@ public class DAOImpl implements DAO {
 
     /**
      * 
-     * @param team - Team to look for coaches
+     * @param team Team to look for coaches
      * @return All the coaches in team.
      */
     @Override
@@ -254,7 +254,7 @@ public class DAOImpl implements DAO {
 
     /**
      * 
-     * @param m - A member object to insert. Coach must have a team set whilst parent and player does not require it.
+     * @param m A member object to insert. Coach must have a team set whilst parent and player does not require it.
      * @return a boolean if the operation was a success.
      * @throws Exception
      * @throws SQLException 
@@ -305,8 +305,8 @@ public class DAOImpl implements DAO {
         
     /**
      * 
-     * @param s - A team string to add to database. In the form of "XXX" example. "P93"
-     * @return - a bool if the operation was a success
+     * @param s A team string to add to database. In the form of "XXX" example. "P93"
+     * @return a bool if the operation was a success
      * @throws SQLException 
      */
     @Override
@@ -326,8 +326,8 @@ public class DAOImpl implements DAO {
     
     /**
      * 
-     * @param m - Member with altered active state
-     * @return - A boolean if it was successful
+     * @param m Member with altered active state
+     * @return A boolean if it was successful
      * @throws Exception
      * @throws SQLException 
      */
@@ -351,8 +351,8 @@ public class DAOImpl implements DAO {
 
     /**
      * 
-     * @param m - A member object with altered email.
-     * @return - A bool if successful or not.
+     * @param m  A member object with altered email.
+     * @return  A bool if successful or not.
      * @throws Exception
      * @throws SQLException 
      */
@@ -376,8 +376,8 @@ public class DAOImpl implements DAO {
 
     /**
      * 
-     * @param m - A member with altered roles.
-     * @return - A bool if successful or not.
+     * @param m  A member with altered roles.
+     * @return  A bool if successful or not.
      * @throws Exception
      * @throws SQLException 
      */
@@ -418,9 +418,9 @@ public class DAOImpl implements DAO {
     }
 
     /**
-     * Delete the member for the persisted storage.
-     * @param m - The member to delete.
-     * @return - A bool if successful or not.
+     * Delete the member from the persisted storage.
+     * @param m  The member to delete.
+     * @return  A bool if successful or not.
      * @throws Exception
      * @throws SQLException 
      */
@@ -445,7 +445,7 @@ public class DAOImpl implements DAO {
      * Uses the databases unique constraint on parent_child relation to prevent multiple rows of duplication.
      * @param parent
      * @param child
-     * @return - A bool if successful or not.
+     * @return A bool if successful or not.
      * @throws Exception
      * @throws SQLException 
      */
@@ -470,8 +470,8 @@ public class DAOImpl implements DAO {
 
     /**
      * 
-     * @param id - The Id to check for.
-     * @return - a bool if it exists or not.
+     * @param id  The Id to check for.
+     * @return  a bool if it exists or not.
      */
     @Override
     public boolean doesIdExist(String id) {
