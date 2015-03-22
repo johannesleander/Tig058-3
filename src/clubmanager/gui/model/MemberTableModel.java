@@ -3,6 +3,7 @@ package clubmanager.gui.model;
 import clubmanager.dao.domain.Member;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
@@ -35,6 +36,44 @@ public class MemberTableModel extends AbstractTableModel implements TableModelLi
     
     public void setData(ArrayList<Member> lst) {
         this.data = lst;
+    }
+    
+    public String roleToString(int role) {
+        switch (role) {
+            case 0:
+                return "Player";
+            case 1:
+                return "Parent";
+            case 2:
+                return "Coach";
+        }
+        return ""; // Should not happen
+    }
+    
+    public String rolesToString(List<Integer> roles) {
+        StringBuilder sb = new StringBuilder();
+        for (Integer role : roles) {
+            sb.append(roleToString(role));
+            sb.append(",");
+        }
+        return sb.toString();
+    }
+    
+    public String teamsToString(List<String> teams) {
+        if (teams.isEmpty()) {
+            return "";
+        } else {
+            return teams.get(0);
+        }
+    }
+    
+    public String childrenToString(List<Member> kids) {
+        StringBuilder sb = new StringBuilder();        
+        for (Member c : kids) {
+            sb.append(c.getName());
+            sb.append(",");
+        }
+        return sb.toString();
     }
    
     @Override
@@ -87,13 +126,13 @@ public class MemberTableModel extends AbstractTableModel implements TableModelLi
                 value = m.getActive() == 1;
                 break;
             case 8:
-                value = m.getRoles();
+                value = rolesToString(m.getRoles()); // Jesus, cast from hell
                 break;
             case 9:
-                value = m.getTeams();
+                value = teamsToString(m.getTeams());
                 break;
             case 10:
-                value = m.getChildren();
+                value = childrenToString(m.getChildren());
                 break;
         }
         
