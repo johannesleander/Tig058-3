@@ -373,5 +373,19 @@ public class DAOImpl implements DAO {
         return true;
     }
 
+    @Override
+    public boolean doesIdExist(String id) {
+        try {
+            PreparedStatement statement = this.connection.prepareStatement("SELECT id FROM person WHERE id=?");
+            statement.setString(1, id);
+            if (statement.executeUpdate() > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+
 
 }

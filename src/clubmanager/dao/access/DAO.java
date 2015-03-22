@@ -24,6 +24,8 @@ public interface DAO {
     public Member getMemberWithId(String id);
     public Member getMemberWithLastName(String surname);
     public ArrayList<Member> getCoachesForTeam(String team);
+    
+    public boolean doesIdExist(String id);
    
     public boolean insertMember(Member m) throws Exception,SQLException;
     public boolean insertTeam(String s) throws SQLException;
