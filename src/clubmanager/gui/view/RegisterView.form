@@ -57,18 +57,6 @@
                               <EmptySpace min="-2" pref="352" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="memberSinceField" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="birthdayField" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="emailField" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <Component id="surnameField" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
                           </Group>
@@ -102,8 +90,16 @@
                                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                       <Component id="coachCheck" min="-2" pref="69" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="joindateField" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="birthdayField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="emailField" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -144,13 +140,13 @@
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="birthdayField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="birthdayLabel" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
+                          <Component id="birthdayField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="memberSinceField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="memberSinceLabel" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
+                          <Component id="joindateField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
@@ -190,24 +186,12 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="idField">
-      <Events>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="idFieldFocusLost"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="nameField">
-      <Events>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="nameFieldFocusLost"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="surnameField">
-      <Events>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="surnameFieldFocusLost"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="emailField">
-      <Events>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="emailFieldFocusLost"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="femaleRadio">
       <Properties>
@@ -230,16 +214,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="maleRadioActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="birthdayField">
-      <Events>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="birthdayFieldFocusLost"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="memberSinceField">
-      <Events>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="memberSinceFieldFocusLost"/>
       </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="activeCheck">
@@ -361,6 +335,16 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="teamSelectActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="birthdayField">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(new SimpleDateFormat(&quot;yyyy-mm-dd&quot;))"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="joindateField">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(new SimpleDateFormat(&quot;yyyy-mm-dd&quot;))"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
