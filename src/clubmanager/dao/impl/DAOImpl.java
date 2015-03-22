@@ -201,6 +201,11 @@ public class DAOImpl implements DAO {
         return members;
     }
     
+    public ArrayList<Member> getAllMembersSortedById() {
+        return null;
+        
+    }
+    
     @Override
     public boolean insertMember(Member m) throws Exception,SQLException {
         try {

@@ -1,6 +1,8 @@
 package clubmanager.gui.view;
 
+import clubmanager.dao.impl.DAOImpl;
 import clubmanager.gui.controller.MemberTableController;
+import clubmanager.gui.model.MemberTableModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -20,7 +22,6 @@ public class MemberTableView extends javax.swing.JTable {
     public void setController(MemberTableController c) {
         this.controller = c;
         this.setModel(this.controller.model);
-        addSelectionListener();
     }
     
     public void addSelectionListener() {

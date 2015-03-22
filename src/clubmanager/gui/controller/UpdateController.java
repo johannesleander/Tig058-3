@@ -24,7 +24,8 @@ public class UpdateController {
         this.controller = controller;
         this.sdf = new SimpleDateFormat("yyyy-mm-dd");
 
-        this.mtc = new MemberTableController(this);
+        this.mtc = new MemberTableController();
+        this.mtc.setUpdateController(this);
         this.mtc.setModel(new MemberTableModel());
     }
 
@@ -38,7 +39,7 @@ public class UpdateController {
         this.view.setController(this);
     }        
             
-    public void seTableData(ArrayList<Member> lst) {
+    public void setTableData(ArrayList<Member> lst) {
         this.mtc.setModelData(lst);
     }
     

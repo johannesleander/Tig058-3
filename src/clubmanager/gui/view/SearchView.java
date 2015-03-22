@@ -5,6 +5,7 @@
  */
 package clubmanager.gui.view;
 
+import clubmanager.dao.domain.Member;
 import clubmanager.gui.controller.SearchController;
 import java.awt.CardLayout;
 import java.util.ArrayList;
@@ -17,21 +18,25 @@ import javax.swing.JOptionPane;
 public class SearchView extends javax.swing.JPanel {
  
     private SearchController controller;
+    
     /**
      * Creates new form SearchView
      */
     public SearchView() {
         initComponents();
-    
-        
+         
     }
     
-    private void setController(SearchController controller) {
-        this.controller = controller;
+    public void setController(SearchController c) {
+        this.controller = c;
     }
     
      public void displayError(String text) {
         JOptionPane.showMessageDialog(this, text, "Error", JOptionPane.ERROR_MESSAGE);        
+    }
+     
+     public void fillViewWithMember(Member m) {
+        // Set all values to the fields.
     }
      
      public void updateTeamSelect(ArrayList<String> ts) {
@@ -61,6 +66,8 @@ public class SearchView extends javax.swing.JPanel {
         searchCoachBtn = new javax.swing.JButton();
         listTeamsBtn = new javax.swing.JButton();
         listMembersBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        memberTable = new clubmanager.gui.view.MemberTableView();
         cardPanel = new javax.swing.JPanel();
         searchMembersCard = new javax.swing.JPanel();
         searchMemberLabel = new javax.swing.JLabel();
@@ -82,6 +89,8 @@ public class SearchView extends javax.swing.JPanel {
         listMembersLabel = new javax.swing.JLabel();
         sortId = new javax.swing.JButton();
         sortSurname = new javax.swing.JButton();
+
+        setPreferredSize(new java.awt.Dimension(900, 510));
 
         searchMebersBtn.setText("Search for Member");
         searchMebersBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -111,20 +120,60 @@ public class SearchView extends javax.swing.JPanel {
             }
         });
 
+        memberTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8"
+            }
+        ));
+        jScrollPane1.setViewportView(memberTable);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(searchMebersBtn)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(searchMebersBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchCoachBtn))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(listTeamsBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(listMembersBtn)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchCoachBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(listTeamsBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(listMembersBtn)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(92, Short.MAX_VALUE))
         );
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {listMembersBtn, listTeamsBtn, searchCoachBtn, searchMebersBtn});
@@ -133,12 +182,18 @@ public class SearchView extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchMebersBtn)
-                    .addComponent(searchCoachBtn)
-                    .addComponent(listTeamsBtn)
-                    .addComponent(listMembersBtn))
-                .addContainerGap(318, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(searchMebersBtn)
+                            .addComponent(searchCoachBtn))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(listTeamsBtn)
+                            .addComponent(listMembersBtn))
+                        .addGap(0, 430, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         cardPanel.setLayout(new java.awt.CardLayout());
@@ -193,7 +248,7 @@ public class SearchView extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(searchMemberLabel))
                     .addGroup(searchMembersCardLayout.createSequentialGroup()
-                        .addGap(67, 67, 67)
+                        .addGap(46, 46, 46)
                         .addGroup(searchMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
@@ -205,14 +260,14 @@ public class SearchView extends javax.swing.JPanel {
                             .addComponent(idText, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(surnameText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(searchBtn, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         searchMembersCardLayout.setVerticalGroup(
             searchMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(searchMembersCardLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(searchMemberLabel)
-                .addGap(79, 79, 79)
+                .addGap(18, 18, 18)
                 .addGroup(searchMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(idText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -224,7 +279,7 @@ public class SearchView extends javax.swing.JPanel {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchBtn)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(237, Short.MAX_VALUE))
         );
 
         cardPanel.add(searchMembersCard, "card1");
@@ -256,22 +311,22 @@ public class SearchView extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(searchCoachLabel))
                     .addGroup(searchCoachCardLayout.createSequentialGroup()
-                        .addGap(119, 119, 119)
+                        .addGap(83, 83, 83)
                         .addComponent(teamCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(searchBtn1)))
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         searchCoachCardLayout.setVerticalGroup(
             searchCoachCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(searchCoachCardLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(searchCoachLabel)
-                .addGap(90, 90, 90)
+                .addGap(148, 148, 148)
                 .addGroup(searchCoachCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(teamCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchBtn1))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(199, Short.MAX_VALUE))
         );
 
         cardPanel.add(searchCoachCard, "card2");
@@ -288,27 +343,26 @@ public class SearchView extends javax.swing.JPanel {
         listTeamsCardLayout.setHorizontalGroup(
             listTeamsCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(listTeamsCardLayout.createSequentialGroup()
-                .addGroup(listTeamsCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(listTeamsCardLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(listTeamLabel))
-                    .addGroup(listTeamsCardLayout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(listTeamCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(searchBtn2)))
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(listTeamLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listTeamsCardLayout.createSequentialGroup()
+                .addContainerGap(82, Short.MAX_VALUE)
+                .addComponent(listTeamCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(searchBtn2)
+                .addGap(77, 77, 77))
         );
         listTeamsCardLayout.setVerticalGroup(
             listTeamsCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(listTeamsCardLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(listTeamLabel)
-                .addGap(88, 88, 88)
+                .addGap(144, 144, 144)
                 .addGroup(listTeamsCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(listTeamCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchBtn2))
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
 
         cardPanel.add(listTeamsCard, "card3");
@@ -325,16 +379,13 @@ public class SearchView extends javax.swing.JPanel {
         listMembersCardLayout.setHorizontalGroup(
             listMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(listMembersCardLayout.createSequentialGroup()
-                .addGroup(listMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(listMembersCardLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(listMembersLabel))
-                    .addGroup(listMembersCardLayout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addGroup(listMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(sortSurname)
-                            .addComponent(sortId))))
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(listMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(listMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(sortSurname)
+                        .addComponent(sortId))
+                    .addComponent(listMembersLabel))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         listMembersCardLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {sortId, sortSurname});
@@ -344,11 +395,11 @@ public class SearchView extends javax.swing.JPanel {
             .addGroup(listMembersCardLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(listMembersLabel)
-                .addGap(69, 69, 69)
+                .addGap(125, 125, 125)
                 .addComponent(sortId)
                 .addGap(18, 18, 18)
                 .addComponent(sortSurname)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
 
         cardPanel.add(listMembersCard, "card4");
@@ -358,20 +409,24 @@ public class SearchView extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(cardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
-                    .addContainerGap()))
+                    .addComponent(cardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(713, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(44, Short.MAX_VALUE)
-                    .addComponent(cardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(104, Short.MAX_VALUE)
+                    .addComponent(cardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -415,7 +470,7 @@ public class SearchView extends javax.swing.JPanel {
             return;
         }
         
-        //this.controller.setModelId(idField.getText());        
+       // this.controller.setModelId(idField.getText());        
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void idTextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idTextFocusGained
@@ -441,11 +496,12 @@ public class SearchView extends javax.swing.JPanel {
             surnameText.setText("Enter a surname...");
         }     
     }//GEN-LAST:event_surnameTextFocusLost
-
+    
     private void searchBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn1ActionPerformed
-        // TODO add your handling code here:
+        //if (teamCombo.getText().equals("")) {
+          //  displayError("Please pick a team to search from");
     }//GEN-LAST:event_searchBtn1ActionPerformed
-
+    
     private void teamComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamComboActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_teamComboActionPerformed
@@ -458,6 +514,7 @@ public class SearchView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton listMembersBtn;
     private javax.swing.JPanel listMembersCard;
     private javax.swing.JLabel listMembersLabel;
@@ -465,6 +522,7 @@ public class SearchView extends javax.swing.JPanel {
     private javax.swing.JLabel listTeamLabel;
     private javax.swing.JButton listTeamsBtn;
     private javax.swing.JPanel listTeamsCard;
+    public clubmanager.gui.view.MemberTableView memberTable;
     private javax.swing.JButton searchBtn;
     private javax.swing.JButton searchBtn1;
     private javax.swing.JButton searchBtn2;
