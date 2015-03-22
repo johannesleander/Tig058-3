@@ -12,7 +12,8 @@ import java.sql.SQLException;
 import org.sqlite.SQLiteConfig;
 
 /**
- *
+ * This program accepts no command line arguments
+ * <p> 
  * @author johannes
  * @author phcr
  */
