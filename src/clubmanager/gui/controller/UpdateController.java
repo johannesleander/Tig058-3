@@ -48,8 +48,21 @@ public class UpdateController {
         return this.sdf.format(d);
     }
     
+    public void redrawModel() {        
+        this.view.fillViewWithMember(this.model);
+    }
+    
     public void memberSelected(Member m) {
-        this.view.fillViewWithMember(m);
+        this.setModel(m);
+        this.view.fillViewWithMember(this.model);
+    }
+    
+    public void setModelEmail(String s) {
+        this.model.setEmail(s);
+    }
+    
+    public void changeMemberEmail() throws Exception {
+        this.controller.updateMemberMail(this.model);
     }
     
     public void deleteMember() throws Exception {

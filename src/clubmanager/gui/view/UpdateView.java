@@ -8,6 +8,9 @@ package clubmanager.gui.view;
 import clubmanager.dao.domain.Member;
 import clubmanager.gui.controller.UpdateController;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,6 +30,10 @@ public class UpdateView extends javax.swing.JPanel {
     public void setController(UpdateController uc) {
         this.controller = uc;
     }
+    
+    public void displayError(String text) {
+        JOptionPane.showMessageDialog(this, text, "Error", JOptionPane.ERROR_MESSAGE);        
+    }        
     
     public String genderTypeToString(int i) {
         switch (i) {
@@ -109,6 +116,7 @@ public class UpdateView extends javax.swing.JPanel {
         joindateLabel = new javax.swing.JLabel();
         teamLabel = new javax.swing.JLabel();
         childrenLabel = new javax.swing.JLabel();
+        changeEmailButton = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(900, 510));
 
@@ -208,6 +216,13 @@ public class UpdateView extends javax.swing.JPanel {
 
         childrenLabel.setPreferredSize(new java.awt.Dimension(50, 15));
 
+        changeEmailButton.setText("Change");
+        changeEmailButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changeEmailButtonActionPerformed1(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -263,11 +278,13 @@ public class UpdateView extends javax.swing.JPanel {
                             .addComponent(idLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(emailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(emailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 695, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(changeEmailButton)
+                        .addGap(76, 76, 76)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -284,8 +301,9 @@ public class UpdateView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailLabel)
-                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
+                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(changeEmailButton))
+                .addGap(5, 5, 5)
                 .addComponent(genderLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -327,7 +345,7 @@ public class UpdateView extends javax.swing.JPanel {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(saveButton)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
@@ -347,10 +365,21 @@ public class UpdateView extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void changeEmailButtonActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeEmailButtonActionPerformed1
+        this.controller.setModelEmail(emailField.getText());
+        try {
+            this.controller.changeMemberEmail();
+        } catch (Exception ex) {
+            displayError(ex.getMessage());
+        }
+        emailField.setText("");
+    }//GEN-LAST:event_changeEmailButtonActionPerformed1
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox activeCheckbox;
     private javax.swing.JLabel birthDateLabel;
+    private javax.swing.JButton changeEmailButton;
     private javax.swing.JLabel childrenLabel;
     private javax.swing.JCheckBox coachCheckbox;
     private javax.swing.JButton deleteButton;
