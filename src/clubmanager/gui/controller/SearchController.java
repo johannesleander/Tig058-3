@@ -27,7 +27,7 @@ public class SearchController {
     
     public void setView(SearchView v) {
         this.view = v;
-        this.view.setController(this);
+        this.tableController.setView(this.view.memberTable);
     }
     
     public void setModel(Member model) {

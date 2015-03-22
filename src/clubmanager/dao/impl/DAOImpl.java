@@ -7,6 +7,7 @@ package clubmanager.dao.impl;
 
 import clubmanager.dao.access.DAO;
 import clubmanager.dao.domain.Member;
+import clubmanager.domain.comparator.MemberIdComparator;
 import clubmanager.domain.comparator.MemberSurnameComparator;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -201,7 +202,16 @@ public class DAOImpl implements DAO {
         return members;
     }
     
+    
+    public ArrayList<Member> getNoMembers() {
+        ArrayList<Member> members = null;
+        return members;
+    }
+    
+    
     public ArrayList<Member> getAllMembersSortedById() {
+       ArrayList<Member> members = getAllMembers();
+       Collections.sort(members, new MemberIdComparator());
         return null;
         
     }

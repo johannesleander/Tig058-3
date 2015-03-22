@@ -57,6 +57,7 @@ public class MainController {
     public void setSearchTableDataById() {
         this.sc.setTableData(db.getAllMembersSortedById());
     }
+    
     public void setUpdateTableData() {
         this.uc.setTableData(db.getAllMembersSortedBySurname());
     }
