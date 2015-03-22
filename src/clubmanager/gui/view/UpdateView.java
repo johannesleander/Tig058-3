@@ -354,6 +354,12 @@ public class UpdateView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void activeCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activeCheckboxActionPerformed
+        this.controller.setModelActive(activeCheckbox.isSelected());
+        try {
+            this.controller.changeMemberActive();
+        } catch (Exception e) {
+            displayError(e.getMessage());
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_activeCheckboxActionPerformed
 

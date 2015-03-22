@@ -37,7 +37,15 @@ public class UpdateController {
         this.view = view;
         this.mtc.setView(this.view.memberTable);
         this.view.setController(this);
-    }        
+    }
+    
+    public void setModelEmail(String s) {
+        this.model.setEmail(s);
+    }
+    
+    public void setModelActive(boolean a) {
+        this.model.setActive(a ? 1 : 0);        
+    }
             
     public void setTableData(ArrayList<Member> lst) {
         this.mtc.setModelData(lst);
@@ -55,10 +63,11 @@ public class UpdateController {
     public void memberSelected(Member m) {
         this.setModel(m);
         this.view.fillViewWithMember(this.model);
-    }
+    }    
     
-    public void setModelEmail(String s) {
-        this.model.setEmail(s);
+    
+    public void changeMemberActive() throws Exception {
+        this.controller.updateMemberActive(this.model);
     }
     
     public void changeMemberEmail() throws Exception {

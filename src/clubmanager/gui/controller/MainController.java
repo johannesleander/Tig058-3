@@ -70,6 +70,12 @@ public class MainController {
         db.insertMember(m);
     }
     
+    public void updateMemberActive(Member m) throws Exception {
+        db.updateMemberActive(m);
+        this.setUpdateTableData();
+        this.uc.redrawModel();
+    }
+    
     public void updateMemberMail(Member m) throws Exception {
         db.updateMemberEmail(m);
         this.setUpdateTableData();
