@@ -71,4 +71,8 @@ public class MainController {
         db.insertMember(m);
     }
     
+    public void deleteMember(Member m) throws Exception {
+        db.deleteMember(m);
+    }
+    
 }
