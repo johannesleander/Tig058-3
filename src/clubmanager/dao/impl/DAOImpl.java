@@ -305,12 +305,13 @@ public class DAOImpl implements DAO {
     public boolean updateMemberRole(Member m) throws Exception, SQLException {
         try {
             this.connection.setAutoCommit(false);
-            PreparedStatement stmnt = this.connection.prepareStatement("DELETE FROM team_roles WHERE id=?");
+            PreparedStatement stmnt = this.connection.prepareStatement("DELETE FROM team_roles WHERE pid=?");
             stmnt.setString(1, m.getId());
+            stmnt.executeUpdate();
             
             for (Integer role : m.getRoles()) {
                 if (role == 2) {
-                    if (m.getTeams().get(0).equals("") || m.getTeams().get(0) == null) {
+                    if (m.getTeams().isEmpty()) {
                         Exception ex = new Exception("Coach role requires a team!", null);
                         this.connection.rollback();
                         throw ex;
@@ -318,7 +319,11 @@ public class DAOImpl implements DAO {
                 }
                 stmnt = this.connection.prepareStatement("INSERT INTO team_roles VALUES (?,?,?)");
                 stmnt.setString(1, m.getId());
-                stmnt.setString(2, m.getTeams().get(0));
+                if (m.getTeams().isEmpty()) {
+                    stmnt.setString(2, null);
+                } else {
+                    stmnt.setString(2, m.getTeams().get(0));
+                }
                 stmnt.setInt(3, role);
                 stmnt.executeUpdate();
             }            
@@ -327,7 +332,7 @@ public class DAOImpl implements DAO {
             this.connection.rollback();
             throw e;
         } finally {
-            this.connection.setAutoCommit(false);
+            this.connection.setAutoCommit(true);
         }
         return true;
     }
