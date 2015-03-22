@@ -9,6 +9,8 @@ import clubmanager.dao.domain.Member;
 import clubmanager.gui.controller.SearchController;
 import java.awt.CardLayout;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -336,7 +338,12 @@ public class SearchView extends javax.swing.JPanel {
 
         listTeamCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        searchBtn2.setText("jButton1");
+        searchBtn2.setText("Search");
+        searchBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtn2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout listTeamsCardLayout = new javax.swing.GroupLayout(listTeamsCard);
         listTeamsCard.setLayout(listTeamsCardLayout);
@@ -347,7 +354,7 @@ public class SearchView extends javax.swing.JPanel {
                 .addComponent(listTeamLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listTeamsCardLayout.createSequentialGroup()
-                .addContainerGap(82, Short.MAX_VALUE)
+                .addContainerGap(93, Short.MAX_VALUE)
                 .addComponent(listTeamCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(searchBtn2)
@@ -371,8 +378,18 @@ public class SearchView extends javax.swing.JPanel {
         listMembersLabel.setText("List information on all members");
 
         sortId.setText("Sort by ID");
+        sortId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sortIdActionPerformed(evt);
+            }
+        });
 
         sortSurname.setText("Sort by Surname");
+        sortSurname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sortSurnameActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout listMembersCardLayout = new javax.swing.GroupLayout(listMembersCard);
         listMembersCard.setLayout(listMembersCardLayout);
@@ -456,7 +473,7 @@ public class SearchView extends javax.swing.JPanel {
     }//GEN-LAST:event_listMembersBtnActionPerformed
 
     private void idTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTextActionPerformed
-        // TODO add your handling code here:
+        this.controller.setSearchTableDataById();
     }//GEN-LAST:event_idTextActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
@@ -470,7 +487,11 @@ public class SearchView extends javax.swing.JPanel {
             return;
         }
         
-       // this.controller.setModelId(idField.getText());        
+        
+        this.controller.setSearchTableDataSearchMemberId(idText.getText());
+       
+        this.controller.setSearchTableDataSearchMemberSurname(surnameText.getText());
+        
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void idTextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idTextFocusGained
@@ -498,13 +519,24 @@ public class SearchView extends javax.swing.JPanel {
     }//GEN-LAST:event_surnameTextFocusLost
     
     private void searchBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn1ActionPerformed
-        //if (teamCombo.getText().equals("")) {
-          //  displayError("Please pick a team to search from");
+        this.controller.setSearchTableDataCoachForTeam((String) teamCombo.getSelectedItem());
     }//GEN-LAST:event_searchBtn1ActionPerformed
     
     private void teamComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamComboActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_teamComboActionPerformed
+
+    private void sortIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortIdActionPerformed
+        this.controller.setSearchTableDataById();
+    }//GEN-LAST:event_sortIdActionPerformed
+
+    private void sortSurnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortSurnameActionPerformed
+        this.controller.setSearchTableDataBySurname();        // TODO add your handling code here:
+    }//GEN-LAST:event_sortSurnameActionPerformed
+
+    private void searchBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn2ActionPerformed
+        this.controller.setSearchTableDataInfoOnTeam((String) listTeamCombo.getSelectedItem());        // TODO add your handling code here:
+    }//GEN-LAST:event_searchBtn2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

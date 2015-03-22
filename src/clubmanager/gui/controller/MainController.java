@@ -10,6 +10,8 @@ import clubmanager.dao.impl.DAOImpl;
 import clubmanager.gui.model.MemberTableModel;
 import clubmanager.gui.view.MainView;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -57,6 +59,33 @@ public class MainController {
     public void setSearchTableDataById() {
         this.sc.setTableData(db.getAllMembersSortedBySurname());
     }
+    
+    public void setSearchTableDataCoachForTeam(String team) {
+        this.sc.setTableData(db.getCoachesForTeam(team));
+    }
+    /**There be ginormous friggin' dragons here**/
+    
+    public void setSearchTableDataInfoOnTeam(String team) {
+        ArrayList<Member> coaches = db.getCoachesForTeam(team);
+        ArrayList<Member> players = db.getMembersFromTeam(team);
+        coaches.addAll(players); 
+        this.sc.setTableData(coaches);   
+    }
+    
+    public void setSearchTableDataSearchMemberSurname(String surname) {
+        Member member = db.getMemberWithLastName(surname);
+        List <Member> parents = db.getAllParentsForChildren(member.getId());
+        parents.add(member);
+        this.sc.setTableData((ArrayList<Member>) parents);
+    }
+    
+    public void setSearchTableDataSearchMemberId(String id) {
+        Member member = db.getMemberWithId(id);
+        List <Member> parents = db.getAllParentsForChildren(id);
+        parents.add(member);
+        this.sc.setTableData((ArrayList<Member>) parents);
+    }
+    
     public void setUpdateTableData() {
         this.uc.setTableData(db.getAllMembersSortedBySurname());
     }

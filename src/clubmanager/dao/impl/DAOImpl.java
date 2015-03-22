@@ -7,6 +7,7 @@ package clubmanager.dao.impl;
 
 import clubmanager.dao.access.DAO;
 import clubmanager.dao.domain.Member;
+import clubmanager.domain.comparator.MemberIdComparator;
 import clubmanager.domain.comparator.MemberSurnameComparator;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -90,6 +91,27 @@ public class DAOImpl implements DAO {
             System.out.println(e);
         }
         return children;
+    }
+    
+    /**
+     * 
+     * @param id Member id
+     * @return 
+     */
+    public List<Member> getAllParentsForChildren(String id) {
+        ArrayList<Member> parents = new ArrayList<>();
+        try {
+            PreparedStatement stmnt = this.connection.prepareStatement("SELECT pid FROM parent_child WHERE cid=?");
+            stmnt.setString(1, id);
+            
+            ResultSet rs = stmnt.executeQuery();
+            while (rs.next()) {
+                parents.add(getMemberWithId(rs.getString("pid")));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return parents;
     }
     
     /**
@@ -243,8 +265,8 @@ public class DAOImpl implements DAO {
     
     /**
      * Uses the {@link MemberSurnameComparator} to compare.
-     * @return  A sorted List of members.
-     */
+     * @return  A sorted List of members by surname.
+     **/
     @Override
     public ArrayList<Member> getAllMembersSortedBySurname() {
         ArrayList<Member> members = getAllMembers();
@@ -253,12 +275,26 @@ public class DAOImpl implements DAO {
     }
 
     /**
+     * Uses the {@link MemberIdComparator} to compare.
+     * @return  A sorted List of members by ID.
+     **/
+    @Override
+    public ArrayList<Member> getAllMembersSortedById() {
+       ArrayList<Member> members = getAllMembers();
+        Collections.sort(members, new MemberIdComparator());
+        return members;
+        
+    }
+    
+
+    /**
      * 
      * @param m A member object to insert. Coach must have a team set whilst parent and player does not require it.
      * @return a boolean if the operation was a success.
      * @throws Exception
      * @throws SQLException 
      */
+
     @Override
     public boolean insertMember(Member m) throws SQLException {
         try {

@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public interface DAO {    
     public ArrayList<Member> getAllMembers();
     public ArrayList<Member> getAllMembersSortedBySurname();
+    public ArrayList<Member> getAllMembersSortedById();
     public ArrayList<Member> getMembersFromTeam(String team);
     public ArrayList<String> getAllTeams();
    
