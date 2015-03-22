@@ -61,5 +61,13 @@ public class SearchController {
      public void setSearchTableDataInfoOnTeam(String team) {
          this.controller.setSearchTableDataInfoOnTeam(team);
      }
-   
+     
+     public void setSearchTableDataSearchMemberId(String id) {
+         this.controller.setSearchTableDataSearchMemberId(id);
+     }
+     
+     
+     public void setSearchTableDataSearchMemberSurname(String surname) {
+         this.controller.setSearchTableDataSearchMemberSurname(surname);
+     }
 }

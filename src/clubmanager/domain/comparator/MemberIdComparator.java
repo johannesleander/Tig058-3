@@ -1,0 +1,26 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package clubmanager.domain.comparator;
+
+import clubmanager.dao.domain.Member;
+import java.util.Comparator;
+
+/**
+ *
+ * @author johannes
+ */
+public class MemberIdComparator implements Comparator<Member> {
+    
+    @Override
+    public int compare(Member o1, Member o2) {
+         if (o1.getId().equals(o2.getId())) {
+            return o1.getId().compareTo(o2.getId());
+        }
+        return o1.getId().compareTo(o2.getId());
+    }
+    
+    
+}

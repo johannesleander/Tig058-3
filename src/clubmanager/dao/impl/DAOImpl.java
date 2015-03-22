@@ -95,6 +95,27 @@ public class DAOImpl implements DAO {
     
     /**
      * 
+     * @param id Member id
+     * @return 
+     */
+    public List<Member> getAllParentsForChildren(String id) {
+        ArrayList<Member> parents = new ArrayList<>();
+        try {
+            PreparedStatement stmnt = this.connection.prepareStatement("SELECT pid FROM parent_child WHERE cid=?");
+            stmnt.setString(1, id);
+            
+            ResultSet rs = stmnt.executeQuery();
+            while (rs.next()) {
+                parents.add(getMemberWithId(rs.getString("pid")));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return parents;
+    }
+    
+    /**
+     * 
      * @param rs A {@link ResultSet} to get all fields form.
      * @return A complete member object with all it's relations. 
      * @throws SQLException 

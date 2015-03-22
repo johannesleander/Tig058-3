@@ -9,6 +9,8 @@ import clubmanager.dao.domain.Member;
 import clubmanager.gui.controller.SearchController;
 import java.awt.CardLayout;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -485,7 +487,11 @@ public class SearchView extends javax.swing.JPanel {
             return;
         }
         
-       // this.controller.setModelId(idField.getText());        
+        
+        this.controller.setSearchTableDataSearchMemberId(idText.getText());
+       
+        this.controller.setSearchTableDataSearchMemberSurname(surnameText.getText());
+        
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void idTextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idTextFocusGained
