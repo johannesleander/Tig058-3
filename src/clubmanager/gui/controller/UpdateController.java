@@ -51,4 +51,8 @@ public class UpdateController {
         this.view.fillViewWithMember(m);
     }
     
+    public void deleteMember() throws Exception {
+        this.controller.deleteMember(this.model);
+    }  
+    
 }
