@@ -378,9 +378,8 @@ public class DAOImpl implements DAO {
         try {
             PreparedStatement statement = this.connection.prepareStatement("SELECT id FROM person WHERE id=?");
             statement.setString(1, id);
-            if (statement.executeUpdate() > 0) {
-                return true;
-            }
+            ResultSet rs = statement.executeQuery();
+            return rs.next();            
         } catch (SQLException e) {
             System.out.println(e);
         }
