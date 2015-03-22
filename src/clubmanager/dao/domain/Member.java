@@ -11,6 +11,7 @@ import java.util.List;
 /**
  *
  * @author phcr
+ * The member class is created from the database and consists of Person values and their relationships.
  */
 public class Member {
     

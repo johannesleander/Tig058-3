@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * This interface serves for the request performed towards the persistent storage of some sort.
  * The class implementing this interface handles the persistance and retrieval of information.
  */
-public interface DAO {
+public interface DAO {    
     public ArrayList<Member> getAllMembers();
     public ArrayList<Member> getAllMembersSortedBySurname();
     public ArrayList<Member> getMembersFromTeam(String team);

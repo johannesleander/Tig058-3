@@ -29,6 +29,11 @@ public class DAOImpl implements DAO {
         this.connection = c;
     }
     
+    /**
+     * 
+     * @param id - A member id
+     * @return 
+     */
     private List<Integer> getAllRolesForMember(String id) {
         ArrayList<Integer> roles = new ArrayList<>();
         try {
@@ -44,7 +49,12 @@ public class DAOImpl implements DAO {
         }
         return roles;
     }
-    
+        
+    /**
+     * 
+     * @param id - A member id
+     * @return List<String>Teams are represented as Strings
+     */
     private List<String> getAllTeamsForMember(String id) {
         ArrayList<String> teams = new ArrayList<>();
         try {
@@ -61,6 +71,11 @@ public class DAOImpl implements DAO {
         return teams;
     }
     
+    /**
+     * 
+     * @param id - Member id
+     * @return 
+     */
     private List<Member> getAllChildrenForParent(String id) {
         ArrayList<Member> children = new ArrayList<>();
         try {
@@ -77,7 +92,12 @@ public class DAOImpl implements DAO {
         return children;
     }
     
-    
+    /**
+     * 
+     * @param rs - A result set to get all fields form.
+     * @return A complete member object with all it's relations. 
+     * @throws SQLException 
+     */
     private Member memberFromRS(ResultSet rs) throws SQLException {
         Member m = new Member();
         m.setId(rs.getString("id"));
@@ -94,6 +114,10 @@ public class DAOImpl implements DAO {
         return m;
 }
     
+    /**
+     * 
+     * @return All the members in database.
+     */
     @Override
     public ArrayList<Member> getAllMembers() {
         ArrayList<Member> ms = new ArrayList<>();
@@ -110,6 +134,11 @@ public class DAOImpl implements DAO {
         return ms;
     }
     
+    /**
+     * 
+     * @param id - Id to look for
+     * @return A complete member object
+     */
     @Override
     public Member getMemberWithId(String id) {
         Member m = new Member();
@@ -127,6 +156,11 @@ public class DAOImpl implements DAO {
         return m;
     }
 
+    /**
+     * 
+     * @param surname - Search with surname
+     * @return A complete member object
+     */
     @Override
     public Member getMemberWithLastName(String surname) {
         Member m = new Member();
@@ -144,7 +178,12 @@ public class DAOImpl implements DAO {
         return m;
     }
     
-        @Override
+    /**
+     * 
+     * @param team - Team to search with
+     * @return All the members in the team in database.
+     */
+    @Override
     public ArrayList<Member> getMembersFromTeam(String team) {
         ArrayList<Member> ms = new ArrayList<>();
         try {
@@ -161,6 +200,10 @@ public class DAOImpl implements DAO {
         return ms;
     }
     
+    /**
+     * 
+     * @return  All the Teams in database.
+     */
     @Override
     public ArrayList<String> getAllTeams() {
         ArrayList<String> teams = new ArrayList<>();
@@ -176,6 +219,11 @@ public class DAOImpl implements DAO {
         return teams;
     }
 
+    /**
+     * 
+     * @param team - Team to look for coaches
+     * @return All the coaches in team.
+     */
     @Override
     public ArrayList<Member> getCoachesForTeam(String team) {
         ArrayList<Member> coaches = new ArrayList<>();
@@ -193,19 +241,24 @@ public class DAOImpl implements DAO {
         return coaches;
     }
     
-    
+    /**
+     * Uses the {@link MemberSurnameComparator} to compare.
+     * @return  A sorted List of members.
+     */
     @Override
     public ArrayList<Member> getAllMembersSortedBySurname() {
         ArrayList<Member> members = getAllMembers();
         Collections.sort(members, new MemberSurnameComparator());
         return members;
     }
-    
-    public ArrayList<Member> getAllMembersSortedById() {
-        return null;
-        
-    }
-    
+
+    /**
+     * 
+     * @param m - A member object to insert. Coach must have a team set whilst parent and player does not require it.
+     * @return a boolean if the operation was a success.
+     * @throws Exception
+     * @throws SQLException 
+     */
     @Override
     public boolean insertMember(Member m) throws Exception,SQLException {
         try {
@@ -250,6 +303,12 @@ public class DAOImpl implements DAO {
         return true;
     }   
         
+    /**
+     * 
+     * @param s - A team string to add to database. In the form of "XXX" example. "P93"
+     * @return - a bool if the operation was a success
+     * @throws SQLException 
+     */
     @Override
     public boolean insertTeam(String s) throws SQLException {
         try {
@@ -265,6 +324,13 @@ public class DAOImpl implements DAO {
         return true;
     }
     
+    /**
+     * 
+     * @param m - Member with altered active state
+     * @return - A boolean if it was successful
+     * @throws Exception
+     * @throws SQLException 
+     */
     @Override
     public boolean updateMemberActive(Member m) throws Exception, SQLException {
         try {
@@ -283,6 +349,13 @@ public class DAOImpl implements DAO {
         return true;
     }
 
+    /**
+     * 
+     * @param m - A member object with altered email.
+     * @return - A bool if successful or not.
+     * @throws Exception
+     * @throws SQLException 
+     */
     @Override
     public boolean updateMemberEmail(Member m) throws Exception, SQLException {
         try {
@@ -301,6 +374,13 @@ public class DAOImpl implements DAO {
         return true;
     }
 
+    /**
+     * 
+     * @param m - A member with altered roles.
+     * @return - A bool if successful or not.
+     * @throws Exception
+     * @throws SQLException 
+     */
     @Override
     public boolean updateMemberRole(Member m) throws Exception, SQLException {
         try {
@@ -337,6 +417,13 @@ public class DAOImpl implements DAO {
         return true;
     }
 
+    /**
+     * Delete the member for the persisted storage.
+     * @param m - The member to delete.
+     * @return - A bool if successful or not.
+     * @throws Exception
+     * @throws SQLException 
+     */
     @Override
     public boolean deleteMember(Member m) throws Exception,SQLException {
         try {
@@ -354,6 +441,14 @@ public class DAOImpl implements DAO {
         return true;
     }
 
+    /**
+     * Uses the databases unique constraint on parent_child relation to prevent multiple rows of duplication.
+     * @param parent
+     * @param child
+     * @return - A bool if successful or not.
+     * @throws Exception
+     * @throws SQLException 
+     */
     @Override
     public boolean addParentChildRelation(Member parent, Member child) throws Exception,SQLException {
         try {
@@ -373,6 +468,11 @@ public class DAOImpl implements DAO {
         return true;
     }
 
+    /**
+     * 
+     * @param id - The Id to check for.
+     * @return - a bool if it exists or not.
+     */
     @Override
     public boolean doesIdExist(String id) {
         try {
