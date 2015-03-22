@@ -4,7 +4,7 @@ import clubmanager.dao.domain.Member;
 import java.util.Comparator;
 
 /**
- * This comparator compares the Surname of the Members, if they are equal it will compare the first name.
+ * 
  * @author phcr
  */
 public class MemberSurnameComparator implements Comparator<Member> {
