@@ -68,6 +68,7 @@ public class MainController {
     
     public void submitMember(Member m) throws Exception {
         db.insertMember(m);
+        this.setUpdateTableData();        
     }
     
     public void updateMemberRoles(Member m) throws Exception {
@@ -93,6 +94,20 @@ public class MainController {
         this.setUpdateTableData();
         this.uc.setModel(new Member());
         this.uc.defaultView();
+    }
+    
+    public void createParentChildRelation(String pid, String cid) throws Exception {
+        if (!db.doesIdExist(pid)) {
+            Exception e = new Exception("Parent id does not exist", null);
+            throw e;
+        }
+        if (!db.doesIdExist(cid)) {
+            Exception e = new Exception("Child id does not exist", null);
+            throw e;
+        }
+        Member parent = db.getMemberWithId(pid);
+        Member child = db.getMemberWithId(cid);
+        db.addParentChildRelation(parent, child);
     }
     
 }
