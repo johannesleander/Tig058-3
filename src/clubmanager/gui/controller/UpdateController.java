@@ -37,7 +37,23 @@ public class UpdateController {
         this.view = view;
         this.mtc.setView(this.view.memberTable);
         this.view.setController(this);
-    }        
+    }
+    
+    public void setModelEmail(String s) {
+        this.model.setEmail(s);
+    }
+    
+    public void setModelActive(boolean a) {
+        this.model.setActive(a ? 1 : 0);        
+    }
+    
+    public void toggleModelRole(int role) {
+        if (this.model.getRoles().indexOf(role) == -1) {
+            this.model.getRoles().add(role);
+        } else {
+            this.model.getRoles().remove(this.model.getRoles().indexOf(role));
+        }
+    }
             
     public void setTableData(ArrayList<Member> lst) {
         this.mtc.setModelData(lst);
@@ -52,20 +68,36 @@ public class UpdateController {
         this.view.fillViewWithMember(this.model);
     }
     
+    public void defaultView() {
+        this.view.defaultViewText();
+    }
+    
     public void memberSelected(Member m) {
         this.setModel(m);
         this.view.fillViewWithMember(this.model);
+    }    
+    
+    public void changeMemberRoles() throws Exception {
+        this.controller.updateMemberRoles(this.model);
     }
     
-    public void setModelEmail(String s) {
-        this.model.setEmail(s);
+    public void changeMemberActive() throws Exception {
+        this.controller.updateMemberActive(this.model);
     }
     
     public void changeMemberEmail() throws Exception {
         this.controller.updateMemberMail(this.model);
     }
     
+    public void createParentChildRelation(String pid, String cid) throws Exception {
+        this.controller.createParentChildRelation(pid, cid);
+    }
+    
     public void deleteMember() throws Exception {
+        if (this.model.getId().equals("") || this.model.getId() == null) {
+            Exception e = new Exception("Select a member before deleting.", null);
+            throw e;
+        }
         this.controller.deleteMember(this.model);
     }  
     

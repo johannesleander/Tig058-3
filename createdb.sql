@@ -21,13 +21,14 @@ create table person (id text primary key,
 create table team_roles (pid text,
        	     		team varchar(3),
 			role integer,
-			FOREIGN KEY (pid) REFERENCES person(id) on delete cascade on update cascade);
+			FOREIGN KEY (pid) REFERENCES person(id) on delete cascade);
 			
 create table parent_child (
        	     	   pid text,
 		   cid text,
-		   FOREIGN KEY (pid) REFERENCES person(id) on delete cascade on update cascade,
-		   FOREIGN KEY (cid) REFERENCES person(id) on delete cascade on update cascade);
+		   FOREIGN KEY (cid) REFERENCES person(id) on delete cascade,
+		   FOREIGN KEY (pid) REFERENCES person(id) on delete cascade,
+		   CONSTRAINT unq UNIQUE(pid, cid));
 
 
 

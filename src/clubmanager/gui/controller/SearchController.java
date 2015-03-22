@@ -57,5 +57,9 @@ public class SearchController {
      public void setSearchTableDataCoachForTeam(String team) {
          this.controller.setSearchTableDataCoachForTeam(team);
      }
+     
+     public void setSearchTableDataInfoOnTeam(String team) {
+         this.controller.setSearchTableDataInfoOnTeam(team);
+     }
    
 }

@@ -10,6 +10,7 @@ import clubmanager.dao.impl.DAOImpl;
 import clubmanager.gui.model.MemberTableModel;
 import clubmanager.gui.view.MainView;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 
 /**
@@ -47,7 +48,6 @@ public class MainController {
         this.uc.setTableData(db.getAllMembersSortedBySurname());
         this.sc.setTableData(db.getAllMembersSortedBySurname());
         
-        
         this.view.setVisible(true);
     }
     
@@ -56,11 +56,18 @@ public class MainController {
     }
     
     public void setSearchTableDataById() {
-        this.sc.setTableData(db.getAllMembersSortedById());
+        this.sc.setTableData(db.getAllMembersSortedBySurname());
     }
     
     public void setSearchTableDataCoachForTeam(String team) {
         this.sc.setTableData(db.getCoachesForTeam(team));
+    }
+    
+    public void setSearchTableDataInfoOnTeam(String team) {
+        ArrayList<Member> coaches = db.getCoachesForTeam(team);
+        ArrayList<Member> players = db.getMembersFromTeam(team);
+        coaches.addAll(players);
+        this.sc.setTableData(coaches);   
     }
     
     public void setUpdateTableData() {
@@ -74,6 +81,19 @@ public class MainController {
     
     public void submitMember(Member m) throws Exception {
         db.insertMember(m);
+        this.setUpdateTableData();        
+    }
+    
+    public void updateMemberRoles(Member m) throws Exception {
+        db.updateMemberRole(m);
+        this.setUpdateTableData();
+        this.uc.redrawModel();
+    }
+    
+    public void updateMemberActive(Member m) throws Exception {
+        db.updateMemberActive(m);
+        this.setUpdateTableData();
+        this.uc.redrawModel();
     }
     
     public void updateMemberMail(Member m) throws Exception {
@@ -84,6 +104,23 @@ public class MainController {
     
     public void deleteMember(Member m) throws Exception {
         db.deleteMember(m);
+        this.setUpdateTableData();
+        this.uc.setModel(new Member());
+        this.uc.defaultView();
+    }
+    
+    public void createParentChildRelation(String pid, String cid) throws Exception {
+        if (!db.doesIdExist(pid)) {
+            Exception e = new Exception("Parent id does not exist", null);
+            throw e;
+        }
+        if (!db.doesIdExist(cid)) {
+            Exception e = new Exception("Child id does not exist", null);
+            throw e;
+        }
+        Member parent = db.getMemberWithId(pid);
+        Member child = db.getMemberWithId(cid);
+        db.addParentChildRelation(parent, child);
     }
     
 }
