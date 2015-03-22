@@ -90,6 +90,9 @@ public class MainController {
     
     public void deleteMember(Member m) throws Exception {
         db.deleteMember(m);
+        this.setUpdateTableData();
+        this.uc.setModel(new Member());
+        this.uc.defaultView();
     }
     
 }

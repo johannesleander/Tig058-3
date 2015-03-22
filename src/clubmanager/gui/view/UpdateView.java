@@ -56,6 +56,23 @@ public class UpdateView extends javax.swing.JPanel {
         return sb.toString();
     }
     
+    public void defaultViewText() {
+        idLabel.setText("ID");
+        nameLabel.setText("Name");
+        surnameLabel.setText("Surname");
+        emailLabel.setText("Email");
+        genderLabel.setText("Gender");
+        birthDateLabel.setText("");
+        joindateLabel.setText("");
+        activeCheckbox.setSelected(false);
+        playerCheckbox.setSelected(false);
+        parentCheckbox.setSelected(false);
+        coachCheckbox.setSelected(false);
+        teamLabel.setText("");
+        childrenLabel.setText("");
+        
+    }
+    
     public void fillViewWithMember(Member m) {        
         // Set all values to the fields.
         idLabel.setText(m.getId());
@@ -222,6 +239,11 @@ public class UpdateView extends javax.swing.JPanel {
         jScrollPane1.setViewportView(memberTable);
 
         deleteButton.setText("Delete");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
 
         birthDateLabel.setPreferredSize(new java.awt.Dimension(50, 15));
 
@@ -427,6 +449,15 @@ public class UpdateView extends javax.swing.JPanel {
             displayError(e.getMessage());
         }
     }//GEN-LAST:event_updateRoleButtonActionPerformed1
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        try {
+            this.controller.deleteMember();
+        } catch (Exception e) {
+            displayError(e.getMessage());
+        }
+            
+    }//GEN-LAST:event_deleteButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

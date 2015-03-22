@@ -68,6 +68,10 @@ public class UpdateController {
         this.view.fillViewWithMember(this.model);
     }
     
+    public void defaultView() {
+        this.view.defaultViewText();
+    }
+    
     public void memberSelected(Member m) {
         this.setModel(m);
         this.view.fillViewWithMember(this.model);
@@ -86,6 +90,10 @@ public class UpdateController {
     }
     
     public void deleteMember() throws Exception {
+        if (this.model.getId().equals("") || this.model.getId() == null) {
+            Exception e = new Exception("Select a member before deleting.", null);
+            throw e;
+        }
         this.controller.deleteMember(this.model);
     }  
     
