@@ -27,7 +27,7 @@ public interface DAO {
     
     public boolean doesIdExist(String id);
    
-    public boolean insertMember(Member m) throws Exception,SQLException;
+    public boolean insertMember(Member m) throws SQLException;
     public boolean insertTeam(String s) throws SQLException;
       
     public boolean updateMemberActive(Member m) throws Exception, SQLException;
