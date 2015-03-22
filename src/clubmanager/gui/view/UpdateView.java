@@ -7,6 +7,7 @@ package clubmanager.gui.view;
 
 import clubmanager.dao.domain.Member;
 import clubmanager.gui.controller.UpdateController;
+import java.util.List;
 
 /**
  *
@@ -27,8 +28,46 @@ public class UpdateView extends javax.swing.JPanel {
         this.controller = uc;
     }
     
-    public void fillViewWithMember(Member m) {
+    public String genderTypeToString(int i) {
+        switch (i) {
+            case 0:
+                return "Male";
+            case 1:
+                return "Female";
+        }
+        return "";
+    }
+    
+    public String childrenNamesFromMember(List<Member> lst) {
+        StringBuilder sb = new StringBuilder();
+        
+        for (Member c : lst) {
+            sb.append(c.getName());
+            sb.append(",");
+        }
+        
+        return sb.toString();
+    }
+    
+    public void fillViewWithMember(Member m) {        
         // Set all values to the fields.
+        idLabel.setText(m.getId());
+        nameLabel.setText(m.getName());
+        surnameLabel.setText(m.getSurname());
+        emailLabel.setText(m.getEmail());
+        genderLabel.setText(genderTypeToString(m.getGender()));
+        birthDateLabel.setText(this.controller.parseDateTime(m.getBirthdate()));
+        joindateLabel.setText(this.controller.parseDateTime(m.getBirthdate()));
+        activeCheckbox.setSelected((m.getActive()== 1));
+        playerCheckbox.setSelected((m.getRoles().indexOf(0) > -1));
+        parentCheckbox.setSelected((m.getRoles().indexOf(1) > -1));
+        coachCheckbox.setSelected((m.getRoles().indexOf(2) > -1));
+        
+        if (!m.getTeams().isEmpty()) {
+            teamLabel.setText(m.getTeams().get(0));
+        }
+                
+        childrenLabel.setText(childrenNamesFromMember(m.getChildren()));
     }
     
     /**
@@ -42,50 +81,54 @@ public class UpdateView extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        activeCheckbox = new javax.swing.JCheckBox();
         idLabel = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
+        surnameLabel = new javax.swing.JLabel();
+        emailLabel = new javax.swing.JLabel();
+        genderLabel = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
+        playerCheckbox = new javax.swing.JCheckBox();
+        parentCheckbox = new javax.swing.JCheckBox();
+        coachCheckbox = new javax.swing.JCheckBox();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         memberTable = new clubmanager.gui.view.MemberTableView();
         emailField = new javax.swing.JTextField();
         deleteButton = new javax.swing.JButton();
+        birthDateLabel = new javax.swing.JLabel();
+        joindateLabel = new javax.swing.JLabel();
+        teamLabel = new javax.swing.JLabel();
+        childrenLabel = new javax.swing.JLabel();
 
         jLabel1.setText("Member");
 
         jLabel2.setText("Active");
 
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        activeCheckbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                activeCheckboxActionPerformed(evt);
             }
         });
 
         idLabel.setText("ID");
 
-        jLabel3.setText("Name");
+        nameLabel.setText("Name");
 
-        jLabel4.setText("Surname");
+        surnameLabel.setText("Surname");
 
-        jLabel5.setText("Email");
+        emailLabel.setText("Email");
 
-        jLabel6.setText("Gender");
+        genderLabel.setText("Gender");
 
         jLabel7.setText("Birthdate");
 
@@ -97,11 +140,11 @@ public class UpdateView extends javax.swing.JPanel {
 
         jLabel11.setText("Children");
 
-        jCheckBox2.setText("Player");
+        playerCheckbox.setText("Player");
 
-        jCheckBox3.setText("Parent");
+        parentCheckbox.setText("Parent");
 
-        jCheckBox4.setText("Coach");
+        coachCheckbox.setText("Coach");
 
         jLabel12.setText("Create parent child relation");
 
@@ -113,7 +156,7 @@ public class UpdateView extends javax.swing.JPanel {
 
         jTextField2.setText("Id");
 
-        jButton1.setText("Save");
+        saveButton.setText("Save");
 
         memberTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -130,6 +173,14 @@ public class UpdateView extends javax.swing.JPanel {
 
         deleteButton.setText("Delete");
 
+        birthDateLabel.setText("jLabel3");
+
+        joindateLabel.setText("jLabel4");
+
+        teamLabel.setText("jLabel3");
+
+        childrenLabel.setText("jLabel3");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -138,30 +189,40 @@ public class UpdateView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(idLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
+                    .addComponent(surnameLabel)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addComponent(emailLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
+                    .addComponent(genderLabel)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(birthDateLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(joindateLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(teamLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(childrenLabel))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox1))
+                        .addComponent(activeCheckbox))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox2)
+                        .addComponent(playerCheckbox)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox3)
+                        .addComponent(parentCheckbox)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox4))
+                        .addComponent(coachCheckbox))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -172,8 +233,10 @@ public class UpdateView extends javax.swing.JPanel {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jTextField1)
                                 .addComponent(jTextField2)))
-                        .addComponent(jButton1))
-                    .addComponent(deleteButton))
+                        .addComponent(saveButton))
+                    .addComponent(deleteButton)
+                    .addComponent(idLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 695, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -186,34 +249,42 @@ public class UpdateView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(idLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(nameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(surnameLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5))
+                        .addComponent(emailLabel))
                     .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
+                .addComponent(genderLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(birthDateLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(joindateLabel))
                 .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(jCheckBox1))
+                    .addComponent(activeCheckbox))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jCheckBox3)
-                    .addComponent(jCheckBox4))
+                    .addComponent(playerCheckbox)
+                    .addComponent(parentCheckbox)
+                    .addComponent(coachCheckbox))
                 .addGap(8, 8, 8)
-                .addComponent(jLabel10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(teamLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(childrenLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(deleteButton)
                 .addGap(11, 11, 11)
@@ -226,30 +297,31 @@ public class UpdateView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addComponent(jButton1)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(saveButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void activeCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activeCheckboxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_activeCheckboxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox activeCheckbox;
+    private javax.swing.JLabel birthDateLabel;
+    private javax.swing.JLabel childrenLabel;
+    private javax.swing.JCheckBox coachCheckbox;
     private javax.swing.JButton deleteButton;
     private javax.swing.JTextField emailField;
+    private javax.swing.JLabel emailLabel;
+    private javax.swing.JLabel genderLabel;
     private javax.swing.JLabel idLabel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -257,16 +329,19 @@ public class UpdateView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel joindateLabel;
     public clubmanager.gui.view.MemberTableView memberTable;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JCheckBox parentCheckbox;
+    private javax.swing.JCheckBox playerCheckbox;
+    private javax.swing.JButton saveButton;
+    private javax.swing.JLabel surnameLabel;
+    private javax.swing.JLabel teamLabel;
     // End of variables declaration//GEN-END:variables
 }
