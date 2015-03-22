@@ -378,6 +378,11 @@ public class SearchView extends javax.swing.JPanel {
         });
 
         sortSurname.setText("Sort by Surname");
+        sortSurname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sortSurnameActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout listMembersCardLayout = new javax.swing.GroupLayout(listMembersCard);
         listMembersCard.setLayout(listMembersCardLayout);
@@ -503,8 +508,7 @@ public class SearchView extends javax.swing.JPanel {
     }//GEN-LAST:event_surnameTextFocusLost
     
     private void searchBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn1ActionPerformed
-        //if (teamCombo.getText().equals("")) {
-          //  displayError("Please pick a team to search from");
+        this.controller.setSearchTableDataCoachForTeam( (String) teamCombo.getSelectedItem());
     }//GEN-LAST:event_searchBtn1ActionPerformed
     
     private void teamComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamComboActionPerformed
@@ -512,8 +516,12 @@ public class SearchView extends javax.swing.JPanel {
     }//GEN-LAST:event_teamComboActionPerformed
 
     private void sortIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortIdActionPerformed
-                // TODO add your handling code here:
+        this.controller.setSearchTableDataById();
     }//GEN-LAST:event_sortIdActionPerformed
+
+    private void sortSurnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortSurnameActionPerformed
+        this.controller.setSearchTableDataBySurname();        // TODO add your handling code here:
+    }//GEN-LAST:event_sortSurnameActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

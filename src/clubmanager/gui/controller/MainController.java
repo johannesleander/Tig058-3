@@ -59,6 +59,10 @@ public class MainController {
         this.sc.setTableData(db.getAllMembersSortedById());
     }
     
+    public void setSearchTableDataCoachForTeam(String team) {
+        this.sc.setTableData(db.getCoachesForTeam(team));
+    }
+    
     public void setUpdateTableData() {
         this.uc.setTableData(db.getAllMembersSortedBySurname());
     }
