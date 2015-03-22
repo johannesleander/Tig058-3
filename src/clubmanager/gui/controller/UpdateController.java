@@ -46,6 +46,14 @@ public class UpdateController {
     public void setModelActive(boolean a) {
         this.model.setActive(a ? 1 : 0);        
     }
+    
+    public void toggleModelRole(int role) {
+        if (this.model.getRoles().indexOf(role) == -1) {
+            this.model.getRoles().add(role);
+        } else {
+            this.model.getRoles().remove(this.model.getRoles().indexOf(role));
+        }
+    }
             
     public void setTableData(ArrayList<Member> lst) {
         this.mtc.setModelData(lst);
@@ -65,6 +73,9 @@ public class UpdateController {
         this.view.fillViewWithMember(this.model);
     }    
     
+    public void changeMemberRoles() throws Exception {
+        this.controller.updateMemberRoles(this.model);
+    }
     
     public void changeMemberActive() throws Exception {
         this.controller.updateMemberActive(this.model);

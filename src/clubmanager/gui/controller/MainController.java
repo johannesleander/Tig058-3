@@ -70,6 +70,12 @@ public class MainController {
         db.insertMember(m);
     }
     
+    public void updateMemberRoles(Member m) throws Exception {
+        db.updateMemberRole(m);
+        this.setUpdateTableData();
+        this.uc.redrawModel();
+    }
+    
     public void updateMemberActive(Member m) throws Exception {
         db.updateMemberActive(m);
         this.setUpdateTableData();
