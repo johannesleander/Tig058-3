@@ -106,7 +106,8 @@ public class RegisterController {
     }
     
     public void submit() throws Exception {
-        this.controller.submitMember(this.model);             
+        this.controller.submitMember(this.model);
+        this.view.clearForm();
     }
     
     public void updateTeamSelectDisplay(ArrayList<String> lst) {

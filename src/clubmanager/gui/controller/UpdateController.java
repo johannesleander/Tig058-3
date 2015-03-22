@@ -89,6 +89,10 @@ public class UpdateController {
         this.controller.updateMemberMail(this.model);
     }
     
+    public void createParentChildRelation(String pid, String cid) throws Exception {
+        this.controller.createParentChildRelation(pid, cid);
+    }
+    
     public void deleteMember() throws Exception {
         if (this.model.getId().equals("") || this.model.getId() == null) {
             Exception e = new Exception("Select a member before deleting.", null);
