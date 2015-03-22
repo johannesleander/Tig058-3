@@ -26,8 +26,9 @@ create table team_roles (pid text,
 create table parent_child (
        	     	   pid text,
 		   cid text,
+		   FOREIGN KEY (cid) REFERENCES person(id) on delete cascade,
 		   FOREIGN KEY (pid) REFERENCES person(id) on delete cascade,
-		   FOREIGN KEY (cid) REFERENCES person(id) on delete cascade);
+		   CONSTRAINT unq UNIQUE(pid, cid));
 
 
 
