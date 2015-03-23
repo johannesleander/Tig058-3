@@ -1,36 +1,16 @@
 import csvreader
-
-header = {
-    'name' : 0,
-    'surname' : 1,
-    'email' : 2,
-    'gender' : 3,
-    'birthdate' : 4,
-    'joindate' : 5,
-    'active' : 6
-    }
-
-personList = {}
-
-person = {
-    id,
-    name,
-    surname.
-    email,
-    gender,
-    birthdate,
-    joindate,
-    active
-    }
+import datetime
+import random
 
 
-def formatId(row):
-    
+def createId(bdate):
+    dl = list(map(int, bdate.split('-')))
+    dt = datetime.datetime(dl[0],dl[1],dl[2])
+    id = dt.strftime('%y%m%d')
+    return id + "-" + str(random.randint(1000,9999))
 
 def formatRow(row):
-    
+    print(row)
 
-def createCSV():
-    
 if __name__ == '__main__':
     csvreader.read('person.csv',formatRow)
