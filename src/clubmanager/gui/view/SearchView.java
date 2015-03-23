@@ -513,15 +513,11 @@ public class SearchView extends javax.swing.JPanel {
     }//GEN-LAST:event_surnameTextFocusGained
 
     private void idTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idTextFocusLost
-        if (idText.getText().equals("")) {
-            idText.setText("Enter a person Number...");
-        }
+        
     }//GEN-LAST:event_idTextFocusLost
 
     private void surnameTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_surnameTextFocusLost
-        if (surnameText.getText().equals("")) {
-            surnameText.setText("Enter a surname...");
-        }     
+       
     }//GEN-LAST:event_surnameTextFocusLost
     
     private void searchBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn1ActionPerformed
