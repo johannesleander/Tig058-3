@@ -7,6 +7,7 @@ package clubmanager.gui.view;
 
 import clubmanager.gui.controller.RegisterController;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -24,7 +25,7 @@ public class RegisterView extends javax.swing.JPanel {
      */
     public RegisterView() {
         initComponents();   
-        this.updating = true;
+        this.updating = true;        
     }
     
     public void setUpdateEvent(boolean t) {    
@@ -43,7 +44,7 @@ public class RegisterView extends javax.swing.JPanel {
         maleRadio.setSelected(true);
         femaleRadio.setSelected(false);
         birthdayField.setText("");
-        memberSinceField.setText("");
+        joindateField.setText("");
         teamSelect.setSelectedItem("");
         playerCheck.setSelected(false);
         parentCheck.setSelected(false);
@@ -62,6 +63,17 @@ public class RegisterView extends javax.swing.JPanel {
             teamSelect.addItem(t);
         }
     }
+    
+    public void submit() throws Exception {
+        this.controller.setModelId(idField.getText());        
+        this.controller.setModelName(nameField.getText());
+        this.controller.setModelSurname(surnameField.getText());
+        this.controller.setModelEmail(emailField.getText());
+        this.controller.setModelBirthdate(birthdayField.getText());
+        this.controller.setModelJoindate(joindateField.getText());
+
+        this.controller.submit();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -79,8 +91,6 @@ public class RegisterView extends javax.swing.JPanel {
         emailField = new javax.swing.JTextField();
         femaleRadio = new javax.swing.JRadioButton();
         maleRadio = new javax.swing.JRadioButton();
-        birthdayField = new javax.swing.JTextField();
-        memberSinceField = new javax.swing.JTextField();
         activeCheck = new javax.swing.JCheckBox();
         playerCheck = new javax.swing.JCheckBox();
         coachCheck = new javax.swing.JCheckBox();
@@ -100,33 +110,11 @@ public class RegisterView extends javax.swing.JPanel {
         submitBtn = new javax.swing.JButton();
         orLabel = new javax.swing.JLabel();
         teamSelect = new javax.swing.JComboBox();
+        birthdayField = new javax.swing.JFormattedTextField(new SimpleDateFormat("yyyy-mm-dd"));
+        joindateField = new javax.swing.JFormattedTextField(new SimpleDateFormat("yyyy-mm-dd"));
 
         setMinimumSize(new java.awt.Dimension(900, 400));
         setPreferredSize(new java.awt.Dimension(900, 510));
-
-        idField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                idFieldFocusLost(evt);
-            }
-        });
-
-        nameField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                nameFieldFocusLost(evt);
-            }
-        });
-
-        surnameField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                surnameFieldFocusLost(evt);
-            }
-        });
-
-        emailField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                emailFieldFocusLost(evt);
-            }
-        });
 
         buttonGroup1.add(femaleRadio);
         femaleRadio.setText("Female");
@@ -142,18 +130,6 @@ public class RegisterView extends javax.swing.JPanel {
         maleRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 maleRadioActionPerformed(evt);
-            }
-        });
-
-        birthdayField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                birthdayFieldFocusLost(evt);
-            }
-        });
-
-        memberSinceField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                memberSinceFieldFocusLost(evt);
             }
         });
 
@@ -258,15 +234,6 @@ public class RegisterView extends javax.swing.JPanel {
                                 .addComponent(activeCheck, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
                                 .addGap(352, 352, 352))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(memberSinceField)
-                                .addGap(210, 210, 210))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(birthdayField)
-                                .addGap(210, 210, 210))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(emailField)
-                                .addGap(210, 210, 210))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(surnameField)
                                 .addGap(210, 210, 210))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -293,8 +260,14 @@ public class RegisterView extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(parentCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(coachCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                        .addComponent(coachCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(joindateField))
+                                .addGap(210, 210, 210))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(birthdayField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(emailField))
+                                .addGap(210, 210, 210))))))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {activeLabel, birthdayLabel, emailLabel, genderLabel, idLabel, memberSinceLabel, nameLabel, roleLabel, surnameLabel, teamLabel});
@@ -327,12 +300,12 @@ public class RegisterView extends javax.swing.JPanel {
                             .addComponent(genderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(birthdayField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(birthdayLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(birthdayLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(birthdayField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(memberSinceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(memberSinceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(memberSinceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(joindateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(activeCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -360,38 +333,6 @@ public class RegisterView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void idFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idFieldFocusLost
-        if (idField.getText().equals("")) {
-            displayError("ID field cannot be empty");
-            return;
-        }
-        this.controller.setModelId(idField.getText());        
-    }//GEN-LAST:event_idFieldFocusLost
-
-    private void nameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nameFieldFocusLost
-        if (nameField.getText().equals("")) {
-            displayError("Name field cannot be empty");
-            return;
-        }
-        this.controller.setModelName(nameField.getText());
-    }//GEN-LAST:event_nameFieldFocusLost
-
-    private void surnameFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_surnameFieldFocusLost
-        if (surnameField.getText().equals("")) {
-            displayError("Surname field cannot be empty");
-            return;
-        }
-        this.controller.setModelSurname(surnameField.getText());
-    }//GEN-LAST:event_surnameFieldFocusLost
-
-    private void emailFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFieldFocusLost
-        if (emailField.getText().equals("")) {
-            displayError("Email field cannot be empty");
-            return;
-        }
-        this.controller.setModelEmail(emailField.getText());
-    }//GEN-LAST:event_emailFieldFocusLost
-
     private void femaleRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_femaleRadioActionPerformed
         this.controller.setModelGender(1);
     }//GEN-LAST:event_femaleRadioActionPerformed
@@ -399,22 +340,6 @@ public class RegisterView extends javax.swing.JPanel {
     private void maleRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleRadioActionPerformed
         this.controller.setModelGender(0);
     }//GEN-LAST:event_maleRadioActionPerformed
-
-    private void birthdayFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_birthdayFieldFocusLost
-        try {
-            this.controller.setModelBirthdate(birthdayField.getText());
-        } catch (ParseException e) {
-            displayError("Invalid date format, format is: yyyy-mm-dd");
-        }
-    }//GEN-LAST:event_birthdayFieldFocusLost
-
-    private void memberSinceFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_memberSinceFieldFocusLost
-        try {
-            this.controller.setModelJoindate(memberSinceField.getText());
-        } catch (ParseException e) {
-            displayError("Invalid date format, format is: yyyy-mm-dd");
-        }
-    }//GEN-LAST:event_memberSinceFieldFocusLost
 
     private void activeCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activeCheckActionPerformed
         this.controller.setModelActive(this.controller.isModelActive());
@@ -442,16 +367,16 @@ public class RegisterView extends javax.swing.JPanel {
     }//GEN-LAST:event_addTeamBtnActionPerformed
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
-        if (this.controller.validateModel()) {
-            try {
-                this.controller.submit();
+        try {
+            if (this.controller.validateModel()) {
+                this.submit();
                 JOptionPane.showMessageDialog(this, "Success", "Success", JOptionPane.INFORMATION_MESSAGE);
-            } catch (Exception e) {
-                displayError(e.getMessage());
-            }
-        } else {
-            displayError("All fields must have values!");
-        }
+            } else {
+                displayError("All fields must have values!");
+            }                
+        } catch (Exception e) {
+            displayError(e.getMessage());
+        }        
     }//GEN-LAST:event_submitBtnActionPerformed
 
     private void teamSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teamSelectActionPerformed
@@ -464,7 +389,7 @@ public class RegisterView extends javax.swing.JPanel {
     private javax.swing.JCheckBox activeCheck;
     private javax.swing.JLabel activeLabel;
     private javax.swing.JButton addTeamBtn;
-    private javax.swing.JTextField birthdayField;
+    private javax.swing.JFormattedTextField birthdayField;
     private javax.swing.JLabel birthdayLabel;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox coachCheck;
@@ -474,8 +399,8 @@ public class RegisterView extends javax.swing.JPanel {
     private javax.swing.JLabel genderLabel;
     private javax.swing.JTextField idField;
     private javax.swing.JLabel idLabel;
+    private javax.swing.JFormattedTextField joindateField;
     private javax.swing.JRadioButton maleRadio;
-    private javax.swing.JTextField memberSinceField;
     private javax.swing.JLabel memberSinceLabel;
     private javax.swing.JTextField nameField;
     private javax.swing.JLabel nameLabel;

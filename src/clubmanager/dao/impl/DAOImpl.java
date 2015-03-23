@@ -296,7 +296,7 @@ public class DAOImpl implements DAO {
      */
 
     @Override
-    public boolean insertMember(Member m) throws Exception,SQLException {
+    public boolean insertMember(Member m) throws SQLException {
         try {
             this.connection.setAutoCommit(false);
             
@@ -311,14 +311,7 @@ public class DAOImpl implements DAO {
             stmnt.setInt(8, m.getActive());            
             stmnt.executeUpdate();
             
-            for (Integer role : m.getRoles()) {
-                if (role == 2) {
-                    if (m.getTeams().get(0).equals("") || m.getTeams().get(0) == null) {
-                        Exception ex = new Exception("Coach role requires a team!", null);
-                        this.connection.rollback();
-                        throw ex;
-                    }
-                }
+            for (Integer role : m.getRoles()) {                
                 stmnt = this.connection.prepareStatement("INSERT INTO team_roles values (?,?,?)");
                 stmnt.setString(1, m.getId());
                 if (!m.getTeams().isEmpty()) {

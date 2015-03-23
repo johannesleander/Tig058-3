@@ -93,7 +93,24 @@ public class RegisterController {
         this.controller.submitTeam(s);        
     }
     
-    public boolean validateModel() {
+    public boolean validateModel() throws Exception {
+        if (!this.model.getRoles().isEmpty()) {
+            for (Integer role : this.model.getRoles()) {
+                if (role == 0) {
+                    if (this.model.getTeams().isEmpty()) {
+                        Exception e = new Exception("A player must have a team!", null);
+                        throw e;
+                    }
+                }            
+                if (role == 2) {
+                    if (this.model.getTeams().isEmpty()) {
+                        Exception e = new Exception("A coach must have a team!", null);
+                        throw e;
+                    }
+                }                                    
+            }
+        }
+                
         return (
                 (!this.model.getId().equals("") || this.model.getId() != null) &&
                 (!this.model.getName().equals("") || this.model.getName() != null) &&
