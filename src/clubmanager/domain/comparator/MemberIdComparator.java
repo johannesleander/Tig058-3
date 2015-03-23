@@ -12,6 +12,13 @@ import java.util.Comparator;
  *
  * @author johannes
  */
+
+    /**    
+     * Compares two members objects id.
+     * @param o1
+     * @param o2
+     * @return 
+     */
 public class MemberIdComparator implements Comparator<Member> {
     
     @Override

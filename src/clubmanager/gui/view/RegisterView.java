@@ -28,10 +28,17 @@ public class RegisterView extends javax.swing.JPanel {
         this.updating = true;        
     }
     
+    /*
+    @param t
+    */
     public void setUpdateEvent(boolean t) {    
         this.updating = t;
     }
     
+    
+    /*
+    @param c
+    */
     public void setController(RegisterController c) {
         this.controller = c;
     }
@@ -52,10 +59,17 @@ public class RegisterView extends javax.swing.JPanel {
         activeCheck.setSelected(false);        
     }
     
+    
+    /*
+    @param text
+    */
     public void displayError(String text) {
         JOptionPane.showMessageDialog(this, text, "Error", JOptionPane.ERROR_MESSAGE);        
     }
     
+    /*
+    @param ts
+    */
     public void updateTeamSelect(ArrayList<String> ts) {
         teamSelect.removeAllItems();
         teamSelect.addItem("");

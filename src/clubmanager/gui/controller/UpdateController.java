@@ -28,25 +28,43 @@ public class UpdateController {
         this.mtc.setUpdateController(this);
         this.mtc.setModel(new MemberTableModel());
     }
-
+    
+    /*
+    @param model
+    */
     public void setModel(Member model) {
         this.model = model;
     }
-
+    
+    
+    /*
+    @param view
+    */
     public void setView(UpdateView view) {
         this.view = view;
         this.mtc.setView(this.view.memberTable);
         this.view.setController(this);
     }
     
+    /*
+    @param s
+    */
     public void setModelEmail(String s) {
         this.model.setEmail(s);
     }
     
+    
+    /*
+    @param a
+    */
     public void setModelActive(boolean a) {
         this.model.setActive(a ? 1 : 0);        
     }
     
+    
+    /*
+    @param role
+    */
     public void toggleModelRole(int role) {
         if (this.model.getRoles().indexOf(role) == -1) {
             this.model.getRoles().add(role);
@@ -55,14 +73,24 @@ public class UpdateController {
         }
     }
             
+    
+    /*
+    @param lst
+    */
     public void setTableData(ArrayList<Member> lst) {
         this.mtc.setModelData(lst);
     }
     
+    
+    /*
+    @param l
+    */
     public String parseDateTime(long l) {
         Date d = new Date(l);
         return this.sdf.format(d);
     }
+    
+    
     
     public void redrawModel() {        
         this.view.fillViewWithMember(this.model);
@@ -72,26 +100,49 @@ public class UpdateController {
         this.view.defaultViewText();
     }
     
+    
+    /*
+    @param m
+    */
     public void memberSelected(Member m) {
         this.setModel(m);
         this.view.fillViewWithMember(this.model);
     }    
     
+    
+    /*
+    @throws Exception
+    */
     public void changeMemberRoles() throws Exception {
         this.controller.updateMemberRoles(this.model);
     }
     
+    
+    /*
+    @throws Exception
+    */
     public void changeMemberActive() throws Exception {
         this.controller.updateMemberActive(this.model);
     }
     
+    
+    /*
+    @throws Exception
+    */
     public void changeMemberEmail() throws Exception {
         this.controller.updateMemberMail(this.model);
     }
     
+    
+    /*
+    @param pid
+    @param cid
+    @throws Exception
+    */
     public void createParentChildRelation(String pid, String cid) throws Exception {
         this.controller.createParentChildRelation(pid, cid);
     }
+    
     
     public void deleteMember() throws Exception {
         if (this.model.getId().equals("") || this.model.getId() == null) {

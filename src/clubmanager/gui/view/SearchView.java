@@ -29,18 +29,33 @@ public class SearchView extends javax.swing.JPanel {
          
     }
     
+    /*
+    @param c
+    */
     public void setController(SearchController c) {
         this.controller = c;
     }
     
+    
+    /*
+    @param text
+    */
      public void displayError(String text) {
         JOptionPane.showMessageDialog(this, text, "Error", JOptionPane.ERROR_MESSAGE);        
     }
      
+     
+    /*
+    @param m
+    */
      public void fillViewWithMember(Member m) {
         // Set all values to the fields.
     }
      
+     /*
+     Used to update ComboBox
+     @param ts
+     */
      public void updateTeamSelect(ArrayList<String> ts) {
         teamCombo.removeAllItems();
         listTeamCombo.removeAllItems();
@@ -202,7 +217,6 @@ public class SearchView extends javax.swing.JPanel {
 
         searchMemberLabel.setText("Search for a member");
 
-        idText.setText("Enter a person Number...");
         idText.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 idTextFocusGained(evt);
@@ -217,7 +231,6 @@ public class SearchView extends javax.swing.JPanel {
             }
         });
 
-        surnameText.setText("Enter a surname...");
         surnameText.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 surnameTextFocusGained(evt);
@@ -477,17 +490,10 @@ public class SearchView extends javax.swing.JPanel {
     }//GEN-LAST:event_idTextActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        if ((idText.getText().equals("Enter a person Number...")) || ((idText.getText().equals(""))) && 
-           ((surnameText.getText().equals("Enter a surname...")) || ((surnameText.getText().equals(""))))) {
-            
+        if (!idText.getText().equals("") && (!idText.getText().equals(""))) {
             displayError("No arguments in textfields.");
             return;
-        } else if(!(idText.getText().equals("Enter a person Number...")) && (!(surnameText.getText().equals("Enter a surname...")))) {
-            displayError("Search either by typing an ID or a surname, not both.");
-            return;
-        }
-        
-        
+    }              
         this.controller.setSearchTableDataSearchMemberId(idText.getText());
        
         this.controller.setSearchTableDataSearchMemberSurname(surnameText.getText());

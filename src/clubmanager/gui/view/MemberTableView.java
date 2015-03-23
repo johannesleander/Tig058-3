@@ -18,7 +18,9 @@ public class MemberTableView extends javax.swing.JTable {
     public MemberTableView() {
         
     }
-    
+    /*
+    @param c
+    */
     public void setController(MemberTableController c) {
         this.controller = c;
         this.setModel(this.controller.model);

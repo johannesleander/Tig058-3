@@ -62,10 +62,16 @@ public class MainController {
         this.sc.setTableData(db.getAllMembersSortedBySurname());
     }
     
+    /*
+    @param team
+    */
     public void setSearchTableDataCoachForTeam(String team) {
         this.sc.setTableData(db.getCoachesForTeam(team));
     }
     
+    /*
+    @param team
+    */
     public void setSearchTableDataInfoOnTeam(String team) {
         ArrayList<Member> coaches = db.getCoachesForTeam(team);
         ArrayList<Member> players = db.getMembersFromTeam(team);
@@ -73,6 +79,9 @@ public class MainController {
         this.sc.setTableData(coaches);   
     }
     
+    /*
+    @param surname
+    */
     public void setSearchTableDataSearchMemberSurname(String surname) {
         Member member = db.getMemberWithLastName(surname);
         List <Member> parents = db.getAllParentsForChildren(member.getId());
@@ -80,6 +89,9 @@ public class MainController {
         this.sc.setTableData((ArrayList<Member>) parents);
     }
     
+    /*
+    @param id
+    */
     public void setSearchTableDataSearchMemberId(String id) {
         Member member = db.getMemberWithId(id);
         List <Member> parents = db.getAllParentsForChildren(id);
@@ -87,38 +99,71 @@ public class MainController {
         this.sc.setTableData((ArrayList<Member>) parents);
     }
     
+    
+    /*
+    
+    */
     public void setUpdateTableData() {
         this.uc.setTableData(db.getAllMembersSortedBySurname());
     }
     
+    
+    /*
+    @param s
+    @throws SQLException
+    */
     public void submitTeam(String s) throws SQLException {
         db.insertTeam(s);
         this.rc.updateTeamSelectDisplay(db.getAllTeams());
     }
     
+    /*
+    @param m
+    @throws Exception
+    */
     public void submitMember(Member m) throws Exception {
         db.insertMember(m);
         this.setUpdateTableData();        
     }
     
+    
+    /*
+    @param m
+    @throws Exception
+    */
     public void updateMemberRoles(Member m) throws Exception {
         db.updateMemberRole(m);
         this.setUpdateTableData();
         this.uc.redrawModel();
     }
     
+    
+    /*
+    @param m
+    @throws Exception
+    */
     public void updateMemberActive(Member m) throws Exception {
         db.updateMemberActive(m);
         this.setUpdateTableData();
         this.uc.redrawModel();
     }
     
+    
+    /*
+    @param m
+    @throws Exception
+    */
     public void updateMemberMail(Member m) throws Exception {
         db.updateMemberEmail(m);
         this.setUpdateTableData();
         this.uc.redrawModel();
     }
     
+    
+    /*
+    @param m
+    @throws Exception
+    */
     public void deleteMember(Member m) throws Exception {
         db.deleteMember(m);
         this.setUpdateTableData();
@@ -126,6 +171,12 @@ public class MainController {
         this.uc.defaultView();
     }
     
+    
+    /*
+    @param pid
+    @param cid
+    @throws Exception
+    */
     public void createParentChildRelation(String pid, String cid) throws Exception {
         if (!db.doesIdExist(pid)) {
             Exception e = new Exception("Parent id does not exist", null);

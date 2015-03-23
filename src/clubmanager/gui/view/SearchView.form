@@ -242,9 +242,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="idText">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Enter a person Number..."/>
-              </Properties>
               <Events>
                 <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="idTextFocusGained"/>
                 <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="idTextFocusLost"/>
@@ -252,9 +249,6 @@
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="surnameText">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Enter a surname..."/>
-              </Properties>
               <Events>
                 <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="surnameTextFocusGained"/>
                 <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="surnameTextFocusLost"/>
