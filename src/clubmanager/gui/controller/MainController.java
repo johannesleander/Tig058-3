@@ -51,7 +51,9 @@ public class MainController {
         
         this.view.setVisible(true);
     }
-    
+    /**
+     * 
+     */
     public void setSearchTableDataBySurname() {
         this.sc.setTableData(db.getAllMembersSortedBySurname());
     }
@@ -63,7 +65,6 @@ public class MainController {
     public void setSearchTableDataCoachForTeam(String team) {
         this.sc.setTableData(db.getCoachesForTeam(team));
     }
-    /**There be ginormous friggin' dragons here**/
     
     public void setSearchTableDataInfoOnTeam(String team) {
         ArrayList<Member> coaches = db.getCoachesForTeam(team);
