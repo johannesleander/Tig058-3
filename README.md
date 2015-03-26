@@ -25,7 +25,7 @@ The patterns used in the code are DAO pattern and the MVC pattern for the gui.
 
 Running
 ----------------------
-Either run <ant jar> and proced to run the ClubManager.jar in the dist/ folder
+Either run *ant jar* and proced to run the ClubManager.jar in the dist/ folder
 OR
-<ant run>
+Use the run profile in ant *ant run*
 
