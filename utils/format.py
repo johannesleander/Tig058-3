@@ -23,12 +23,18 @@ def str_dt(s):
     d = list(map(int, s.split('-')))
     return datetime.datetime(d[0],d[1],d[2])
 
+def gt(s):
+    if s == 'kvinna':
+        return 1
+    elif s == 'man':
+        return 0
 
-def formatRows(rows):
+def formatRows(rows):    
     for row in rows:
         row['id'] = createId(row['birthdate'])
-        row['birthdate'] = unix_time_millis(str_dt(row['birthdate']))
-        row['joindate'] = unix_time_millis(str_dt(row['joindate']))
+        row['gender'] = gt(row['gender'])
+        row['birthdate'] = int(unix_time_millis(str_dt(row['birthdate'])))
+        row['joindate'] = int(unix_time_millis(str_dt(row['joindate'])))
         wrows.append(row)
 
 if __name__ == '__main__':
