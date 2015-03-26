@@ -490,10 +490,14 @@ public class SearchView extends javax.swing.JPanel {
     }//GEN-LAST:event_idTextActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        if (!idText.getText().equals("") && (!idText.getText().equals(""))) {
+        if (idText.getText().equals("") && (surnameText.getText().equals(""))) {
             displayError("No arguments in textfields.");
             return;
-    }              
+        } else if (!idText.getText().equals("") && (!surnameText.getText().equals(""))) {
+            displayError("No arguments in textfields.");
+            return;
+        }
+        
         this.controller.setSearchTableDataSearchMemberId(idText.getText());
        
         this.controller.setSearchTableDataSearchMemberSurname(surnameText.getText());
