@@ -29,9 +29,9 @@
                       <Component id="genderLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="513" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" pref="513" max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
               <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
@@ -93,7 +93,7 @@
                       <Component id="updateRoleButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="539" pref="563" max="32767" attributes="0"/>
+              <EmptySpace min="539" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

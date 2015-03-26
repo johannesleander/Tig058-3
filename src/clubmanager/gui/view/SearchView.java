@@ -92,8 +92,8 @@ public class SearchView extends javax.swing.JPanel {
         surnameText = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         searchBtn = new javax.swing.JButton();
+        searchBtn3 = new javax.swing.JButton();
         searchCoachCard = new javax.swing.JPanel();
         searchCoachLabel = new javax.swing.JLabel();
         teamCombo = new javax.swing.JComboBox();
@@ -189,8 +189,8 @@ public class SearchView extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(listMembersBtn)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {listMembersBtn, listTeamsBtn, searchCoachBtn, searchMebersBtn});
@@ -200,7 +200,6 @@ public class SearchView extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(searchMebersBtn)
@@ -209,7 +208,8 @@ public class SearchView extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(listTeamsBtn)
                             .addComponent(listMembersBtn))
-                        .addGap(0, 430, Short.MAX_VALUE)))
+                        .addGap(0, 430, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
 
@@ -240,16 +240,21 @@ public class SearchView extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("Person Number");
+        jLabel1.setText("ID");
 
         jLabel2.setText("Surname");
-
-        jLabel3.setText("or");
 
         searchBtn.setText("Search");
         searchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchBtnActionPerformed(evt);
+            }
+        });
+
+        searchBtn3.setText("Search");
+        searchBtn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtn3ActionPerformed(evt);
             }
         });
 
@@ -263,38 +268,37 @@ public class SearchView extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(searchMemberLabel))
                     .addGroup(searchMembersCardLayout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addGroup(searchMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
+                        .addContainerGap()
+                        .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(searchMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(searchMembersCardLayout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(jLabel3))
-                            .addComponent(idText, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(surnameText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(searchBtn, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap(23, Short.MAX_VALUE))
+                        .addComponent(surnameText, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchBtn))
+                    .addGroup(searchMembersCardLayout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(idText, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchBtn3)))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         searchMembersCardLayout.setVerticalGroup(
             searchMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(searchMembersCardLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(searchMemberLabel)
-                .addGap(18, 18, 18)
+                .addGap(14, 14, 14)
                 .addGroup(searchMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(idText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(15, 15, 15)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel1)
+                    .addComponent(searchBtn3))
+                .addGap(43, 43, 43)
                 .addGroup(searchMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(surnameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchBtn)
-                .addContainerGap(237, Short.MAX_VALUE))
+                    .addComponent(jLabel2)
+                    .addComponent(searchBtn))
+                .addContainerGap(265, Short.MAX_VALUE))
         );
 
         cardPanel.add(searchMembersCard, "card1");
@@ -490,16 +494,7 @@ public class SearchView extends javax.swing.JPanel {
     }//GEN-LAST:event_idTextActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        if (idText.getText().equals("") && (surnameText.getText().equals(""))) {
-            displayError("No arguments in textfields.");
-            return;
-        } else if (!idText.getText().equals("") && (!surnameText.getText().equals(""))) {
-            displayError("No arguments in textfields.");
-            return;
-        }
-        
-        this.controller.setSearchTableDataSearchMemberId(idText.getText());
-       
+
         this.controller.setSearchTableDataSearchMemberSurname(surnameText.getText());
         
     }//GEN-LAST:event_searchBtnActionPerformed
@@ -544,13 +539,16 @@ public class SearchView extends javax.swing.JPanel {
         this.controller.setSearchTableDataInfoOnTeam((String) listTeamCombo.getSelectedItem());        // TODO add your handling code here:
     }//GEN-LAST:event_searchBtn2ActionPerformed
 
+    private void searchBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn3ActionPerformed
+        this.controller.setSearchTableDataSearchMemberId(idText.getText());     // TODO add your handling code here:
+    }//GEN-LAST:event_searchBtn3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel cardPanel;
     private javax.swing.JTextField idText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton listMembersBtn;
@@ -564,6 +562,7 @@ public class SearchView extends javax.swing.JPanel {
     private javax.swing.JButton searchBtn;
     private javax.swing.JButton searchBtn1;
     private javax.swing.JButton searchBtn2;
+    private javax.swing.JButton searchBtn3;
     private javax.swing.JButton searchCoachBtn;
     private javax.swing.JPanel searchCoachCard;
     private javax.swing.JLabel searchCoachLabel;

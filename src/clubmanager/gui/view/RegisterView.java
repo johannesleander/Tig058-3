@@ -340,8 +340,8 @@ public class RegisterView extends javax.swing.JPanel {
                             .addGap(10, 10, 10)
                             .addComponent(orLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(19, 19, 19)
-                .addComponent(submitBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(199, 199, 199))
+                .addComponent(submitBtn)
+                .addContainerGap(198, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
