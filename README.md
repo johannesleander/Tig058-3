@@ -17,6 +17,16 @@ The database consists of 4 tables. team, person, team_roles and parent_child.
 
 for further information about the database creation, see [createdb.sql](https://github.com/johannesleander/Tig058-3/blob/master/createdb.sql) file.
 
+Creating a test database
+------------------------
+First
+	sqlite3 club.db in the project directory
+
+Second
+	sqlite3>.read createdb.sql
+
+You should now have fresh database.
+
 
 The code
 ----------------------
