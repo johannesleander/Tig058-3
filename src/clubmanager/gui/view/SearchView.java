@@ -78,22 +78,14 @@ public class SearchView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        memberTable = new clubmanager.gui.view.MemberTableView();
         jPanel2 = new javax.swing.JPanel();
         searchMebersBtn = new javax.swing.JButton();
         searchCoachBtn = new javax.swing.JButton();
         listTeamsBtn = new javax.swing.JButton();
         listMembersBtn = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        memberTable = new clubmanager.gui.view.MemberTableView();
         cardPanel = new javax.swing.JPanel();
-        searchMembersCard = new javax.swing.JPanel();
-        searchMemberLabel = new javax.swing.JLabel();
-        idText = new javax.swing.JTextField();
-        surnameText = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        searchBtn = new javax.swing.JButton();
-        searchBtn3 = new javax.swing.JButton();
         searchCoachCard = new javax.swing.JPanel();
         searchCoachLabel = new javax.swing.JLabel();
         teamCombo = new javax.swing.JComboBox();
@@ -106,36 +98,16 @@ public class SearchView extends javax.swing.JPanel {
         listMembersLabel = new javax.swing.JLabel();
         sortId = new javax.swing.JButton();
         sortSurname = new javax.swing.JButton();
+        searchMembersCard = new javax.swing.JPanel();
+        searchMemberLabel = new javax.swing.JLabel();
+        idText = new javax.swing.JTextField();
+        surnameText = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        searchBtn = new javax.swing.JButton();
+        searchBtn3 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(900, 510));
-
-        searchMebersBtn.setText("Search for Member");
-        searchMebersBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchMebersBtnActionPerformed(evt);
-            }
-        });
-
-        searchCoachBtn.setText("Search for Coach");
-        searchCoachBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchCoachBtnActionPerformed(evt);
-            }
-        });
-
-        listTeamsBtn.setText("List Team info");
-        listTeamsBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listTeamsBtnActionPerformed(evt);
-            }
-        });
-
-        listMembersBtn.setText("List all Members");
-        listMembersBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listMembersBtnActionPerformed(evt);
-            }
-        });
 
         memberTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -173,6 +145,34 @@ public class SearchView extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(memberTable);
 
+        searchMebersBtn.setText("Search for Member");
+        searchMebersBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchMebersBtnActionPerformed(evt);
+            }
+        });
+
+        searchCoachBtn.setText("Search for Coach");
+        searchCoachBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchCoachBtnActionPerformed(evt);
+            }
+        });
+
+        listTeamsBtn.setText("List Team info");
+        listTeamsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listTeamsBtnActionPerformed(evt);
+            }
+        });
+
+        listMembersBtn.setText("List all Members");
+        listMembersBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listMembersBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -188,9 +188,7 @@ public class SearchView extends javax.swing.JPanel {
                         .addComponent(listTeamsBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(listMembersBtn)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {listMembersBtn, listTeamsBtn, searchCoachBtn, searchMebersBtn});
@@ -199,21 +197,152 @@ public class SearchView extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(searchMebersBtn)
-                            .addComponent(searchCoachBtn))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(listTeamsBtn)
-                            .addComponent(listMembersBtn))
-                        .addGap(0, 430, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
-                .addContainerGap())
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchMebersBtn)
+                    .addComponent(searchCoachBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(listTeamsBtn)
+                    .addComponent(listMembersBtn))
+                .addContainerGap(422, Short.MAX_VALUE))
         );
 
         cardPanel.setLayout(new java.awt.CardLayout());
+
+        searchCoachLabel.setText("Search for a coach");
+
+        teamCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        teamCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                teamComboActionPerformed(evt);
+            }
+        });
+
+        searchBtn1.setText("Search");
+        searchBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtn1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout searchCoachCardLayout = new javax.swing.GroupLayout(searchCoachCard);
+        searchCoachCard.setLayout(searchCoachCardLayout);
+        searchCoachCardLayout.setHorizontalGroup(
+            searchCoachCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchCoachCardLayout.createSequentialGroup()
+                .addGroup(searchCoachCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(searchCoachCardLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(searchCoachLabel))
+                    .addGroup(searchCoachCardLayout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addComponent(teamCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(searchBtn1)))
+                .addContainerGap(92, Short.MAX_VALUE))
+        );
+        searchCoachCardLayout.setVerticalGroup(
+            searchCoachCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchCoachCardLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(searchCoachLabel)
+                .addGap(148, 148, 148)
+                .addGroup(searchCoachCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(teamCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchBtn1))
+                .addContainerGap(148, Short.MAX_VALUE))
+        );
+
+        cardPanel.add(searchCoachCard, "card2");
+        searchCoachCard.getAccessibleContext().setAccessibleName("card2");
+
+        listTeamLabel.setText("List information on a team");
+
+        listTeamCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        searchBtn2.setText("Search");
+        searchBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtn2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout listTeamsCardLayout = new javax.swing.GroupLayout(listTeamsCard);
+        listTeamsCard.setLayout(listTeamsCardLayout);
+        listTeamsCardLayout.setHorizontalGroup(
+            listTeamsCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(listTeamsCardLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(listTeamLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listTeamsCardLayout.createSequentialGroup()
+                .addContainerGap(98, Short.MAX_VALUE)
+                .addComponent(listTeamCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(searchBtn2)
+                .addGap(77, 77, 77))
+        );
+        listTeamsCardLayout.setVerticalGroup(
+            listTeamsCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(listTeamsCardLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(listTeamLabel)
+                .addGap(144, 144, 144)
+                .addGroup(listTeamsCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(listTeamCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchBtn2))
+                .addContainerGap(152, Short.MAX_VALUE))
+        );
+
+        cardPanel.add(listTeamsCard, "card3");
+        listTeamsCard.getAccessibleContext().setAccessibleName("card3");
+
+        listMembersLabel.setText("List information on all members");
+
+        sortId.setText("Sort by ID");
+        sortId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sortIdActionPerformed(evt);
+            }
+        });
+
+        sortSurname.setText("Sort by Surname");
+        sortSurname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sortSurnameActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout listMembersCardLayout = new javax.swing.GroupLayout(listMembersCard);
+        listMembersCard.setLayout(listMembersCardLayout);
+        listMembersCardLayout.setHorizontalGroup(
+            listMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(listMembersCardLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(listMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(listMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(sortSurname)
+                        .addComponent(sortId))
+                    .addComponent(listMembersLabel))
+                .addContainerGap(158, Short.MAX_VALUE))
+        );
+
+        listMembersCardLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {sortId, sortSurname});
+
+        listMembersCardLayout.setVerticalGroup(
+            listMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(listMembersCardLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(listMembersLabel)
+                .addGap(125, 125, 125)
+                .addComponent(sortId)
+                .addGap(18, 18, 18)
+                .addComponent(sortSurname)
+                .addContainerGap(128, Short.MAX_VALUE))
+        );
+
+        cardPanel.add(listMembersCard, "card4");
+        listMembersCard.getAccessibleContext().setAccessibleName("card4");
 
         searchMemberLabel.setText("Search for a member");
 
@@ -263,205 +392,73 @@ public class SearchView extends javax.swing.JPanel {
         searchMembersCardLayout.setHorizontalGroup(
             searchMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(searchMembersCardLayout.createSequentialGroup()
-                .addGroup(searchMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(searchMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(searchMembersCardLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(searchMemberLabel))
-                    .addGroup(searchMembersCardLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(surnameText, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(searchBtn))
-                    .addGroup(searchMembersCardLayout.createSequentialGroup()
-                        .addGap(61, 61, 61)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(idText, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(searchBtn3)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                        .addComponent(searchBtn3))
+                    .addGroup(searchMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(searchMembersCardLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(searchMemberLabel))
+                        .addGroup(searchMembersCardLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(surnameText, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(searchBtn))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         searchMembersCardLayout.setVerticalGroup(
             searchMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(searchMembersCardLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(searchMemberLabel)
-                .addGap(14, 14, 14)
+                .addGap(18, 18, 18)
                 .addGroup(searchMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(idText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(searchBtn3))
-                .addGap(43, 43, 43)
+                .addGap(39, 39, 39)
                 .addGroup(searchMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(surnameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(searchBtn))
-                .addContainerGap(265, Short.MAX_VALUE))
+                .addContainerGap(214, Short.MAX_VALUE))
         );
 
         cardPanel.add(searchMembersCard, "card1");
         searchMembersCard.getAccessibleContext().setAccessibleName("card1");
-
-        searchCoachLabel.setText("Search for a coach");
-
-        teamCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        teamCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                teamComboActionPerformed(evt);
-            }
-        });
-
-        searchBtn1.setText("Search");
-        searchBtn1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBtn1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout searchCoachCardLayout = new javax.swing.GroupLayout(searchCoachCard);
-        searchCoachCard.setLayout(searchCoachCardLayout);
-        searchCoachCardLayout.setHorizontalGroup(
-            searchCoachCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(searchCoachCardLayout.createSequentialGroup()
-                .addGroup(searchCoachCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(searchCoachCardLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(searchCoachLabel))
-                    .addGroup(searchCoachCardLayout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(teamCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(searchBtn1)))
-                .addContainerGap(87, Short.MAX_VALUE))
-        );
-        searchCoachCardLayout.setVerticalGroup(
-            searchCoachCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(searchCoachCardLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(searchCoachLabel)
-                .addGap(148, 148, 148)
-                .addGroup(searchCoachCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(teamCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchBtn1))
-                .addContainerGap(199, Short.MAX_VALUE))
-        );
-
-        cardPanel.add(searchCoachCard, "card2");
-        searchCoachCard.getAccessibleContext().setAccessibleName("card2");
-
-        listTeamLabel.setText("List information on a team");
-
-        listTeamCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        searchBtn2.setText("Search");
-        searchBtn2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBtn2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout listTeamsCardLayout = new javax.swing.GroupLayout(listTeamsCard);
-        listTeamsCard.setLayout(listTeamsCardLayout);
-        listTeamsCardLayout.setHorizontalGroup(
-            listTeamsCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(listTeamsCardLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(listTeamLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listTeamsCardLayout.createSequentialGroup()
-                .addContainerGap(93, Short.MAX_VALUE)
-                .addComponent(listTeamCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(searchBtn2)
-                .addGap(77, 77, 77))
-        );
-        listTeamsCardLayout.setVerticalGroup(
-            listTeamsCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(listTeamsCardLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(listTeamLabel)
-                .addGap(144, 144, 144)
-                .addGroup(listTeamsCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(listTeamCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchBtn2))
-                .addContainerGap(203, Short.MAX_VALUE))
-        );
-
-        cardPanel.add(listTeamsCard, "card3");
-        listTeamsCard.getAccessibleContext().setAccessibleName("card3");
-
-        listMembersLabel.setText("List information on all members");
-
-        sortId.setText("Sort by ID");
-        sortId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sortIdActionPerformed(evt);
-            }
-        });
-
-        sortSurname.setText("Sort by Surname");
-        sortSurname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sortSurnameActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout listMembersCardLayout = new javax.swing.GroupLayout(listMembersCard);
-        listMembersCard.setLayout(listMembersCardLayout);
-        listMembersCardLayout.setHorizontalGroup(
-            listMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(listMembersCardLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(listMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(listMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(sortSurname)
-                        .addComponent(sortId))
-                    .addComponent(listMembersLabel))
-                .addContainerGap(106, Short.MAX_VALUE))
-        );
-
-        listMembersCardLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {sortId, sortSurname});
-
-        listMembersCardLayout.setVerticalGroup(
-            listMembersCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(listMembersCardLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(listMembersLabel)
-                .addGap(125, 125, 125)
-                .addComponent(sortId)
-                .addGap(18, 18, 18)
-                .addComponent(sortSurname)
-                .addContainerGap(179, Short.MAX_VALUE))
-        );
-
-        cardPanel.add(listMembersCard, "card4");
-        listMembersCard.getAccessibleContext().setAccessibleName("card4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(cardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(713, Short.MAX_VALUE)))
+                    .addGap(36, 36, 36)
+                    .addComponent(cardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(546, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addComponent(jScrollPane1)
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 22, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(104, Short.MAX_VALUE)
-                    .addComponent(cardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
+                    .addContainerGap(78, Short.MAX_VALUE)
+                    .addComponent(cardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(63, 63, 63)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
