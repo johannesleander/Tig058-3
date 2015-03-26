@@ -19,11 +19,8 @@ for further information about the database creation, see [createdb.sql](https://
 
 Creating a test database
 ------------------------
-First
-	sqlite3 club.db in the project directory
-
-Second
-	sqlite3>.read createdb.sql
+1. sqlite3 club.db in the project directory at the highest level. Not in some subdirectory ex src/ or utils/
+2. sqlite3>.read createdb.sql
 
 You should now have fresh database.
 
