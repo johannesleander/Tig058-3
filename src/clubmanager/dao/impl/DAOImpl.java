@@ -250,7 +250,7 @@ public class DAOImpl implements DAO {
     public ArrayList<Member> getCoachesForTeam(String team) {
         ArrayList<Member> coaches = new ArrayList<>();
         try {
-            PreparedStatement stmnt = this.connection.prepareStatement("SELECT * FROM person WHERE id IN (SELECT pid FROM team_roles WHERE team=? and role=2");
+            PreparedStatement stmnt = this.connection.prepareStatement("SELECT * FROM person WHERE id IN (SELECT pid FROM team_roles WHERE team=? and role=2)");
             stmnt.setString(1, team);
             
             ResultSet rs = stmnt.executeQuery();
