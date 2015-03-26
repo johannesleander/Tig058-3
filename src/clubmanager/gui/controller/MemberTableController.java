@@ -60,6 +60,6 @@ public class MemberTableController {
     @param row
     */
     public void selectedRow(int row) {
-        this.updateController.memberSelected(this.model.getMemberAtRow(row));
+        this.updateController.memberSelected(this.model.getMemberAtRow(row), row);
     }    
 }

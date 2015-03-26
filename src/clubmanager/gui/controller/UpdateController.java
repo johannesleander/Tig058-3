@@ -19,6 +19,7 @@ public class UpdateController {
     private MemberTableController mtc;
     private final SimpleDateFormat sdf;
 
+    private int selectedRow;
 
     public UpdateController(MainController controller) {
         this.controller = controller;
@@ -79,6 +80,7 @@ public class UpdateController {
     */
     public void setTableData(ArrayList<Member> lst) {
         this.mtc.setModelData(lst);
+        this.mtc.model.fireTableRowsUpdated(selectedRow, selectedRow);
     }
     
     
@@ -104,7 +106,8 @@ public class UpdateController {
     /*
     @param m
     */
-    public void memberSelected(Member m) {
+    public void memberSelected(Member m, int row) {
+        this.selectedRow = row;
         this.setModel(m);
         this.view.fillViewWithMember(this.model);
     }    
