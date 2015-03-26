@@ -61,6 +61,7 @@ public class SearchController {
      */
     public void setTableData(ArrayList<Member> lst) {
         this.tableController.setModelData(lst);
+        this.tableController.model.fireTableDataChanged();
     }
     
     /*
