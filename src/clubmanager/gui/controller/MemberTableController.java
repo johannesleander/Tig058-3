@@ -4,6 +4,7 @@ import clubmanager.dao.domain.Member;
 import clubmanager.gui.model.MemberTableModel;
 import clubmanager.gui.view.MemberTableView;
 import java.util.ArrayList;
+import javax.swing.event.ListSelectionEvent;
 
 /**
  *
@@ -59,7 +60,12 @@ public class MemberTableController {
     /*
     @param row
     */
-    public void selectedRow(int row) {
-        this.updateController.memberSelected(this.model.getMemberAtRow(row), row);
+    public void selectedRow(int row, ListSelectionEvent lse) {
+        // There be dragons here....        
+        if (this.searchController == null) {
+            this.updateController.memberSelected(this.model.getMemberAtRow(row), row);
+        } else if (this.updateController == null) {
+            return;
+        }        
     }    
 }

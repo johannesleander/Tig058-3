@@ -38,8 +38,7 @@ public class MemberTableView extends javax.swing.JTable {
             @Override
             public void valueChanged(ListSelectionEvent lse) {
                 if (!lse.getValueIsAdjusting()) {
-                    System.out.println("Selected");
-                    that.controller.selectedRow(that.getSelectedRow());                    
+                    that.controller.selectedRow(that.getSelectedRow(), lse);                    
                 }
             }            
         });

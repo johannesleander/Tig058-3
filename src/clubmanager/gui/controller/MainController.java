@@ -38,6 +38,9 @@ public class MainController {
         this.rc.setModel(new Member());
         this.sc.setModel(new Member());       
         this.uc.setModel(new Member());
+        
+        this.uc.setTableData(db.getAllMembersSortedBySurname());
+        this.sc.setTableData(db.getAllMembersSortedBySurname());
 
         this.sc.setView(this.view.searchView2);
         this.rc.setView(this.view.registryView1);
@@ -45,10 +48,7 @@ public class MainController {
         
         this.rc.updateTeamSelectDisplay(db.getAllTeams());
         this.sc.updateTeamSelectDisplay(db.getAllTeams());
-        
-        this.uc.setTableData(db.getAllMembersSortedBySurname());
-        this.sc.setTableData(db.getAllMembersSortedBySurname());
-        
+                
         this.view.setVisible(true);
     }
     /**
