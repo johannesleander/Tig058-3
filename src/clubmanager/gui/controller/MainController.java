@@ -59,7 +59,7 @@ public class MainController {
     }
     
     public void setSearchTableDataById() {
-        this.sc.setTableData(db.getAllMembersSortedBySurname());
+        this.sc.setTableData(db.getAllMembersSortedById());
     }
     
     /*
