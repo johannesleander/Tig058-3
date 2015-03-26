@@ -35,7 +35,7 @@ public class MemberTableModel extends AbstractTableModel implements TableModelLi
     }
     
     public void setData(ArrayList<Member> lst) {
-        this.data = lst;
+        this.data = lst;        
     }
     
     public String roleToString(int role) {
