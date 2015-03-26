@@ -56,7 +56,7 @@ public class MemberTableModel extends AbstractTableModel implements TableModelLi
             sb.append(roleToString(role));
             sb.append(",");
         }
-        return sb.toString();
+        return sb.toString().replaceAll(",$","");
     }
     
     public String teamsToString(List<String> teams) {
@@ -73,7 +73,7 @@ public class MemberTableModel extends AbstractTableModel implements TableModelLi
             sb.append(c.getName());
             sb.append(",");
         }
-        return sb.toString();
+        return sb.toString().replaceAll(",$","");
     }
    
     @Override
