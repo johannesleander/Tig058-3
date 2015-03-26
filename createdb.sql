@@ -28,7 +28,7 @@ create table parent_child (
 		   cid text,
 		   FOREIGN KEY (cid) REFERENCES person(id) on delete cascade,
 		   FOREIGN KEY (pid) REFERENCES person(id) on delete cascade,
-		   CONSTRAINT unq UNIQUE(pid, cid));
+		   primary key (pid, cid));
 
 
 
@@ -51,19 +51,31 @@ insert into team values('P99');
 insert into team values('F98');
 insert into team values('P98');
 
-insert into person values ('030301-4125', 'Karin', 'Ungdotter', 'mail@club.se', 1, 0, 0, 1);
-insert into person values ('031201-4165', 'Kalle', 'Kalleson', 'mail@club.se', 0, 0, 0, 1);
-insert into person values ('880301-4145', 'Kalle', 'Carlsson', 'mail@club.se', 0, 0, 0, 1);
-insert into person values ('870301-4125', 'Ung', 'Carlsson', 'mail@club.se', 1, 0, 0, 1);
-insert into person values ('930201-2575', 'Karin', 'Sportsson', 'mail@club.se', 1, 0, 0, 1);
 
-insert into team_roles values ('030301-4125', 'F03', 0);
-insert into team_roles values ('031201-4165', 'P03', 0);
-insert into team_roles values ('880301-4145', NULL, 1);
-insert into team_roles values ('870301-4125', NULL, 1);
-insert into team_roles values ('930201-2575', 'D', 0);
+.mode csv
+.import utils/formatted.csv person
+.mode column
 
-insert into parent_child values ('880301-4145', '030301-4125');
-insert into parent_child values ('880301-4145', '031201-4165');
-insert into parent_child values ('870301-4125', '030301-4125');
-insert into parent_child values ('870301-4125', '031201-4165');
+
+insert into team_roles values ('600221-5270', NULL, 1);
+insert into team_roles values ('861001-7705', 'H', 0);
+insert into team_roles values ('041104-4271', 'F04', 0);
+insert into team_roles values ('980412-6543', 'P98', 0);
+insert into team_roles values ('800709-4416', 'D', 0);
+insert into team_roles values ('750919-2993', NULL, 1);
+insert into team_roles values ('810427-7337', 'D', 2);
+insert into team_roles values ('630815-2128', 'H', 2);
+insert into team_roles values ('660218-7299', NULL, 1);
+insert into team_roles values ('601122-4439', NULL, 1);
+insert into team_roles values ('900421-7002', 'H', 0);
+insert into team_roles values ('010617-8850', 'P01', 0);
+insert into team_roles values ('740725-2224', 'D', 0);
+
+
+insert into parent_child values ('600221-5270', '041104-4271');
+insert into parent_child values ('600221-5270', '010617-8850');
+insert into parent_child values ('750919-2993', '041104-4271');
+insert into parent_child values ('750919-2993', '010617-8850');
+insert into parent_child values ('660218-7299', '980412-6543');
+insert into parent_child values ('601122-4439', '980412-6543');
+
